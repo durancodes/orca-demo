@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { api } from "../api";
+import { STATIC_DEMO } from "../demo";
 import { LEVEL_COLOR, dateTimeIST, factorName } from "../format";
 import type { GeoFeature, Place, RiskCell } from "../types";
 
@@ -12,6 +13,12 @@ interface Props {
   mode: "locate" | "track";
   onMapClick: (lat: number, lon: number) => void;
 }
+
+// Offline coastline (GLOBE land mask, backend/scripts/make_land_png.py), drawn under the tiles
+const LAND_BOUNDS: L.LatLngBoundsExpression = [
+  [4, 64],
+  [26, 96],
+];
 
 const GEOFENCE_STYLE: Record<string, L.PathOptions> = {
   boundary_line: { color: "#c81e1e", weight: 2.5, dashArray: "8 6" },
@@ -40,17 +47,25 @@ export default function MapView({ place, features, clockIso, mode, onMapClick }:
   // init
   useEffect(() => {
     if (!el.current || map.current) return;
-    const m = L.map(el.current, { zoomControl: true, attributionControl: true }).setView([15.3, 73.3], 8);
-    const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 13,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    const m = L.map(el.current, { zoomControl: true, attributionControl: true, maxZoom: 13 }).setView([15.3, 73.3], 8);
+    m.createPane("land").style.zIndex = "150";
+    L.imageOverlay(`${import.meta.env.BASE_URL}land-india.png`, LAND_BOUNDS, {
+      pane: "land",
+      className: "land-mask",
+      attribution: "Coastline: GLOBE land mask",
     }).addTo(m);
-    let errors = 0;
-    tiles.on("tileerror", () => {
-      errors += 1;
-      if (errors > 4) setTilesFailed(true);
-    });
-    tiles.on("tileload", () => setTilesFailed(false));
+    if (!STATIC_DEMO) {
+      const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 13,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(m);
+      let errors = 0;
+      tiles.on("tileerror", () => {
+        errors += 1;
+        if (errors > 4) setTilesFailed(true);
+      });
+      tiles.on("tileload", () => setTilesFailed(false));
+    }
     staticLayer.current = L.layerGroup().addTo(m);
     riskLayer.current = L.layerGroup().addTo(m);
     resultLayer.current = L.layerGroup().addTo(m);
@@ -184,17 +199,19 @@ export default function MapView({ place, features, clockIso, mode, onMapClick }:
       <div ref={el} className={`map ${tilesFailed ? "tiles-failed" : ""} ${mode === "track" ? "track-mode" : ""}`} aria-label="Marine map" />
       <div className="map-overlay">
         <label className="chk">
-          <input type="checkbox" checked={showRisk} onChange={(e) => setShowRisk(e.target.checked)} /> Risk layer
+          <input id="risk-layer" type="checkbox" checked={showRisk} onChange={(e) => setShowRisk(e.target.checked)} /> Risk layer
         </label>
         {showRisk && (
           <div className="slider">
-            <input type="range" min={0} max={48} step={1} value={hourOffset} onChange={(e) => setHourOffset(Number(e.target.value))} aria-label="Hours ahead" />
+            <input id="risk-hours" type="range" min={0} max={48} step={1} value={hourOffset} onChange={(e) => setHourOffset(Number(e.target.value))} aria-label="Hours ahead" />
             <span>+{hourOffset} h</span>
           </div>
         )}
         {riskInfo && <div className="small muted">{riskInfo}</div>}
-        {tilesFailed && <div className="small warn hint">Base map tiles unavailable offline — overlays still accurate.</div>}
-        <div className="small muted hint">{mode === "track" ? "Click map: report vessel position" : "Click map: set your location"}</div>
+        {tilesFailed && <div className="small warn hint">Street map unavailable — coastline and overlays still accurate.</div>}
+        {!STATIC_DEMO && (
+          <div className="small muted hint">{mode === "track" ? "Click map: report vessel position" : "Click map: set your location"}</div>
+        )}
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { STATIC_DEMO, demoApi, demoSubscribe } from "./demo";
 import type { Alert, ChatResponse, Health, Port, RiskCell } from "./types";
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
@@ -18,7 +19,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export const api = {
+const liveApi = {
   health: () => request<Health>("/api/health"),
   ports: () => request<Port[]>("/api/ports"),
   rules: () => request<Record<string, any>>("/api/rules"),
@@ -39,10 +40,13 @@ export const api = {
     request<{ geofence: { status: string }; alert: Alert | null }>("/api/track", { method: "POST", body: JSON.stringify({ vessel_id, lat, lon, language }) }),
 };
 
-export function subscribeAlerts(onAlert: (a: Alert) => void, onStatus: (connected: boolean) => void): () => void {
+function liveSubscribe(onAlert: (a: Alert) => void, onStatus: (connected: boolean) => void): () => void {
   const source = new EventSource("/api/alerts/stream");
   source.addEventListener("hello", () => onStatus(true));
   source.addEventListener("alert", (ev) => onAlert(JSON.parse((ev as MessageEvent).data)));
   source.onerror = () => onStatus(false);
   return () => source.close();
 }
+
+export const api: typeof liveApi = STATIC_DEMO ? (demoApi as unknown as typeof liveApi) : liveApi;
+export const subscribeAlerts = STATIC_DEMO ? demoSubscribe : liveSubscribe;

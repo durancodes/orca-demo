@@ -64,6 +64,11 @@ Development with hot reload: run `uvicorn orca.api:app --reload --port 8000` in 
 
 Docker: `docker compose up --build` → http://localhost:8000.
 
+Static preview (no server needed): `PYTHON=../backend/.venv/bin/python npm run build:demo` in `web/` writes
+`web/dist-demo/orca.html` plus `demo-data.json` and `land-india.png`. The page is the real UI replaying answers that
+`backend/scripts/record_demo.py` recorded from the real backend (replay mode, no LLM). It only answers the scripted
+questions, and it draws the coastline from the GLOBE land mask instead of map tiles.
+
 ### Configuration
 
 | Variable | Default | Meaning |

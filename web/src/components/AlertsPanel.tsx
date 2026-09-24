@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { api } from "../api";
+import { STATIC_DEMO } from "../demo";
 import { ago, dateTimeIST, levelClass } from "../format";
 import type { Alert, Health, Place } from "../types";
 
@@ -35,7 +36,7 @@ export default function AlertsPanel({ alerts, connected, place, lang, health, ma
   return (
     <div className="stack">
       <div className="row between">
-        <span className={`dot ${connected ? "ok" : "bad"}`}>{connected ? "Live alert stream connected" : "Alert stream disconnected"}</span>
+        <span className={`dot ${connected ? "ok" : "bad"}`}>{STATIC_DEMO ? "Recorded alert replay" : connected ? "Live alert stream connected" : "Alert stream disconnected"}</span>
         <span className="small muted">{health?.watches ?? 0} watched</span>
       </div>
       <div className="row gap wrap">
@@ -60,9 +61,11 @@ export default function AlertsPanel({ alerts, connected, place, lang, health, ma
             </button>
           </>
         )}
-        <button className={mapMode === "track" ? "active" : "secondary"} onClick={() => setMapMode(mapMode === "track" ? "locate" : "track")}>
-          {mapMode === "track" ? "Stop vessel tracking" : "Track vessel on map"}
-        </button>
+        {!STATIC_DEMO && (
+          <button className={mapMode === "track" ? "active" : "secondary"} onClick={() => setMapMode(mapMode === "track" ? "locate" : "track")}>
+            {mapMode === "track" ? "Stop vessel tracking" : "Track vessel on map"}
+          </button>
+        )}
       </div>
       {simAllowed && <p className="small muted">Fast-forward moves the simulated clock only (shown in the top bar); alerts are re-evaluated immediately.</p>}
       {msg && <p className="small">{msg}</p>}

@@ -15,6 +15,8 @@
   --high: #e0582a;
   --severe: #a3123a;
   --unknown: #7b8794;
+  --sea: #b7d8e8;
+  --land-filter: none;
   --radius: 12px;
   --shadow: 0 1px 2px rgb(15 34 48 / 6%), 0 4px 16px rgb(15 34 48 / 6%);
   --font: "Noto Sans", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Malayalam", system-ui, -apple-system,
@@ -23,7 +25,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #09141d;
     --panel: #0f1e2a;
     --panel-2: #132634;
@@ -36,8 +38,28 @@
     --warn: #f59e0b;
     --ok: #4ade80;
     --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 6px 18px rgb(0 0 0 / 30%);
+    --sea: #15344a;
+    --land-filter: brightness(0.34) saturate(0.4);
     color-scheme: dark;
   }
+}
+
+:root[data-theme="dark"] {
+  --bg: #09141d;
+  --panel: #0f1e2a;
+  --panel-2: #132634;
+  --ink: #e4edf2;
+  --muted: #94a6b3;
+  --line: #22384a;
+  --accent: #38bdf8;
+  --accent-ink: #062030;
+  --accent-soft: #0e3346;
+  --warn: #f59e0b;
+  --ok: #4ade80;
+  --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 6px 18px rgb(0 0 0 / 30%);
+  --sea: #15344a;
+  --land-filter: brightness(0.34) saturate(0.4);
+  color-scheme: dark;
 }
 
 * {
@@ -182,7 +204,7 @@ input {
   background: #0b3954;
   color: #e6f4f8;
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top, 0px);
   z-index: 1000;
 }
 .brand {
@@ -242,6 +264,13 @@ input {
 .data-badge.clock {
   background: #ddd6fe;
   color: #3b0764;
+}
+.preview-banner {
+  padding: 8px 16px;
+  background: #fef3c7;
+  color: #713f12;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #f5d77a;
 }
 .locbar {
   display: flex;
@@ -318,7 +347,7 @@ input {
 
 @media (min-width: 1180px) {
   .app {
-    height: 100vh;
+    height: 100%;
   }
   .layout {
     flex: 1;
@@ -464,11 +493,12 @@ input {
 .map {
   height: 100%;
   width: 100%;
-  background: #cfe3ea;
+  background: var(--sea);
   border-radius: var(--radius);
 }
-.map.tiles-failed {
-  background: repeating-linear-gradient(45deg, #cfe3ea, #cfe3ea 12px, #c6dde5 12px, #c6dde5 24px);
+.map .land-mask {
+  filter: var(--land-filter);
+  image-rendering: auto;
 }
 .map.track-mode {
   cursor: crosshair;

@@ -8,6 +8,7 @@ __pycache__/
 # Node / web
 node_modules/
 web/dist/
+web/dist-demo/
 
 # Local env / secrets
 .env

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { api, subscribeAlerts } from "./api";
+import { STATIC_DEMO, demoScript, demoSuggestions } from "./demo";
 import AlertsPanel from "./components/AlertsPanel";
 import Chat, { type Message } from "./components/Chat";
 import ConditionsPanel from "./components/ConditionsPanel";
@@ -27,6 +28,7 @@ const STARTERS = [
 ];
 
 function loadPlace(): Place {
+  if (STATIC_DEMO) return DEFAULT_PLACE; // recorded answers are for this location
   try {
     const raw = localStorage.getItem("orca.place");
     if (raw) return JSON.parse(raw) as Place;
@@ -58,6 +60,7 @@ export default function App() {
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [connected, setConnected] = useState(false);
   const [mapMode, setMapMode] = useState<"locate" | "track">("locate");
+  const [script, setScript] = useState<string[] | null>(null);
 
   const active: ChatResponse | null = useMemo(() => messages.find((m) => m.id === activeId)?.res ?? null, [messages, activeId]);
   const uiLang = lang === "auto" ? active?.language ?? "en" : lang;
@@ -72,6 +75,7 @@ export default function App() {
       (a) => setAlerts((prev) => (prev.some((p) => p.id === a.id) ? prev : [a, ...prev])),
       setConnected,
     );
+    if (STATIC_DEMO) demoScript().then((d) => setScript(d.script)).catch(() => undefined);
     const timer = setInterval(refreshHealth, 30000);
     return () => {
       stop();
@@ -117,6 +121,7 @@ export default function App() {
   };
 
   const onMapClick = (lat: number, lon: number) => {
+    if (STATIC_DEMO) return; // answers were recorded for one location
     if (mapMode === "track") {
       api
         .track("DEMO-VESSEL-1", lat, lon, uiLang)
@@ -143,6 +148,10 @@ export default function App() {
         : health?.data_mode === "live"
           ? { cls: "live", text: tr(uiLang, "live") }
           : { cls: "sim", text: tr(uiLang, "simulated") };
+
+  const suggestions = STATIC_DEMO
+    ? demoSuggestions(messages.filter((m) => m.role === "user").map((m) => m.text), script)
+    : active?.suggestions ?? STARTERS;
 
   const tabs: [Tab, string][] = [
     ["safety", tr(uiLang, "safety")],
@@ -179,38 +188,52 @@ export default function App() {
               ⏩ +{health.clock_offset_hours} h · {dateTimeIST(health.clock)}
             </span>
           )}
-          <select value={lang} onChange={(e) => setLang(e.target.value)} aria-label="Reply language">
-            {LANGS.map((l) => (
-              <option key={l.code} value={l.code}>
-                {l.label}
-              </option>
-            ))}
-          </select>
+          {!STATIC_DEMO && (
+            <select id="reply-language" value={lang} onChange={(e) => setLang(e.target.value)} aria-label="Reply language">
+              {LANGS.map((l) => (
+                <option key={l.code} value={l.code}>
+                  {l.label}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
       </header>
+
+      {STATIC_DEMO && (
+        <div className="preview-banner" role="note">
+          <b>Preview:</b> answers recorded from the real ORCA backend (simulated scenario). Tap a suggestion to replay one; run ORCA
+          locally to ask anything.
+        </div>
+      )}
 
       <div className="locbar">
         <span className="small">
           📍 <b>{place.label}</b> ({place.lat.toFixed(2)}, {place.lon.toFixed(2)})
         </span>
-        <select
-          aria-label="Harbour"
-          value=""
-          onChange={(e) => {
-            const p = ports.find((x) => x.id === e.target.value);
-            if (p) setPlace({ lat: p.sea_point[0], lon: p.sea_point[1], label: `${p.name}, ${p.state}`, source: "device" });
-          }}
-        >
-          <option value="">Harbour…</option>
-          {ports.map((p) => (
-            <option key={p.id} value={p.id}>
-              {p.name}
-            </option>
-          ))}
-        </select>
-        <button className="secondary small-btn" onClick={useGps}>
-          {tr(uiLang, "useGps")}
-        </button>
+        {!STATIC_DEMO && (
+          <>
+            <select
+              id="harbour"
+              aria-label="Harbour"
+              value=""
+              onChange={(e) => {
+                const p = ports.find((x) => x.id === e.target.value);
+                if (p) setPlace({ lat: p.sea_point[0], lon: p.sea_point[1], label: `${p.name}, ${p.state}`, source: "device" });
+              }}
+            >
+              <option value="">Harbour…</option>
+              {ports.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
+            <button className="secondary small-btn" onClick={useGps}>
+              {tr(uiLang, "useGps")}
+            </button>
+          </>
+        )}
       </div>
 
       <main className="layout">
@@ -226,7 +249,7 @@ export default function App() {
             busy={busy}
             lang={lang}
             activeId={activeId}
-            suggestions={active?.suggestions ?? STARTERS}
+            suggestions={suggestions}
             onSend={send}
             onSelect={(id) => {
               setActiveId(id);

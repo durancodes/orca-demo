@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { SPEECH_LOCALE, levelLabel, tr } from "../i18n";
+import { STATIC_DEMO } from "../demo";
 import { levelClass } from "../format";
 import type { ChatResponse } from "../types";
 
@@ -22,7 +23,7 @@ interface Props {
 }
 
 const SpeechRecognitionImpl: any =
-  typeof window !== "undefined" ? (window as any).SpeechRecognition ?? (window as any).webkitSpeechRecognition : undefined;
+  typeof window !== "undefined" && !STATIC_DEMO ? (window as any).SpeechRecognition ?? (window as any).webkitSpeechRecognition : undefined;
 
 export default function Chat({ messages, busy, lang, activeId, suggestions, onSend, onSelect }: Props) {
   const [text, setText] = useState("");
@@ -124,6 +125,7 @@ export default function Chat({ messages, busy, lang, activeId, suggestions, onSe
         }}
       >
         <input
+          id="question"
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder={tr(lang === "auto" ? "en" : lang, "placeholder")}

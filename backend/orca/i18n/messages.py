@@ -41,7 +41,7 @@ M: dict[str, dict[str, str]] = {
         "pfz.none": "No valid fishing zone found near you.",
         "pfz.issue": "Note: {issues}.",
         "pfz.demo": "These are DEMO zones, not INCOIS advisories.",
-        "conditions.now": "Near {place} now: waves {wave} m, wind {wind} km/h, sea temperature {sst} °C, sea level (tide) {tide} m.",
+        "conditions.now": "Conditions now ({place}): waves {wave} m, wind {wind} km/h, sea temperature {sst} °C, sea level (tide) {tide} m.",
         "conditions.trend": "Next hours: risk {level}.",
         "alerts.none": "No official warning covers this location right now.",
         "alerts.some": "Warnings covering this location: {list}.",
