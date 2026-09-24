@@ -1,0 +1,22 @@
+[project]
+name = "orca"
+version = "0.1.0"
+description = "ORCA — Marine EcOsystem Reasoning with Collaborative Agents (SIH 2026, PS 26176)"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "httpx>=0.27",
+    "pydantic>=2.7",
+    "shapely>=2.0",
+    "global-land-mask>=1.0",
+]
+
+[project.optional-dependencies]
+llm = ["anthropic>=0.40"]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/in-imd-en/rss-style.xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <atom:link rel="hub" href="//alert-hub.appspot.com" />
+    <atom:link rel="self" href="https://cap-sources.s3.amazonaws.com/in-imd-en/rss.xml" type="application/rss+xml" />
+    <title>Latest alerts from India Meteorological Department</title>
+    <link>https://cap-sources.s3.amazonaws.com/in-imd-en/rss.xml</link>
+    <description>Latest alerts from  India Meteorological Department</description>
+    <language>en</language>
+    <copyright>public domain</copyright>
+    <pubDate>Wed, 23 Sep 2026 09:30:32 +0000</pubDate>
+    <lastBuildDate>Wed, 23 Sep 2026 09:30:32 +0000</lastBuildDate>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <image>
+      <title>Latest alerts from India Meteorological Department</title>
+      <url>https://alert-hub.s3.amazonaws.com/images/in-imd-en.png</url>
+      <link>https://cap-sources.s3.amazonaws.com/in-imd-en/rss.xml</link>
+    </image>
+    <item>
+      <title>Heavy to very heavy with extremely heavy rainfall</title>
+      <link>https://cap-sources.s3.amazonaws.com/in-imd-en/2026-09-23-09-30-25.xml</link>
+      <description>Isolated extremely rainfall likely over Coastal Andhra Pradesh, Chhattisgarh and Odisha.</description>
+      <author>rainfallnwfc@gmail.com (NWFC DIVISION, IMD, NEW DELHI)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.356.0.2026.9.23.9.30.25</guid>
+      <pubDate>Wed, 23 Sep 2026 09:30:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>Heavy to very heavy with extremely heavy rainfall</title>
+      <link>https://cap-sources.s3.amazonaws.com/in-imd-en/2026-09-15-07-05-04.xml</link>
+      <description>Isolated extremely rainfall likely over Saurashtra and Kutch on 15th September.</description>
+      <author>rainfallnwfc@gmail.com (NWFC DIVISION, IMD, NEW DELHI)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.356.0.2026.9.15.7.5.4</guid>
+      <pubDate>Tue, 15 Sep 2026 07:05:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>Heavy to very heavy with extremely heavy rainfall</title>
+      <link>https://cap-sources.s3.amazonaws.com/in-imd-en/2026-09-09-07-24-34.xml</link>
+      <description>Isolated extremely rainfall likely over Odisha on 10th September.</description>
+      <author>rainfallnwfc@gmail.com (NWFC DIVISION, IMD, NEW DELHI)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.356.0.2026.9.9.7.24.34</guid>
+      <pubDate>Wed, 09 Sep 2026 07:24:34 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
