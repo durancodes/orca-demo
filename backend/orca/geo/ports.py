@@ -90,3 +90,17 @@ def snap_to_sea(lat: float, lon: float, max_km: float = 15.0) -> tuple[float, fl
 
 def is_sea(lat: float, lon: float) -> bool:
     return not is_land(lat, lon)
+
+
+def offshore_point(lat: float, lon: float, km: float = 10.0) -> tuple[float, float]:
+    """A point ~km offshore of a harbour, in open water (sea at km/2, km and 1.5·km),
+    so 'conditions near <port>' are evaluated on a marine grid cell, not the harbour mouth."""
+    best: tuple[int, tuple[float, float]] | None = None
+    for bearing in range(0, 360, 15):
+        probes = [destination_point(lat, lon, bearing, d) for d in (km / 2, km, km * 1.5, km * 2)]
+        score = sum(1 for p in probes if not is_land(*p))
+        if score == len(probes):
+            return round(probes[1][0], 4), round(probes[1][1], 4)
+        if best is None or score > best[0]:
+            best = (score, probes[1])
+    return snap_to_sea(*best[1]) if best else snap_to_sea(lat, lon)

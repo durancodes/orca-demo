@@ -5,3 +5,6 @@ pydantic>=2.7
 shapely>=2.0
 global-land-mask>=1.0
 pytest>=8
+
+# Optional: LLM explanation / intent fallback via Claude (set ANTHROPIC_API_KEY)
+anthropic>=1.0

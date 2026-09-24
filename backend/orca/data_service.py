@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import time
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Callable
@@ -46,18 +47,27 @@ class DataService:
     live_advisories: list[AdvisoryAdapter]
     replay_advisories: list[AdvisoryAdapter]
     clock: Clock
+    breaker_s: float = 60.0  # auto mode: after a live failure, skip live for this long
     _last_status: DataStatus | None = field(default=None, init=False)
+    _live_down_until: float = field(default=0.0, init=False)
+    _live_down_reason: str | None = field(default=None, init=False)
 
     async def _marine(self, query: PointQuery) -> tuple[list[MarineObservation], str, str | None]:
         if self.mode == "replay":
             return await self.replay_marine.observe(query), "replay", None
+        if self.mode == "auto" and time.monotonic() < self._live_down_until:
+            return await self.replay_marine.observe(query), "replay", f"{self._live_down_reason} (retrying live shortly)"
         try:
-            return await self.live_marine.observe(query), "live", None
+            observations = await self.live_marine.observe(query)
+            self._live_down_until = 0.0
+            return observations, "live", None
         except AdapterError as exc:
             if self.mode == "live":
                 log.warning("live marine source failed: %s", exc)
                 return [], "none", str(exc)
             log.warning("live marine source failed, using simulated scenario: %s", exc)
+            self._live_down_until = time.monotonic() + self.breaker_s
+            self._live_down_reason = str(exc)
             return await self.replay_marine.observe(query), "replay", str(exc)
 
     async def advisories(self, marine_source: str) -> tuple[list[Advisory], list[str], list[str]]:
@@ -88,15 +98,20 @@ class DataService:
         return MarineState(lat, lon, observations, advisories), status
 
     async def route_values(
-        self, points: list[tuple[float, float]], start: datetime, end: datetime, marine_source: str
+        self,
+        points: list[tuple[float, float]],
+        start: datetime,
+        end: datetime,
+        marine_source: str,
+        variables: tuple[str, ...] = ROUTE_VARIABLES,
     ) -> Callable[[float, float, datetime], dict[str, MarineObservation]]:
-        """Value lookup for the route risk field: (sample lat, sample lon, hour) -> observations.
+        """Grid value lookup: (sample lat, sample lon, hour) -> observations.
 
-        Replay is evaluated lazily (only samples the search visits); live data is
+        Replay is evaluated lazily (only samples actually visited); live data is
         fetched up-front in batched multi-coordinate requests."""
         if marine_source == "replay":
             replay = self.replay_marine
-            return lambda lat, lon, t: replay.values_at(lat, lon, t, ROUTE_VARIABLES)  # type: ignore[attr-defined]
+            return lambda lat, lon, t: replay.values_at(lat, lon, t, variables)  # type: ignore[attr-defined]
         by_point = await self.live_marine.observe_many(points, start, end)  # type: ignore[attr-defined]
         states = {p: MarineState(p[0], p[1], obs) for p, obs in by_point.items()}
         empty = MarineState(0, 0, [])

@@ -105,7 +105,7 @@ def test_golden_journey_trajectory_escalates(replay):
     rising = [c for c in d.change_points if c.direction == "rising"]
     assert [c.to_level for c in rising][:2] == [RiskLevel.MODERATE, RiskLevel.HIGH]
     assert rising[0].cause is not None
-    assert d.go_windows and fmt_ist_hour(d.go_windows[0].start) == "05:30"
+    assert d.go_windows and fmt_ist_hour(d.go_windows[0].start) == "06:00"  # clipped to the requested start
     assert d.simulated and "simulated" in d.data_types
     assert any("SIMULATED" in u for u in d.uncertainty)
 

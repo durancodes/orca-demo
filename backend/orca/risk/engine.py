@@ -147,7 +147,8 @@ def assess_hour(time: datetime, values: dict[str, MarineObservation], advisories
     return HourAssessment(time=time, level=level, factors=factors, dominant=dominant, missing=missing)
 
 
-def _windows(hours: list[HourAssessment], allowed: set[RiskLevel]) -> list[Window]:
+def _windows(hours: list[HourAssessment], allowed: set[RiskLevel], start: datetime, end: datetime) -> list[Window]:
+    """Contiguous runs of allowed hours, clipped to the requested [start, end] period."""
     out: list[Window] = []
     run: list[HourAssessment] = []
     for h in hours + [None]:  # sentinel flushes the last run
@@ -156,7 +157,10 @@ def _windows(hours: list[HourAssessment], allowed: set[RiskLevel]) -> list[Windo
             continue
         if run:
             max_level = max((r.level for r in run), key=_rank)
-            out.append(Window(start=run[0].time, end=run[-1].time + timedelta(hours=1), hours=len(run), max_level=max_level))
+            w_start = max(run[0].time, start)
+            w_end = min(run[-1].time + timedelta(hours=1), end)
+            if w_end > w_start:
+                out.append(Window(start=w_start, end=w_end, hours=len(run), max_level=max_level))
             run = []
     return out
 
@@ -232,8 +236,8 @@ def assess_window(
         valid_until=(hours[-1].time + timedelta(hours=1)) if hours else end,
         hours=hours,
         change_points=change_points,
-        go_windows=_windows(hours, {RiskLevel.LOW}),
-        caution_windows=_windows(hours, {RiskLevel.LOW, RiskLevel.MODERATE}),
+        go_windows=_windows(hours, {RiskLevel.LOW}, start, end),
+        caution_windows=_windows(hours, {RiskLevel.LOW, RiskLevel.MODERATE}, start, end),
         worst_hour=worst_hour,
         key_factors=key_factors,
         advisories=[

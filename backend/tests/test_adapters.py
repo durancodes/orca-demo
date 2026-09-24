@@ -160,3 +160,19 @@ def test_live_mode_never_fabricates(replay):
     state, status = asyncio.run(svc.marine_state(15.2, 72.8, tomorrow(6), tomorrow(9)))
     assert status.marine_source == "none"
     assert state.observations == []
+
+
+def test_auto_mode_circuit_breaker_skips_dead_live_source(replay):
+    calls = []
+
+    def handler(request):
+        calls.append(request.url.host)
+        return httpx.Response(403)
+
+    failing = OpenMeteoAdapter(client=httpx.AsyncClient(transport=httpx.MockTransport(handler)))
+    svc = DataService("auto", failing, replay, [], [], clock=lambda: NOW)
+    asyncio.run(svc.marine_state(15.2, 72.8, tomorrow(6), tomorrow(9)))
+    first_calls = len(calls)
+    _, status = asyncio.run(svc.marine_state(15.2, 72.8, tomorrow(6), tomorrow(9)))
+    assert first_calls > 0 and len(calls) == first_calls  # second request did not touch the live API
+    assert status.marine_source == "replay" and "retrying live shortly" in status.fallback_reason
