@@ -252,7 +252,10 @@ def template_explanation(language: str, ctx: dict[str, Any]) -> Explanation:
                            level=t(f"level.{rec['max_level'] or 'INSUFFICIENT_DATA'}", lang)))
         else:
             lines.append(t("route.none", lang))
-        factors.extend(route.get("reasons", [])[:3])
+        reasons = route.get("reasons", [])
+        if lang == "en" and reasons:
+            lines.append(reasons[0])  # planner reasons are English; other languages see them in the route card
+        factors.extend(reasons[:3])
 
     hot = ctx.get("hotspots")
     if hot is not None:

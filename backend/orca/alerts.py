@@ -26,7 +26,6 @@ from .timeutil import IST, ensure_utc
 log = logging.getLogger("orca.alerts")
 
 LOOKAHEAD = timedelta(hours=12)
-FACTOR_NAMES = {"wave_height": "waves", "wind_speed": "wind", "weather_code": "thunderstorm", "visibility": "visibility", "advisory": "official warning"}
 
 
 class Watch(BaseModel):
@@ -100,7 +99,12 @@ class AlertEngine:
         lang = template_language(w.language)
         level = decision.risk_level
         worst = decision.worst_hour
-        factor = FACTOR_NAMES.get(worst.dominant.variable, worst.dominant.variable) if worst and worst.dominant else "—"
+        if worst and worst.dominant:
+            d = worst.dominant
+            value = f"{d.value:.1f}" if isinstance(d.value, (int, float)) else d.value
+            factor = t(f"factor.{d.variable}", template_language(w.language), value=value)
+        else:
+            factor = "—"
         when = ensure_utc(worst.time).astimezone(IST).strftime("%H:%M") if worst else "—"
         simulated = decision.simulated
         retrieved = min((o.retrieved_at for o in state.observations), default=None)
