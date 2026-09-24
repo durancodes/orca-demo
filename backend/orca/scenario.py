@@ -17,9 +17,9 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 from datetime import datetime, timedelta
+from functools import lru_cache
 
-from global_land_mask import globe
-
+from .geo.land import is_land
 from .models import Advisory, DataType
 from .timeutil import UTC, ensure_utc
 
@@ -52,6 +52,11 @@ TRACK: list[tuple[float, float, float, float]] = [
     (72.0, 20.0, 71.0, 25.0),
     (120.0, 22.0, 69.0, 12.0),
 ]
+# Short-lived coastal thunderstorm cell off Goa on scenario day 1 (hours after anchor, lat, lon):
+# drifts offshore 05:00–10:30 IST across the direct Mormugao → near-shore PFZ line.
+CELL_TRACK = ((5.0, 15.40, 73.60), (10.5, 15.47, 73.44))
+CELL_RADIUS_KM = 16.0
+
 GALE_EDGE_KM = 290.0  # radius where the storm's added wind is at half strength
 EDGE_WIDTH_KM = 31.0
 CORE_RADIUS_KM = 45.0
@@ -84,6 +89,35 @@ def _dist_to_polyline_km(lat: float, lon: float, line: list[tuple[float, float]]
 def _pseudo_noise(lat: float, lon: float, h: float) -> float:
     """Deterministic small-amplitude variation in [-1, 1]."""
     return math.sin(lat * 12.9898 + lon * 78.233 + h * 0.37) * math.cos(lat * 3.1 - lon * 1.7 + h * 0.11)
+
+
+@dataclass(frozen=True)
+class _Static:
+    sea: bool
+    d_coast: float
+    sst_base: float
+    chl: float
+    tide_amp: float
+
+
+@lru_cache(maxsize=200_000)
+def _static_fields(lat: float, lon: float) -> _Static:
+    """Time-invariant parts of the simulated fields (cached per ~100 m cell)."""
+    d_west = _dist_to_polyline_km(lat, lon, WEST_COAST)
+    d_east = _dist_to_polyline_km(lat, lon, EAST_COAST)
+    east_side = lon > 78.0 or (lat < 9.5 and lon > 77.6)
+    d_coast = d_east if east_side else d_west
+    sst = (29.2 if east_side else 28.5 - 0.03 * (lat - 8.0) - 1.3 * math.exp(-d_west / 70.0)) + 0.15 * _pseudo_noise(lat, lon, 0.0)
+    chl = 0.12 + (1.1 if east_side else 2.3) * math.exp(-d_coast / 55.0)
+    for _, p_lat, p_lon, _label in DEMO_PFZ_CENTRES:
+        chl += 0.9 * math.exp(-((haversine_km(lat, lon, p_lat, p_lon) / 18.0) ** 2))
+    if lat > 20.8 and 71.8 < lon < 73.0:
+        tide_amp = 2.8  # Gulf of Khambhat macro-tides
+    elif east_side:
+        tide_amp = 0.45
+    else:
+        tide_amp = 0.95
+    return _Static(sea=not is_land(lat, lon), d_coast=d_coast, sst_base=sst, chl=chl, tide_amp=tide_amp)
 
 
 @dataclass(frozen=True)
@@ -129,7 +163,16 @@ class Scenario:
         return math.hypot(base, storm_w)
 
     def is_sea(self, lat: float, lon: float) -> bool:
-        return not globe.is_land(lat, lon)
+        return not is_land(lat, lon)
+
+    def cell(self, lat: float, lon: float, h: float) -> float:
+        """Distance-weighted strength (0..1) of the short-lived coastal thunderstorm cell."""
+        (h0, la0, lo0), (h1, la1, lo1) = CELL_TRACK
+        if not (h0 <= h <= h1):
+            return 0.0
+        f = (h - h0) / (h1 - h0)
+        d = haversine_km(lat, lon, la0 + f * (la1 - la0), lo0 + f * (lo1 - lo0))
+        return 1.0 if d <= CELL_RADIUS_KM else (0.4 if d <= CELL_RADIUS_KM * 1.8 else 0.0)
 
     def fields(self, lat: float, lon: float, t: datetime) -> dict[str, float | None]:
         h = self.hour_of(t)
@@ -137,11 +180,14 @@ class Scenario:
         wind = self.wind_speed(lat, lon, h)
         storm_w, r = self._storm_wind(lat, lon, h)
         wind_lag = self.wind_speed(lat, lon, h - 1.0)
+        cell = self.cell(lat, lon, h)
+        if cell >= 1.0:
+            wind = math.hypot(wind, 22.0)  # gust front inside the cell
         u_ms = wind_lag / 3.6
         wind_sea = 0.0165 * u_ms * u_ms
         swell = 0.35 + 1.5 * (s.vmax_kmh / 65.0) * math.exp(-max(r - 100.0, 0.0) / 350.0)
-        wave = math.hypot(wind_sea, swell)
-        gusts = wind * (1.35 + 0.1 * (storm_w / max(s.vmax_kmh, 1.0)))
+        wave = math.hypot(wind_sea, swell) + (0.25 if cell >= 1.0 else 0.0)
+        gusts = wind * (1.35 + 0.1 * (storm_w / max(s.vmax_kmh, 1.0))) + (20.0 if cell >= 1.0 else 0.0)
 
         # cyclonic (anticlockwise, NH) inflow direction near the storm, SW monsoon flow elsewhere
         bearing_to_centre = math.degrees(math.atan2(s.lon - lon, s.lat - lat)) % 360
@@ -152,37 +198,22 @@ class Scenario:
         in_band = (GALE_EDGE_KM - 110.0) <= r <= (GALE_EDGE_KM - 20.0) and s.vmax_kmh >= 45.0
         in_core = r < (GALE_EDGE_KM - 110.0) and s.vmax_kmh >= 45.0
         in_rain = r < GALE_EDGE_KM + 60.0 and s.vmax_kmh >= 35.0
-        if in_band or in_core:
-            code, vis, rain, cape = 95.0, 2500.0 if in_band else 900.0, 9.0 if in_band else 14.0, 2600.0
-        elif in_rain:
-            code, vis, rain, cape = 63.0, 6000.0, 2.5, 1400.0
+        if in_band or in_core or cell >= 1.0:
+            code, vis, rain, cape = 95.0, 900.0 if in_core else 2500.0, 14.0 if in_core else 9.0, 2600.0
+        elif in_rain or cell > 0.0:
+            code, vis, rain, cape = (80.0 if cell > 0.0 else 63.0), 6000.0, 2.5, 1400.0
         else:
             code, vis, rain, cape = 2.0, 20000.0, 0.0, 700.0
 
-        d_west = _dist_to_polyline_km(lat, lon, WEST_COAST)
-        d_east = _dist_to_polyline_km(lat, lon, EAST_COAST)
-        east_side = lon > 78.0 or (lat < 9.5 and lon > 77.6)
-        d_coast = d_east if east_side else d_west
-
-        sst = (29.2 if east_side else 28.5 - 0.03 * (lat - 8.0)) - (0.0 if east_side else 1.3 * math.exp(-d_west / 70.0))
-        sst -= 0.9 * math.exp(-(r / 160.0) ** 2) * min(1.0, max(0.0, (h + 12.0) / 24.0))  # storm cooling
-        sst += 0.15 * _pseudo_noise(lat, lon, 0.0)
-        chl = 0.12 + (1.1 if east_side else 2.3) * math.exp(-d_coast / 55.0)
-        for pz in DEMO_PFZ_CENTRES:
-            chl += 0.9 * math.exp(-((haversine_km(lat, lon, pz[1], pz[2]) / 18.0) ** 2))
-
-        if lat > 20.8 and 71.8 < lon < 73.0:
-            tide_amp = 2.8  # Gulf of Khambhat macro-tides
-        elif east_side:
-            tide_amp = 0.45
-        else:
-            tide_amp = 0.95
+        st = _static_fields(round(lat, 3), round(lon, 3))
+        sst = st.sst_base - 0.9 * math.exp(-(r / 160.0) ** 2) * min(1.0, max(0.0, (h + 12.0) / 24.0))  # storm cooling
         hours_utc = (ensure_utc(t) - datetime(2026, 1, 1, tzinfo=UTC)).total_seconds() / 3600.0
-        sea_level = tide_amp * math.cos(2 * math.pi * hours_utc / 12.42 + lon / 12.0)
+        sea_level = st.tide_amp * math.cos(2 * math.pi * hours_utc / 12.42 + lon / 12.0)
         current = 0.6 + 0.9 * (storm_w / 65.0) + 0.35 * abs(math.sin(2 * math.pi * hours_utc / 12.42))
 
-        sea = self.is_sea(lat, lon)
+        sea = st.sea
         marine = lambda v: round(v, 2) if sea else None  # noqa: E731 — marine model has no value over land
+        chl, d_coast = st.chl, st.d_coast
         return {
             "wave_height": marine(wave),
             "swell_wave_height": marine(swell),

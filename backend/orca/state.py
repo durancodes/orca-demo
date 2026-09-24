@@ -13,6 +13,20 @@ from .models import Advisory, DataType, Evidence, MarineObservation
 from .timeutil import ensure_utc, floor_hour
 
 
+def advisories_at_point(lat: float, lon: float, t: datetime, advisories: list[Advisory]) -> list[Advisory]:
+    """Advisories whose area contains the point and whose validity covers time t."""
+    t = ensure_utc(t)
+    out = []
+    for adv in advisories:
+        if adv.onset and t < adv.onset:
+            continue
+        if adv.expires and t >= adv.expires:
+            continue
+        if any(point_in_polygon(lat, lon, poly) for poly in adv.polygons):
+            out.append(adv)
+    return out
+
+
 class MarineState:
     def __init__(
         self,
@@ -48,16 +62,7 @@ class MarineState:
 
     def advisories_at(self, t: datetime) -> list[Advisory]:
         """Advisories whose area contains this point and whose validity covers time t."""
-        t = ensure_utc(t)
-        out = []
-        for adv in self.advisories:
-            if adv.onset and t < adv.onset:
-                continue
-            if adv.expires and t >= adv.expires:
-                continue
-            if any(point_in_polygon(self.lat, self.lon, poly) for poly in adv.polygons):
-                out.append(adv)
-        return out
+        return advisories_at_point(self.lat, self.lon, t, self.advisories)
 
     def advisories_containing_point(self) -> list[Advisory]:
         return [a for a in self.advisories if any(point_in_polygon(self.lat, self.lon, p) for p in a.polygons)]

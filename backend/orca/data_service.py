@@ -15,6 +15,7 @@ import asyncio
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime
+from typing import Callable
 
 from pydantic import BaseModel, Field
 
@@ -25,6 +26,8 @@ from .state import MarineState
 from .timeutil import Clock
 
 log = logging.getLogger("orca.data")
+
+ROUTE_VARIABLES = ("wave_height", "wind_speed", "weather_code", "visibility")
 
 
 class DataStatus(BaseModel):
@@ -84,12 +87,20 @@ class DataService:
         self._last_status = status
         return MarineState(lat, lon, observations, advisories), status
 
-    async def grid_values(
+    async def route_values(
         self, points: list[tuple[float, float]], start: datetime, end: datetime, marine_source: str
-    ) -> dict[tuple[float, float], MarineState]:
-        adapter = self.replay_marine if marine_source == "replay" else self.live_marine
-        by_point = await adapter.observe_many(points, start, end)  # type: ignore[attr-defined]
-        return {p: MarineState(p[0], p[1], obs) for p, obs in by_point.items()}
+    ) -> Callable[[float, float, datetime], dict[str, MarineObservation]]:
+        """Value lookup for the route risk field: (sample lat, sample lon, hour) -> observations.
+
+        Replay is evaluated lazily (only samples the search visits); live data is
+        fetched up-front in batched multi-coordinate requests."""
+        if marine_source == "replay":
+            replay = self.replay_marine
+            return lambda lat, lon, t: replay.values_at(lat, lon, t, ROUTE_VARIABLES)  # type: ignore[attr-defined]
+        by_point = await self.live_marine.observe_many(points, start, end)  # type: ignore[attr-defined]
+        states = {p: MarineState(p[0], p[1], obs) for p, obs in by_point.items()}
+        empty = MarineState(0, 0, [])
+        return lambda lat, lon, t: states.get((lat, lon), empty).values_at(t)
 
     def health(self) -> list[AdapterHealth]:
         adapters = [self.live_marine, self.replay_marine, *self.live_advisories, *self.replay_advisories]

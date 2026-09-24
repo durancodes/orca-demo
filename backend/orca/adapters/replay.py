@@ -73,6 +73,16 @@ class ReplayAdapter(MarineDataAdapter):
                 )
         return out
 
+    def values_at(self, lat: float, lon: float, t: datetime, variables: tuple[str, ...]) -> dict[str, MarineObservation]:
+        """Synchronous single-hour lookup used by the lazily-evaluated route risk field."""
+        raw = RawPayload(
+            adapter=self.name,
+            fetched_at=datetime.now(UTC),
+            request={},
+            payload={"lat": lat, "lon": lon, "rows": [{"time": t, **self.scenario.fields(lat, lon, t)}], "variables": variables},
+        )
+        return {o.variable: o for o in self.normalize(raw)}
+
     async def observe_many(
         self, points: list[tuple[float, float]], start: datetime, end: datetime
     ) -> dict[tuple[float, float], list[MarineObservation]]:

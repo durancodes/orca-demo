@@ -1,0 +1,93 @@
+{
+  "about": "ORCA geofence layers. Every feature states its authority and accuracy. Only features with accuracy 'official' may be treated as legal boundaries; all others are for demonstration and MUST be replaced with authoritative layers (NHO charts, MoES/INCOIS, MoEFCC/WDPA) before operational use.",
+  "features": [
+    {
+      "id": "imbl-in-lk-palk-gom",
+      "name": "India–Sri Lanka maritime boundary (Palk Strait & Gulf of Mannar)",
+      "kind": "boundary_line",
+      "geometry": "line",
+      "coordinates": [
+        [10.0833, 80.0500], [9.9500, 79.5833], [9.6692, 79.3767], [9.3633, 79.5117], [9.2167, 79.5333],
+        [9.1000, 79.5333], [8.8967, 79.4883], [8.6667, 79.3033], [8.6200, 79.2167], [8.5200, 79.0783],
+        [8.3700, 78.9233], [8.2033, 78.8950], [7.5883, 78.7617], [7.3500, 78.6467], [6.5133, 78.2033],
+        [5.8983, 77.8450], [5.0000, 77.1767]
+      ],
+      "home_side": "west",
+      "authority": "India–Sri Lanka maritime boundary agreements (1974 Palk Strait, 1976 Gulf of Mannar)",
+      "reference": "Agreement between India and Sri Lanka on the Boundary in Historic Waters (1974); Agreement on the Maritime Boundary in the Gulf of Mannar and Bay of Bengal (1976)",
+      "accuracy": "unverified-transcription",
+      "accuracy_note": "Turning points transcribed into decimal degrees for this prototype and NOT yet verified against the treaty text or NHO charts. Bay of Bengal segment north of position 1 not included.",
+      "warn_distance_km": 9.26,
+      "rule": "Crossing the international maritime boundary without authorization is prohibited."
+    },
+    {
+      "id": "mpa-gulf-of-mannar",
+      "name": "Gulf of Mannar Marine National Park (approximate extent)",
+      "kind": "protected_area",
+      "geometry": "polygon",
+      "coordinates": [
+        [9.300, 79.230], [9.220, 79.260], [9.100, 78.950], [8.950, 78.600], [8.780, 78.200], [8.700, 78.120],
+        [8.760, 78.100], [8.880, 78.300], [9.050, 78.620], [9.180, 78.920], [9.270, 79.100], [9.300, 79.230]
+      ],
+      "authority": "Tamil Nadu Forest Department / MoEFCC (national park around 21 islands)",
+      "reference": "https://www.protectedplanet.net (search: Gulf of Mannar Marine National Park)",
+      "accuracy": "approximate",
+      "accuracy_note": "Hand-drawn envelope around the island chain for demonstration; replace with the WDPA/State notified boundary.",
+      "warn_distance_km": 3.0,
+      "rule": "Fishing and collection are restricted inside the national park; check State rules."
+    },
+    {
+      "id": "mpa-malvan",
+      "name": "Malvan Marine Sanctuary (approximate extent)",
+      "kind": "protected_area",
+      "geometry": "polygon",
+      "coordinates": [[16.100, 73.420], [16.100, 73.470], [16.020, 73.490], [15.990, 73.450], [16.040, 73.410], [16.100, 73.420]],
+      "authority": "Maharashtra Forest Department (Malvan Marine Sanctuary, 1987)",
+      "reference": "https://www.protectedplanet.net (search: Malvan Marine Sanctuary)",
+      "accuracy": "approximate",
+      "accuracy_note": "Approximate envelope for demonstration; replace with the notified boundary.",
+      "warn_distance_km": 2.0,
+      "rule": "Fishing restrictions apply inside the sanctuary; check State rules."
+    },
+    {
+      "id": "mpa-gulf-of-kachchh",
+      "name": "Marine National Park, Gulf of Kachchh (approximate extent)",
+      "kind": "protected_area",
+      "geometry": "polygon",
+      "coordinates": [[22.600, 69.050], [22.620, 69.700], [22.550, 70.250], [22.420, 70.400], [22.350, 70.100], [22.420, 69.600], [22.400, 69.100], [22.600, 69.050]],
+      "authority": "Gujarat Forest Department (Marine National Park & Sanctuary, Gulf of Kachchh)",
+      "reference": "https://www.protectedplanet.net (search: Marine National Park Gulf of Kachchh)",
+      "accuracy": "approximate",
+      "accuracy_note": "Approximate envelope for demonstration; replace with the notified boundary.",
+      "warn_distance_km": 3.0,
+      "rule": "Fishing restrictions apply inside the park; check State rules."
+    },
+    {
+      "id": "sensitive-gahirmatha",
+      "name": "Gahirmatha Marine Sanctuary — olive ridley nesting season (approximate extent)",
+      "kind": "sensitive",
+      "geometry": "polygon",
+      "coordinates": [[20.800, 86.950], [20.800, 87.250], [20.450, 87.200], [20.400, 86.900], [20.800, 86.950]],
+      "active_months": [11, 12, 1, 2, 3, 4, 5],
+      "authority": "Odisha Forest Department (Gahirmatha Marine Wildlife Sanctuary)",
+      "reference": "https://www.protectedplanet.net (search: Gahirmatha)",
+      "accuracy": "approximate",
+      "accuracy_note": "Approximate envelope; seasonal restrictions and exact dates are set by the State each year.",
+      "warn_distance_km": 5.0,
+      "rule": "Seasonal fishing restrictions protect nesting turtles; check current State orders."
+    },
+    {
+      "id": "demo-restricted-goa",
+      "name": "DEMO restricted exercise area off Goa (fictional)",
+      "kind": "restricted",
+      "geometry": "polygon",
+      "coordinates": [[15.350, 73.050], [15.350, 73.300], [15.180, 73.300], [15.180, 73.050], [15.350, 73.050]],
+      "authority": "ORCA demo — fictional",
+      "reference": "docs/DATA_SOURCES.md#geofences",
+      "accuracy": "fictional-demo",
+      "accuracy_note": "Does not exist. Included only to demonstrate restricted-area warnings and route avoidance.",
+      "warn_distance_km": 5.0,
+      "rule": "Entry not permitted (demo rule)."
+    }
+  ]
+}
