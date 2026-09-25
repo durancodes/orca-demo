@@ -214,6 +214,8 @@ class Orchestrator:
         status: DataStatus | None = None
         decision: RiskDecision | None = None
 
+        if self.svc.replay is not None:
+            ctx["historical"] = {"event": self.svc.replay.event.title, "as_of": sp.ist_label(self.svc.clock())}
         if plan.place is not None:
             ctx["place"] = plan.place.label
             ctx["window"] = sp.window_label(*plan.window)
@@ -224,6 +226,7 @@ class Orchestrator:
             state, status = results["data"].value
             ctx["data"] = {"simulated": status.marine_source == "replay", "marine_source": status.marine_source,
                            "fallback_reason": status.fallback_reason, "advisory_sources": status.advisory_sources}
+
             ctx["evidence_index"] = state.evidence_index()
             if plan.safety_target == "top_pfz" and plan.place is not None:
                 ctx["place"] = f"{plan.place.label} → nearest fishing zone"
@@ -285,6 +288,7 @@ class Orchestrator:
                 cands.append({"id": z.id, "name": z.name, "distance_km": c.distance_km, "bearing_deg": c.bearing_deg,
                               "compass": c.compass, "viable": c.viable, "issues": c.issues, "source": z.source,
                               "data_type": z.data_type.value, "demo": z.data_type.value == "simulated",
+                              "derived": z.data_type.value == "derived", "basis": z.attributes.get("basis"),
                               "valid_from": _iso(z.valid_from), "valid_until": _iso(z.valid_until), "centroid": z.centroid,
                               "attributes": z.attributes})
                 geom = _polygon(z.coordinates) if z.geometry == "polygon" else _line(z.coordinates)

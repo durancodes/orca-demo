@@ -20,8 +20,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from orca.geo.land import is_land  # noqa: E402
 
 LAT_MIN, LAT_MAX, LON_MIN, LON_MAX = 4.0, 26.0, 64.0, 96.0
-WIDTH = 2400
-LAND_RGB = (206, 199, 184)
+WIDTH = 4800
+LAND_RGB = (238, 226, 190)  # nautical-chart buff
 
 
 def merc_y(lat: float) -> float:

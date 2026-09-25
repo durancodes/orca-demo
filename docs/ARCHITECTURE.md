@@ -12,7 +12,7 @@
  7 validate data               variables.py plausibility ranges → quality flags; adapter health
  8 build Marine State          state.py — hour-indexed observations + advisories containing the point
  9 spatial + temporal analysis geo/geofences.py, risk/engine.py hourly trajectory
-10 risk                        risk/rules.py (orca-rules-0.1.0) → RiskDecision
+10 risk                        risk/rules.py (orca-rules-0.2.0) → RiskDecision
 11 route / alerts              route/planner.py time-dependent A*; alerts.py
 12 evidence + provenance       Evidence objects for every value used; map features
 13 explanation                 agents/explanation.py — Claude + verdict lock, or templates
@@ -88,6 +88,26 @@ found them), plan, every step (agent, kind, latency, ok/error, sources, summary)
 reason), rule version, LLM usage (model, served-by, discarded reason), final decision and evidence ids. Stored in memory
 (`GET /api/traces`) and logged as JSON.
 
+## Data modes
+
+| Mode | Marine data | Warnings | Clock |
+|---|---|---|---|
+| `historical` (default) | NOAA GFS / GFS-Wave runs as issued, OISST, VIIRS chlorophyll (`adapters/historical.py`) | IMD CAP messages as sent + model cyclone watch (derived, not scored) | anchored to the event's replay moment; fast-forward moves it |
+| `live` | Open-Meteo weather + marine | IMD CAP feed | wall clock |
+| `auto` | live first, simulated scenario on failure (labelled) | IMD CAP feed | wall clock |
+| `replay` | simulated scenario | scenario warnings | wall clock + offset |
+
+Everything above the adapters is identical in every mode: the agents, engines and UI never branch on where the data
+came from, only on its labels (`data_type`, source, published time).
+
+## Web app
+
+`web/src/pages/` holds one page per feature, routed by hash (`#safety`, `#zones`, …) and listed in the navigation bar:
+Bridge, Ask ORCA, Sea Safety, Fishing Zones, Safe Route, Conditions, Alerts, Boundaries, Time Machine, How it decided,
+Data & Rules. `ui/ChartMap.tsx` is the shared chart: offline GLOBE coastline, graticule ticks, and composable layers
+(wind particles advected on the GFS wind field, colour fields drawn under the coastline in Web-Mercator, zones,
+routes, warning polygons, cyclone track). `store.tsx` holds the replay state, place, conversation and alerts.
+
 ## HTTP API
 
 | Method | Path | Purpose |
@@ -101,7 +121,13 @@ reason), rule version, LLM usage (model, served-by, discarded reason), final dec
 | GET | `/api/geofences`, `/api/advisories`, `/api/ports`, `/api/rules` | Reference layers and rule table |
 | GET/POST/DELETE | `/api/alerts`, `/api/alerts/watch`, `/api/alerts/evaluate`, `/api/alerts/stream` | Alerts |
 | POST | `/api/track` | Vessel position → geofence alert |
-| POST | `/api/sim/advance`, `/api/sim/reset` | Simulated clock (disabled in `live` mode) |
+| POST | `/api/sim/advance`, `/api/sim/reset` | Fast-forward / reset the replay clock (disabled in `live` mode) |
+| GET | `/api/conditions?lat&lon&hours` | Hourly series of every variable + hourly levels (Conditions page) |
+| GET | `/api/replay/events` | Historical events and what was downloaded for each |
+| POST | `/api/replay/event` `{event_id, as_of?}` | Load an event and move the replay clock (historical mode) |
+| GET | `/api/replay/timeline` | Runs published, cyclone positions known and forecast, IMD warnings sent — all as of the replay moment |
+| GET | `/api/layers/fields?fields=wind,waves,sst,chl&time` | Gridded archive fields for the animated map layers |
+| GET | `/api/backtest` | Backtest results |
 | GET | `/api/health`, `/api/traces`, `/api/traces/{id}` | Health and traces |
 
 Interactive docs: http://localhost:8000/docs.

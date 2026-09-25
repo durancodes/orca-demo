@@ -1,0 +1,57 @@
+{
+ "event": "calm-jan-2024",
+ "title": "Fishing-season week \u2014 Arabian Sea, January 2024",
+ "retrieved_at": "2026-09-25T13:37:05.380921+00:00",
+ "products": {
+  "gfs_wave": {
+   "files": 153,
+   "missing": 0,
+   "grid": "57x49",
+   "cycles": [
+    "2024-01-15T00:00:00+00:00",
+    "2024-01-15T12:00:00+00:00",
+    "2024-01-16T00:00:00+00:00",
+    "2024-01-16T12:00:00+00:00",
+    "2024-01-17T00:00:00+00:00",
+    "2024-01-17T12:00:00+00:00",
+    "2024-01-18T00:00:00+00:00",
+    "2024-01-18T12:00:00+00:00",
+    "2024-01-19T00:00:00+00:00"
+   ],
+   "source": "s3://noaa-gfs-bdp-pds/gfs.20240115/00/wave/gridded/gfswave.t00z.global.0p25.f000.grib2"
+  },
+  "gfs_atmos": {
+   "files": 153,
+   "missing": 0,
+   "grid": "29x25",
+   "cycles": [
+    "2024-01-15T00:00:00+00:00",
+    "2024-01-15T12:00:00+00:00",
+    "2024-01-16T00:00:00+00:00",
+    "2024-01-16T12:00:00+00:00",
+    "2024-01-17T00:00:00+00:00",
+    "2024-01-17T12:00:00+00:00",
+    "2024-01-18T00:00:00+00:00",
+    "2024-01-18T12:00:00+00:00",
+    "2024-01-19T00:00:00+00:00"
+   ],
+   "source": "s3://noaa-gfs-bdp-pds/gfs.20240115/00/atmos/gfs.t00z.pgrb2.0p50.f000"
+  },
+  "sst": {
+   "days": 46,
+   "missing_days": 0,
+   "source": "s3://noaa-cdr-sea-surface-temp-optimum-interpolation-pds/data/v2.1/avhrr/202312/oisst-avhrr-v02r01.20231205.nc"
+  },
+  "chl": {
+   "granules": 12,
+   "grid": "311x266 at 0.045\u00b0",
+   "coverage_pct": 66.0,
+   "source": "s3://noaa-jpss/NOAA20/VIIRS/NOAA20_VIIRS_OC_GLOBAL_CHLOR-A_ops/ (tile YY)"
+  },
+  "cap": {
+   "alerts": 18,
+   "source": "s3://cap-sources/in-imd-en/ (WMO Alert Hub archive of IMD CAP feed)"
+  }
+ },
+ "seconds": 4
+}

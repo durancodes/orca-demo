@@ -1,0 +1,6 @@
+# Only needed to (re)download historical data: python scripts/historical/fetch.py
+# The app itself reads the processed .npz files with numpy alone.
+eccodes>=2.37      # GRIB2 decoding (bundles the ecCodes library)
+netCDF4>=1.6       # NOAA OISST
+pyhdf>=0.11        # VIIRS chlorophyll (HDF4)
+numcodecs>=0.12    # ERA5 (ARCO Zarr, blosc) for the backtest

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/in-imd-en/alert-style.xsl" ?>
+<cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+  <cap:identifier>urn:oid:2.49.0.1.356.0.2021.5.17.8.47.45</cap:identifier>
+  <cap:sender>rainfallnwfc@gmail.com</cap:sender>
+  <cap:sent>2021-05-17T14:17:45+05:30</cap:sent>
+  <cap:status>Actual</cap:status>
+  <cap:msgType>Alert</cap:msgType>
+  <cap:scope>Public</cap:scope>
+  <cap:info>
+    <cap:language>en</cap:language>
+    <cap:category>Met</cap:category>
+    <cap:event>Heavy Rain</cap:event>
+    <cap:responseType>Monitor</cap:responseType>
+    <cap:urgency>Expected</cap:urgency>
+    <cap:severity>Severe</cap:severity>
+    <cap:certainty>Likely</cap:certainty>
+    <cap:onset>2021-05-17T08:30:00+05:30</cap:onset>
+    <cap:expires>2021-05-18T08:30:00+05:30</cap:expires>
+    <cap:senderName>NWFC DIVISION, IMD, NEW DELHI</cap:senderName>
+    <cap:headline>Heavy Rain</cap:headline>
+    <cap:description>Heavy to Very Heavy Rainfall at a few places with Extremely Heavy Falls at isolated places very likely over north Konkan,  Gujarat state; Heavy to Very Heavy Rainfall at isolated places over south Konkan, Goa.</cap:description>
+    <cap:instruction>Action suggested:
+•	Avoid going to areas that face the water logging problems often.
+•	Avoid staying in vulnerable structure.
+•	Check for traffic congestion on your route before journey.</cap:instruction>
+    <cap:web>https://mausam.imd.gov.in/imd_latest/contents/subdivisionwise-warning.php</cap:web>
+    <cap:area>
+      <cap:areaDesc>Konkan, Goa and Gujarat state</cap:areaDesc>
+      <cap:polygon>16.0353,73.5100 16.2463,73.8946 17.9265,73.7847 19.2282,73.4551 20.6225,73.4551 21.5451,73.5650 22.6140,74.1143 23.5741,73.7298 24.4271,72.9607 24.5646,71.5732 24.2920,70.2864 24.1994,69.2235 23.7049,68.7813 23.5237,68.5547 23.1934,68.6536 22.8585,69.0834 22.7990,69.6767 23.0140,70.0941 23.1189,70.6421 22.8066,70.5089 22.4923,69.8772 22.2077,69.1155 20.9820,70.3240 20.8793,71.4226 22.1569,72.4663 21.3917,72.8509 19.6426,72.8509 17.8742,72.9607 16.0353,73.5100</cap:polygon>
+    </cap:area>
+  </cap:info>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+  <ds:Reference><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>YOWD6sT+Xo4LANXanRmGt1mB9N6lveFg2x8NS5pwA6k=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>Vj/Hvkb/WG8I+7i3Hz+Q3w3z4KVPnpJo1a+PfaMgOsfZIzBnhApuZ0GvjO988Mkkmy8HLUxhmAdxvuISURI/Bpbdc+7z4RR2jaJMst63C2LeBJJJ5f8aPQyKv6UmGt+iDgv4PB1ibEgo+fLYKuFEnmYvjllHo+Mgi4fAJ2qDJ6dtG3T+0uch6WXO+I21DnSJvhPt9nvaQ3i6iHlVkNwG4UjHh5lQ/4hqZgxgJFHatAIKad2k0pLdZbTPIJEFP6sAxKCo0BZU+zVkaKXpCiMA7KoKuRTxeKxZJgNnJylDEHqvJI3CddoXvr1uPupQ/pYFUYVlBc2HWOwhs45Wl+JPiA==</ds:SignatureValue>
+<ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIECzCCAvOgAwIBAgIBADANBgkqhkiG9w0BAQsFADCBnzELMAkGA1UEBhMCVVMxETAPBgNVBAgMCFZpcmdpbmlhMQ8wDQYDVQQHDAZSZXN0b24xFjAUBgNVBAoMDWFsZXJ0LWh1Yi5vcmcxDjAMBgNVBAsMBWFkbWluMRgwFgYDVQQDDA9FbGlvdCBDaHJpc3RpYW4xKjAoBgkqhkiG9w0BCQEWG2VsaW90LmouY2hyaXN0aWFuQGdtYWlsLmNvbTAeFw0xOTA3MjIxMDQzMzRaFw0yOTA3MTkxMDQzMzRaMIGfMQswCQYDVQQGEwJVUzERMA8GA1UECAwIVmlyZ2luaWExDzANBgNVBAcMBlJlc3RvbjEWMBQGA1UECgwNYWxlcnQtaHViLm9yZzEOMAwGA1UECwwFYWRtaW4xGDAWBgNVBAMMD0VsaW90IENocmlzdGlhbjEqMCgGCSqGSIb3DQEJARYbZWxpb3Quai5jaHJpc3RpYW5AZ21haWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw5KiaOWF0XAG8LmFOFmGpbf4a+Ro3Y7t85+ytyiPLWcdLyjvbiwzRBVu5A2MCBHjJQWmHm3Et3nJxnI58pN3VZ7/3cEEOYpsveR1EJuWwC6Ow9bU1qJjLvIfw+IQ9dmZ1XZuJZCUooeVdWb0JVjedUZ7gwBs3qHxypxEAFFYljDZsK3hjQVUBerE8U0TMSnpiol3slLcKtvY3ZDiSv+EIpmjjOVJqT4BlMB9+W+tYDDhb1uwBY+f9pa2kYgE4KUxA1uyn/HOi+KAYPK525EWnbfGM2xf001lwHDEo7W0fuooTi/WkUpz+WMKuxxhivCnE3WOTu1FCdBTCujfaLGsQwIDAQABo1AwTjAdBgNVHQ4EFgQU78XZNJmiTJXTwsXoPa1oXLbC0pkwHwYDVR0jBBgwFoAU78XZNJmiTJXTwsXoPa1oXLbC0pkwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAQf+N3RFE0qrcJ1R6PkfVBok3Pv3YV3C0BxKQkA4+3C56W16bVT27fBbLh2HL9UPfux2rzWJjBfthroz6hxFKs/OWmdKhBkjvpM5J261+HTQEbIuZEASq2DjS7CfUq4xAzL2GhBL440xmmWuMrcu7Mw6T8YedsVfid4P5bN4Wsa30Ffj+FgPdApiDOu4BLz7n632hZrKUk951ChdomJs/vLk1fu737IyzVzw0m3iMtR7MrU0FPBC+W9AxubmLTruaSnhOs6j9sJKhRmGqw9AyAxey19NaMy0O6qILTrlA2Pe+S1t2Xa0wWzB6cQu8v8viLnp5SKaWf/j69hwkf5139g==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></cap:alert>
+

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/in-imd-en/alert-style.xsl" ?>
+<cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+  <cap:identifier>urn:oid:2.49.0.1.356.0.2021.5.18.8.50.23</cap:identifier>
+  <cap:sender>cyclonewarning@gmail.com</cap:sender>
+  <cap:sent>2021-05-18T14:20:23+05:30</cap:sent>
+  <cap:status>Actual</cap:status>
+  <cap:msgType>Alert</cap:msgType>
+  <cap:scope>Public</cap:scope>
+  <cap:info>
+    <cap:language>en</cap:language>
+    <cap:category>Met</cap:category>
+    <cap:event>Sea conditions Very rough and Phenomenal</cap:event>
+    <cap:responseType>Monitor</cap:responseType>
+    <cap:urgency>Expected</cap:urgency>
+    <cap:severity>Severe</cap:severity>
+    <cap:certainty>Likely</cap:certainty>
+    <cap:onset>2021-05-18T08:30:00+05:30</cap:onset>
+    <cap:expires>2021-05-19T08:30:00+05:30</cap:expires>
+    <cap:senderName>RSMC IMD, NEW DELHI</cap:senderName>
+    <cap:headline>Fishermen warning</cap:headline>
+    <cap:description>♦ Gale Wind (speed reaching 90-100 kmph gusting to 110 kmph) likely to prevail over Gulf of Khambat and adjoining Northeast Arabian Sea during next 06 hours. It is very likely to reduce thereafter. Squally wind (speed reaching 40-50 kmph gusting to 60 kmph) over South Arabian Sea, Lakshadweep area and
+along and off Kerala-Karnataka-Maharashtra coasts. Sea conditions will be very rough to high over Gulf of Khambat, adjoining Northeast Arabian Sea and along and off south Gujarat, Daman, Diu, Dadra, Nagar Haveli coasts and rough to very rough along and off north Maharashtra coast during next 12 hour and improve gradually thereafter. Fishermen are advised not to venture into these areas.</cap:description>
+    <cap:instruction>Action suggested:
+The fishermen are advised not to venture into northeast and adjoining eastcentral Arabian Sea along and off north Maharashtra, south Gujarat, Daman, Diu, Dadra, Nagar Haveli coasts till
+the evening of 18th May.</cap:instruction>
+    <cap:web>http://www.rsmcnewdelhi.imd.gov.in</cap:web>
+    <cap:area>
+      <cap:areaDesc>northeast and adjoining eastcentral Arabian Sea along and off north Maharashtra, south Gujarat, Daman, Diu, Dadra, Nagar Haveli coasts</cap:areaDesc>
+      <cap:polygon>18.1459,72.7881 21.0708,72.3779 20.5231,70.7959 21.2348,69.4482 23.4565,68.5693 23.5103,67.3975 21.8343,67.3389 17.9230,67.7490 17.8672,69.6826 18.1459,72.7881</cap:polygon>
+    </cap:area>
+  </cap:info>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+  <ds:Reference><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>5vJpsBBaAuJ8X/S7dngyU3oTGpt1KotCrK1r3OGIBxg=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>DQPpiUfSP9TPE0qehzGPf+u6terIfUeOjLvq/gMEzE4WsNseS0rwtYB0Kpx+wp7rZRL6EXN18jSS57czGp7NqgoSOZ2gOENkc0G/pBNv0gCicLNe6MsWrxeEr28sLnkSsF+GE3wwjCllyJhsrn/wt/FWaCzLvR498kX47Bd73BDtqsGmfNLwDiG4uWPKPLKbc8sMrFpuwmbkc7PEs497aJ9dV1RN8/tQu8BFHMowq0T8AEyrIf0nZs/WUHVKkXb4YkOvpZNQq7H1+64kCsVsCUnEviJ9SI9l3NYEuIn22e25N7GihimsZyzrchxZ14v1MhsbY48xzKYeOGPo9vIbiA==</ds:SignatureValue>
+<ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIECzCCAvOgAwIBAgIBADANBgkqhkiG9w0BAQsFADCBnzELMAkGA1UEBhMCVVMxETAPBgNVBAgMCFZpcmdpbmlhMQ8wDQYDVQQHDAZSZXN0b24xFjAUBgNVBAoMDWFsZXJ0LWh1Yi5vcmcxDjAMBgNVBAsMBWFkbWluMRgwFgYDVQQDDA9FbGlvdCBDaHJpc3RpYW4xKjAoBgkqhkiG9w0BCQEWG2VsaW90LmouY2hyaXN0aWFuQGdtYWlsLmNvbTAeFw0xOTA3MjIxMDQzMzRaFw0yOTA3MTkxMDQzMzRaMIGfMQswCQYDVQQGEwJVUzERMA8GA1UECAwIVmlyZ2luaWExDzANBgNVBAcMBlJlc3RvbjEWMBQGA1UECgwNYWxlcnQtaHViLm9yZzEOMAwGA1UECwwFYWRtaW4xGDAWBgNVBAMMD0VsaW90IENocmlzdGlhbjEqMCgGCSqGSIb3DQEJARYbZWxpb3Quai5jaHJpc3RpYW5AZ21haWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw5KiaOWF0XAG8LmFOFmGpbf4a+Ro3Y7t85+ytyiPLWcdLyjvbiwzRBVu5A2MCBHjJQWmHm3Et3nJxnI58pN3VZ7/3cEEOYpsveR1EJuWwC6Ow9bU1qJjLvIfw+IQ9dmZ1XZuJZCUooeVdWb0JVjedUZ7gwBs3qHxypxEAFFYljDZsK3hjQVUBerE8U0TMSnpiol3slLcKtvY3ZDiSv+EIpmjjOVJqT4BlMB9+W+tYDDhb1uwBY+f9pa2kYgE4KUxA1uyn/HOi+KAYPK525EWnbfGM2xf001lwHDEo7W0fuooTi/WkUpz+WMKuxxhivCnE3WOTu1FCdBTCujfaLGsQwIDAQABo1AwTjAdBgNVHQ4EFgQU78XZNJmiTJXTwsXoPa1oXLbC0pkwHwYDVR0jBBgwFoAU78XZNJmiTJXTwsXoPa1oXLbC0pkwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAQf+N3RFE0qrcJ1R6PkfVBok3Pv3YV3C0BxKQkA4+3C56W16bVT27fBbLh2HL9UPfux2rzWJjBfthroz6hxFKs/OWmdKhBkjvpM5J261+HTQEbIuZEASq2DjS7CfUq4xAzL2GhBL440xmmWuMrcu7Mw6T8YedsVfid4P5bN4Wsa30Ffj+FgPdApiDOu4BLz7n632hZrKUk951ChdomJs/vLk1fu737IyzVzw0m3iMtR7MrU0FPBC+W9AxubmLTruaSnhOs6j9sJKhRmGqw9AyAxey19NaMy0O6qILTrlA2Pe+S1t2Xa0wWzB6cQu8v8viLnp5SKaWf/j69hwkf5139g==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></cap:alert>
+

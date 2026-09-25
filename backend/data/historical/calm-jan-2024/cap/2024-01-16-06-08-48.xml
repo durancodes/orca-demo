@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/in-imd-en/alert-style.xsl" ?>
+<cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+  <cap:identifier>urn:oid:2.49.0.1.356.0.2024.1.16.6.8.48</cap:identifier>
+  <cap:sender>rainfallnwfc@gmail.com</cap:sender>
+  <cap:sent>2024-01-16T11:38:48+05:30</cap:sent>
+  <cap:status>Actual</cap:status>
+  <cap:msgType>Alert</cap:msgType>
+  <cap:scope>Public</cap:scope>
+  <cap:info>
+    <cap:language>en</cap:language>
+    <cap:category>Met</cap:category>
+    <cap:event>Cold Day</cap:event>
+    <cap:responseType>Monitor</cap:responseType>
+    <cap:urgency>Expected</cap:urgency>
+    <cap:severity>Severe</cap:severity>
+    <cap:certainty>Likely</cap:certainty>
+    <cap:onset>2024-01-16T03:00:00+05:30</cap:onset>
+    <cap:expires>2024-01-17T03:00:00+05:30</cap:expires>
+    <cap:senderName>NWFC DIVISION, IMD, NEW DELHI</cap:senderName>
+    <cap:headline>Cold Day</cap:headline>
+    <cap:description>Cold Day to Severe Cold Day conditions very likely in some parts of Punjab, Haryana, Chnadigarh, Delhi, Uttar Pradesh and in isolated pockets of Bihar.</cap:description>
+    <cap:instruction>Action suggested
+•	Wear several layers of loose fitting, light weight; warm woolen clothing.
+•	Cover your head, neck, hands and toes adequately as majority of heat loss occurs through these body parts. Wear several layers of loose fitting, light weight; warm woolen clothing rather than one layer of heavy cloth.
+•	Eat vitamin-C rich fruits, vegetable and drink sufficient fluids preferably warm fluids to maintain adequate immunity.
+•	Avoid or limit outdoor activities.
+•	Keep dry, if wet, change cloths immediately to prevent loss of body heat. Wear insulated/waterproof shoes.
+•	Warm the affected area of the body slowly with lukewarm water; do not rub the skin vigorously.
+•	If the affected skin area turns black, immediately consult a doctor.
+•	Maintain ventilation while using Heaters to avoid inhaling toxic fumes.
+•	Take safety measures while using electrical and gas heating devices.
+•	Extreme care needed for vulnerable people.
+•	Seek medical attention as soon as possible for someone suffering from frostbite/ Hypothermia.
+•	Protect livestock from cold weather.</cap:instruction>
+    <cap:web>https://mausam.imd.gov.in/imd_latest/contents/subdivisionwise-warning.php</cap:web>
+    <cap:area>
+      <cap:areaDesc>Punjab, Haryana, Chnadigarh, Delhi, UP, Bihar</cap:areaDesc>
+      <cap:polygon>26.8633,78.3369 26.037,79.585 25.4988,80.7847 25.2407,82.0723 24.7788,83.0566 24.7349,84.1948 24.5511,85.4297 24.5711,86.5811 25.4393,87.7412 26.2067,87.8511 26.3131,86.8359 26.4312,85.8296 27.1374,84.1992 27.52,82.4546 27.7992,81.8218 28.0778,81.189 28.7657,79.9365 29.3247,78.8862 29.8711,78.2139 30.6965,77.335 31.1733,76.7461 31.658,75.902 31.9615,75.6826 32.1124,75.364 31.8328,74.8081 31.5186,74.7334 30.7739,74.4587 30.1831,74.2104 29.5123,74.4653 29.037,75.1904 28.3469,76.0869 27.6835,77.124 26.8633,78.3369</cap:polygon>
+    </cap:area>
+  </cap:info>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+  <ds:Reference><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>qXO8q1+bK56X3HM/SyixrJQycukwHZNj6JJDOC3boKM=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>BjmUx+tn/kZoB3dYSVNAOT1NkbFCGHeB0cm2igm+Y3gMz0zeY8xVSdGMZWpBnKMyukqm8O7rkE/O7oYgOGSSHyiSdP4CmZ2jNg9ibYZ9akSgQ3fQS4GMRA79zSA59Jsi/8tptopKfUzZ/UcjzhDbL0jsKq+h3FH8YfxUf+adI69GhJoYazgM8gFjY8p8L4dEAzhNxsnsqtvsfMWzx9qp0i14W78W+kupdjzx8He97DZL7IgzCfGTsa+g5+GXnr+GWd5nlVyOEGOM9CFv1D5fCRJEYGfM+iBqytDIWaqSnylgw8X2u6P9GB8J8GT9UJx/wFV0lQF/mloL95W6hhjFAw==</ds:SignatureValue>
+<ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIECzCCAvOgAwIBAgIBADANBgkqhkiG9w0BAQsFADCBnzELMAkGA1UEBhMCVVMxETAPBgNVBAgMCFZpcmdpbmlhMQ8wDQYDVQQHDAZSZXN0b24xFjAUBgNVBAoMDWFsZXJ0LWh1Yi5vcmcxDjAMBgNVBAsMBWFkbWluMRgwFgYDVQQDDA9FbGlvdCBDaHJpc3RpYW4xKjAoBgkqhkiG9w0BCQEWG2VsaW90LmouY2hyaXN0aWFuQGdtYWlsLmNvbTAeFw0xOTA3MjIxMDQzMzRaFw0yOTA3MTkxMDQzMzRaMIGfMQswCQYDVQQGEwJVUzERMA8GA1UECAwIVmlyZ2luaWExDzANBgNVBAcMBlJlc3RvbjEWMBQGA1UECgwNYWxlcnQtaHViLm9yZzEOMAwGA1UECwwFYWRtaW4xGDAWBgNVBAMMD0VsaW90IENocmlzdGlhbjEqMCgGCSqGSIb3DQEJARYbZWxpb3Quai5jaHJpc3RpYW5AZ21haWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw5KiaOWF0XAG8LmFOFmGpbf4a+Ro3Y7t85+ytyiPLWcdLyjvbiwzRBVu5A2MCBHjJQWmHm3Et3nJxnI58pN3VZ7/3cEEOYpsveR1EJuWwC6Ow9bU1qJjLvIfw+IQ9dmZ1XZuJZCUooeVdWb0JVjedUZ7gwBs3qHxypxEAFFYljDZsK3hjQVUBerE8U0TMSnpiol3slLcKtvY3ZDiSv+EIpmjjOVJqT4BlMB9+W+tYDDhb1uwBY+f9pa2kYgE4KUxA1uyn/HOi+KAYPK525EWnbfGM2xf001lwHDEo7W0fuooTi/WkUpz+WMKuxxhivCnE3WOTu1FCdBTCujfaLGsQwIDAQABo1AwTjAdBgNVHQ4EFgQU78XZNJmiTJXTwsXoPa1oXLbC0pkwHwYDVR0jBBgwFoAU78XZNJmiTJXTwsXoPa1oXLbC0pkwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAQf+N3RFE0qrcJ1R6PkfVBok3Pv3YV3C0BxKQkA4+3C56W16bVT27fBbLh2HL9UPfux2rzWJjBfthroz6hxFKs/OWmdKhBkjvpM5J261+HTQEbIuZEASq2DjS7CfUq4xAzL2GhBL440xmmWuMrcu7Mw6T8YedsVfid4P5bN4Wsa30Ffj+FgPdApiDOu4BLz7n632hZrKUk951ChdomJs/vLk1fu737IyzVzw0m3iMtR7MrU0FPBC+W9AxubmLTruaSnhOs6j9sJKhRmGqw9AyAxey19NaMy0O6qILTrlA2Pe+S1t2Xa0wWzB6cQu8v8viLnp5SKaWf/j69hwkf5139g==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></cap:alert>
+

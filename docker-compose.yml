@@ -7,7 +7,7 @@ services:
       - path: .env
         required: false
     environment:
-      ORCA_DATA_MODE: ${ORCA_DATA_MODE:-auto}
+      ORCA_DATA_MODE: ${ORCA_DATA_MODE:-historical}
       ORCA_LLM_PROVIDER: ${ORCA_LLM_PROVIDER:-auto}
       ORCA_ALERT_INTERVAL_S: ${ORCA_ALERT_INTERVAL_S:-300}
     restart: unless-stopped

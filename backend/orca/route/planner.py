@@ -409,7 +409,8 @@ async def plan_route(
     bbox = route_bbox(start, end)
     span = max(bbox[1] - bbox[0], bbox[3] - bbox[2])
     grid_step = max(0.02, span / 50)
-    sample_step = 0.04 if marine_source == "replay" else max(0.1, span / 10)
+    # replay: analytic field, sample finely · historical: 0.25–0.5° model grids · live: few batched API points
+    sample_step = {"replay": 0.04, "historical": 0.1}.get(marine_source, max(0.1, span / 10))
     lat0, lon0, pts = sample_points(bbox, sample_step)
     direct_h = haversine_km(*start, *end) / speed_kmh
     horizon = departure + timedelta(hours=min(max_hours, direct_h * 2.5 + 2))

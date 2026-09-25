@@ -194,7 +194,7 @@ export interface Trace {
 
 export interface DataStatus {
   mode: string;
-  marine_source: "live" | "replay" | "none";
+  marine_source: "live" | "replay" | "historical" | "none";
   fallback_reason: string | null;
   advisory_sources: string[];
   advisory_errors: string[];
@@ -313,6 +313,7 @@ export interface Health {
   clock: string;
   clock_offset_hours: number;
   scenario: { name: string; title: string; day1_starts: string };
+  replay: ReplayInfo | null;
   llm: { provider: string; model: string | null; available: boolean };
   adapters: { name: string; mode: string; status: string; last_success: string | null; last_error: string | null; last_latency_ms: number | null }[];
   watches: number;
@@ -332,4 +333,161 @@ export interface RiskCell {
   lon: number;
   level: Level;
   dominant: string | null;
+}
+
+export interface ReplayInfo {
+  event: string;
+  title: string;
+  kind: string;
+  as_of: string;
+  start: string;
+  end: string;
+  place: { lat: number; lon: number; label: string };
+}
+
+export interface ReplayEvent {
+  id: string;
+  title: string;
+  kind: "cyclone" | "calm" | string;
+  summary: string;
+  region: [number, number, number, number];
+  start: string;
+  end: string;
+  default_as_of: string;
+  tags: string[];
+  place: { lat: number; lon: number; label: string };
+  language_hint: string;
+  available: boolean;
+  products: Record<string, Record<string, unknown>>;
+}
+
+export interface TrackPoint {
+  lat: number;
+  lon: number;
+  valid: string;
+  max_wind_kmh: number;
+  pressure_hpa: number;
+  category: string;
+  run: string;
+  lead_h: number;
+}
+
+export interface ReplayTimeline {
+  event: string;
+  as_of: string;
+  start: string;
+  end: string;
+  runs: { cycle: string; published: string; known: boolean }[];
+  track_observed: TrackPoint[];
+  track_forecast: TrackPoint[];
+  warnings: {
+    id: string;
+    sent: string | null;
+    event: string;
+    headline: string;
+    severity: string;
+    area: string;
+    onset: string | null;
+    expires: string | null;
+    description: string;
+    reference: string | null;
+  }[];
+}
+
+export interface Grid {
+  lat0: number;
+  lon0: number;
+  dlat: number;
+  dlon: number;
+  nlat: number;
+  nlon: number;
+  [key: string]: unknown;
+}
+
+export interface FieldLayers {
+  valid: string;
+  as_of: string;
+  wind?: Grid & { u: (number | null)[]; v: (number | null)[]; run: string; lead_h: number; source: string };
+  waves?: Grid & { hs: (number | null)[]; run: string; lead_h: number; source: string };
+  sst?: Grid & { sst: (number | null)[]; day: string; source: string };
+  chl?: Grid & { chl: (number | null)[]; days: string[]; source: string };
+}
+
+export interface ConditionsSeries {
+  now: string;
+  lat: number;
+  lon: number;
+  series: Record<string, { t: string; v: number | null }[]>;
+  levels: { t: string; level: Level; dominant: string | null }[];
+  sources: SourceInfo[];
+  advisories: { id: string; event: string; headline: string; severity: string; source: string; data_type: string }[];
+  data_status: DataStatus;
+}
+
+export interface RiskResponse {
+  decision: SafetyCard;
+  geofence: { status: string; hits: GeofenceHit[]; hard_constraints: string[] };
+  evidence: Evidence[];
+  data_status: DataStatus;
+  simulated: boolean;
+}
+
+export interface PfzResponse {
+  provider: string | null;
+  note: string | null;
+  candidates: {
+    zone: {
+      id: string;
+      name: string;
+      source: string;
+      data_type: string;
+      geometry: "polygon" | "line";
+      coordinates: [number, number][];
+      centroid: [number, number];
+      valid_from: string | null;
+      valid_until: string | null;
+      attributes: Record<string, any>;
+      reference: string | null;
+    };
+    distance_km: number;
+    bearing_deg: number;
+    compass: string;
+    viable: boolean;
+    issues: string[];
+  }[];
+}
+
+export interface BacktestScores {
+  site_days: number;
+  dangerous_observed: number;
+  hits: number;
+  misses: number;
+  false_alarms: number;
+  correct_negatives: number;
+  pod: number | null;
+  far: number | null;
+  missed_danger_rate: number | null;
+  exact_level_accuracy: number | null;
+  within_one_level: number | null;
+}
+
+export interface Backtest {
+  generated_at: string;
+  rule_version: string;
+  season: { from: string; to: string };
+  window: string;
+  sites: { id: string; name: string; lat: number; lon: number }[];
+  matrix: Record<string, Record<string, number>>;
+  persistence_matrix: Record<string, Record<string, number>>;
+  scores: BacktestScores;
+  persistence_scores: BacktestScores;
+  rows: { date: string; site: string; forecast: Level; observed: Level; persistence: Level; fc_wave_max: number; obs_wave_max: number; obs_wind_max: number }[];
+  method: Record<string, string>;
+  sources: string[];
+}
+
+export interface GeofenceFeature {
+  type: "Feature";
+  geometry: { type: "Polygon" | "LineString" | "Point"; coordinates: any };
+  properties: { id: string; name: string; kind: string; authority: string; accuracy: string; accuracy_note?: string; rule: string };
 }

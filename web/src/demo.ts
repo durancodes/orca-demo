@@ -1,28 +1,23 @@
 // Static preview mode (build with VITE_STATIC_DEMO=1).
-// Replays responses recorded from the real ORCA backend by
-// backend/scripts/record_demo.py — nothing is computed in the browser.
-import type { Alert, ChatResponse, Health, Port, RiskCell } from "./types";
+// Replays API responses recorded from the real ORCA backend by web/scripts/record-demo.mjs,
+// which drives this same UI against the backend and saves every /api response it sees.
+// Nothing is computed here: an unrecorded request gets the closest recorded answer or an error.
+import type { Alert, ChatResponse } from "./types";
 
 export const STATIC_DEMO = import.meta.env.VITE_STATIC_DEMO === "1";
 
-interface RecordedLayer {
-  offset_hours: number;
-  time: string;
-  step: number;
-  marine_source: string;
-  cells: RiskCell[];
+interface EventRecording {
+  responses: Record<string, unknown>;
+  chat: Record<string, ChatResponse>;
+  script: string[];
+  watch_alerts: Alert[];
+  advances: Alert[][];
 }
 
 interface DemoData {
   recorded_at: string;
-  script: string[];
-  health: Health;
-  ports: Port[];
-  geofences: { type: "FeatureCollection"; features: any[] };
-  rules: Record<string, any>;
-  conversations: { message: string; response: ChatResponse }[];
-  risk_layers: RecordedLayer[];
-  alerts: { watch: { watch: { id: string }; alerts: Alert[] }; advances: Alert[][] };
+  default_event: string;
+  events: Record<string, EventRecording>;
 }
 
 let dataPromise: Promise<DemoData> | null = null;
@@ -34,20 +29,72 @@ function data(): Promise<DemoData> {
   return dataPromise;
 }
 
-const norm = (s: string) =>
+const canon = (v: unknown): string =>
+  v && typeof v === "object" && !Array.isArray(v)
+    ? `{${Object.keys(v as object)
+        .sort()
+        .map((k) => `${JSON.stringify(k)}:${canon((v as Record<string, unknown>)[k])}`)
+        .join(",")}}`
+    : JSON.stringify(v);
+
+/** Canonical request key — must match web/scripts/record-demo.cjs. */
+export function requestKey(method: string, url: string, body?: unknown): string {
+  const u = new URL(url, "http://x");
+  const params = [...u.searchParams.entries()].sort(([a], [b]) => a.localeCompare(b));
+  const base = `${method.toUpperCase()} ${u.pathname}${params.length ? "?" + new URLSearchParams(params).toString() : ""}`;
+  return body !== undefined && method.toUpperCase() !== "GET" ? `${base}#${canon(body)}` : base;
+}
+
+export const normMessage = (s: string) =>
   s
     .toLowerCase()
     .replace(/[?.!।]+\s*$/u, "")
     .replace(/\s+/g, " ")
     .trim();
 
+let current: string | null = null;
 let offsetHours = 0;
 let advanceCount = 0;
 const listeners = new Set<(a: Alert) => void>();
 const emit = (alerts: Alert[]) => alerts.forEach((a) => listeners.forEach((fn) => fn(a)));
 
-function notRecorded(message: string, d: DemoData): ChatResponse {
-  const first = d.conversations[0].response;
+const shift = (iso: string, hours: number) => new Date(new Date(iso).getTime() + hours * 3600_000).toISOString();
+
+async function rec(): Promise<EventRecording> {
+  const d = await data();
+  current ??= d.default_event;
+  return d.events[current] ?? d.events[d.default_event];
+}
+
+/** Exact match, or — for map layers only — the recording nearest in time. Never another place. */
+function nearest(responses: Record<string, unknown>, key: string): unknown {
+  if (key in responses) return responses[key];
+  const [head, query = ""] = key.split("?");
+  const want = new URLSearchParams(query);
+  const time = want.get("time");
+  if (!time) return undefined;
+  want.delete("time");
+  const t = new Date(time).getTime();
+  let best: string | null = null,
+    bestD = Infinity;
+  for (const k of Object.keys(responses)) {
+    const [h, qs = ""] = k.split("?");
+    if (h !== head) continue;
+    const p = new URLSearchParams(qs);
+    const kt = p.get("time");
+    p.delete("time");
+    if (!kt || p.toString() !== want.toString()) continue;
+    const d = Math.abs(new Date(kt).getTime() - t);
+    if (d < bestD) {
+      bestD = d;
+      best = k;
+    }
+  }
+  return best ? responses[best] : undefined;
+}
+
+function notRecorded(message: string, r: EventRecording): ChatResponse {
+  const first = Object.values(r.chat)[0];
   return {
     ...first,
     request_id: `preview-${Math.random().toString(36).slice(2, 10)}`,
@@ -66,54 +113,62 @@ function notRecorded(message: string, d: DemoData): ChatResponse {
     map: { type: "FeatureCollection", features: [] },
     evidence: [],
     trace: { ...first.trace, request_id: "preview", user_query: message, intents: [], plan: [], steps: [], final_decision: null, evidence_ids: [], errors: [] },
-    suggestions: d.script.slice(0, 4),
+    suggestions: r.script.slice(0, 4),
   };
 }
 
-export const demoApi = {
-  health: async (): Promise<Health> => {
-    const d = await data();
-    const clock = new Date(new Date(d.health.clock).getTime() + offsetHours * 3600_000).toISOString();
-    return { ...d.health, clock, clock_offset_hours: offsetHours };
-  },
-  ports: async () => (await data()).ports,
-  rules: async () => (await data()).rules,
-  geofences: async () => (await data()).geofences,
-  chat: async (body: { message: string }): Promise<ChatResponse> => {
-    const d = await data();
-    await new Promise((r) => setTimeout(r, 450)); // let the "agents are working" state show
-    const hit = d.conversations.find((c) => norm(c.message) === norm(body.message));
-    return hit ? hit.response : notRecorded(body.message, d);
-  },
-  riskLayer: async (bbox: { lat_min: number; lat_max: number; lon_min: number; lon_max: number }, time: string, _step = 0.25) => {
-    const d = await data();
-    const want = (new Date(time).getTime() - new Date(d.health.clock).getTime()) / 3600_000;
-    const layer = d.risk_layers.reduce((best, l) => (Math.abs(l.offset_hours - want) < Math.abs(best.offset_hours - want) ? l : best));
-    const cells = layer.cells.filter((c) => c.lat >= bbox.lat_min && c.lat <= bbox.lat_max && c.lon >= bbox.lon_min && c.lon <= bbox.lon_max);
-    return { time: layer.time, step: layer.step, marine_source: layer.marine_source, cells };
-  },
-  alerts: async () => ({ alerts: [] as Alert[], watches: [] as { id: string; lat: number; lon: number; label: string }[] }),
-  watch: async (_lat: number, _lon: number, _label: string, _language: string) => {
-    const d = await data();
-    emit(d.alerts.watch.alerts);
-    return d.alerts.watch;
-  },
-  unwatch: async (id: string) => ({ deleted: id }),
-  advance: async (hours: number) => {
-    const d = await data();
-    offsetHours += hours;
-    const fired = d.alerts.advances[advanceCount] ?? [];
-    advanceCount += 1;
-    emit(fired);
-    return { clock: (await demoApi.health()).clock, offset_hours: offsetHours, alerts: fired };
-  },
-  resetClock: async () => {
+export async function demoRequest<T>(path: string, init?: RequestInit): Promise<T> {
+  const method = (init?.method ?? "GET").toUpperCase();
+  const body = init?.body ? JSON.parse(String(init.body)) : {};
+  const d = await data();
+  let r = await rec();
+  const pathname = path.split("?")[0];
+
+  if (pathname === "/api/chat") {
+    await new Promise((res) => setTimeout(res, 550)); // let the "agents are working" state show
+    return (r.chat[normMessage(body.message ?? "")] ?? notRecorded(body.message ?? "", r)) as T;
+  }
+  if (pathname === "/api/replay/event") {
+    if (!d.events[body.event_id]) throw new Error("This event is not part of the preview recording");
+    current = body.event_id;
     offsetHours = 0;
     advanceCount = 0;
-    return { clock: (await demoApi.health()).clock, offset_hours: 0 };
-  },
-  track: async (_vessel_id: string, _lat: number, _lon: number, _language: string) => ({ geofence: { status: "clear" }, alert: null as Alert | null }),
-};
+    r = await rec();
+    return r.responses["POST /api/replay/event"] as T;
+  }
+  if (pathname === "/api/sim/advance") {
+    offsetHours += body.hours ?? 0;
+    const fired = r.advances[advanceCount] ?? [];
+    advanceCount += 1;
+    emit(fired);
+    const health = r.responses["GET /api/health"] as { clock: string };
+    return { clock: shift(health.clock, offsetHours), offset_hours: offsetHours, alerts: fired } as T;
+  }
+  if (pathname === "/api/sim/reset") {
+    offsetHours = 0;
+    advanceCount = 0;
+    const health = r.responses["GET /api/health"] as { clock: string };
+    return { clock: health.clock, offset_hours: 0 } as T;
+  }
+  if (pathname === "/api/alerts/watch" && method === "POST") {
+    emit(r.watch_alerts);
+    return { watch: { id: "preview" }, alerts: r.watch_alerts } as T;
+  }
+  if (pathname.startsWith("/api/alerts/watch/") && method === "DELETE") return { deleted: "preview" } as T;
+  if (pathname === "/api/alerts") return { alerts: [], watches: [] } as T;
+  if (pathname === "/api/track") return { geofence: { status: "clear", hits: [] }, alert: null } as T;
+  if (pathname === "/api/health") {
+    const h = structuredClone(r.responses["GET /api/health"]) as any;
+    h.clock = shift(h.clock, offsetHours);
+    h.clock_offset_hours = offsetHours;
+    if (h.replay) h.replay.as_of = shift(h.replay.as_of, offsetHours);
+    return h as T;
+  }
+
+  const found = nearest(r.responses, requestKey(method, path, method === "GET" ? undefined : body));
+  if (found === undefined) throw new Error("Not part of this preview recording — run ORCA locally for this view");
+  return structuredClone(found) as T;
+}
 
 export function demoSubscribe(onAlert: (a: Alert) => void, onStatus: (connected: boolean) => void): () => void {
   listeners.add(onAlert);
@@ -121,14 +176,6 @@ export function demoSubscribe(onAlert: (a: Alert) => void, onStatus: (connected:
   return () => listeners.delete(onAlert);
 }
 
-/** Guided suggestions: the recorded questions not yet asked, in script order. */
-export function demoSuggestions(asked: string[], script: string[] | null): string[] {
-  if (!script) return [];
-  const done = new Set(asked.map(norm));
-  return script.filter((q) => !done.has(norm(q))).slice(0, 4);
-}
-
-export async function demoScript(): Promise<{ script: string[]; recordedAt: string }> {
-  const d = await data();
-  return { script: d.script, recordedAt: d.recorded_at };
+export async function demoScript(): Promise<string[]> {
+  return (await rec()).script;
 }

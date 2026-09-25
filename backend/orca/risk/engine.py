@@ -120,7 +120,7 @@ def assess_hour(time: datetime, values: dict[str, MarineObservation], advisories
 
     for adv in advisories:
         level = ADVISORY_SEVERITY.get(adv.severity)
-        if level is None:
+        if level is None or adv.data_type == DataType.DERIVED:  # model-derived watches are shown, not scored
             continue
         factors.append(
             FactorAssessment(
@@ -224,6 +224,8 @@ def assess_window(
         uncertainty.append("Wind and wave values are model forecasts, not measurements.")
     if DataType.SIMULATED in types:
         uncertainty.append("SIMULATED scenario data — for demonstration only, not real conditions.")
+    if any(o.data_type == DataType.DERIVED and o.variable == "weather_code" for o in state.observations):
+        uncertainty.append("Thunderstorm and rain are derived from model fields (lifted index, rain rate), not observed.")
     if has_gap:
         uncertainty.append("Some hours lack wave-height or wind data; ORCA cannot confirm those hours are safe.")
 

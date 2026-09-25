@@ -9,7 +9,7 @@ Status: ✅ implemented and tested · ⚠ implemented with a stated limitation �
 | Understand user intent in natural language | ✅ | `agents/intent.py`, `tests/test_agents.py::test_all_official_example_queries_map_to_an_intent` | All 8 example queries from the PS map to an intent; LLM fallback when rules find nothing |
 | Identify the query language and respond in it, emphasis on Indian languages | ✅ / ⚠ | `i18n/detect.py`, `i18n/messages.py` | Detection: en, hi, mr, ta, te, ml, kn, gu, bn, or, pa (+ native digits, romanized Hindi). Full template replies: en, hi, ta, te, ml. Other languages reply fully only with the LLM explainer; otherwise English with a note. Translations need native-speaker review |
 | Contextual multi-turn conversation | ✅ | `agents/context.py`, `agents/planner.py::resolve_place` | "Is it safe there?" resolves to the zone from the previous answer; explicit new place/time always wins |
-| Discover, retrieve, integrate satellite / marine / met / geospatial data | ⚠ | `adapters/`, `pfz.py`, `geo/` | Live: Open-Meteo (weather + marine), IMD CAP warnings (verified). INCOIS PFZ experimental. Satellite chlorophyll only in the simulated scenario so far |
+| Discover, retrieve, integrate satellite / marine / met / geospatial data | ✅ / ⚠ | `adapters/historical.py`, `historical/`, `scripts/historical/fetch.py` | Real archives: NOAA GFS + GFS-Wave runs, NOAA OISST (satellite SST), NOAA-20 VIIRS chlorophyll, IMD CAP warnings (WMO Alert Hub). Live adapters (Open-Meteo, IMD CAP feed) share the interface. ISRO products (Oceansat-3 via MOSDAC/Bhoonidhi) not yet connected |
 | Spatial, temporal, contextual reasoning across heterogeneous sources | ✅ | `risk/engine.py`, `state.py`, `geo/geofences.py`, `route/planner.py` | Hourly trajectory; point-in-polygon for official warning areas; time-dependent routing |
 | Explainable, evidence-based recommendations with maps, charts, advisories | ✅ | `agents/explanation.py`, web `EvidencePanel`, `SafetyPanel`, `MapView` | Evidence ids on every decision; rule table; timeline; exposure bars |
 | Proactive alerts: adverse weather, high waves, lightning, cyclones | ✅ | `alerts.py`, `/api/alerts/stream` | Risk increases and new warnings covering a watched point; lightning via thunderstorm forecast codes; cyclone via IMD CAP |
@@ -65,7 +65,7 @@ Status: ✅ implemented and tested · ⚠ implemented with a stated limitation �
 | Source / reference list | ✅ | `DATA_SOURCES.md` |
 | Deployment instructions | ✅ | `README.md`, `Dockerfile`, `docker-compose.yml` |
 | Demo dataset and seed | ✅ | built-in scenario (no database seeding needed) |
-| Fallback mode if external APIs fail | ✅ | `ORCA_DATA_MODE=auto` with circuit breaker |
+| Fallback mode if external APIs fail | ✅ | historical mode runs fully offline; `ORCA_DATA_MODE=auto` falls back with a circuit breaker |
 | 2–3 minute demo script | ✅ | `DEMO_SCRIPT.md` |
 
 ## Next steps
@@ -78,10 +78,12 @@ In priority order:
    and protected areas from official sources; set accuracy to `official`.
 3. **Validate the rule set with INCOIS/IMD mentors**: vessel-class thresholds, gusts, currents; use the INCOIS SVAS boat
    safety index if machine access is available.
-4. **Real historical replay + evaluation** (guide §14, §37): archived forecasts/observations, chronological
-   evaluation, and precision / recall / false-negative rate on unsafe events.
-5. **Live chlorophyll and SST history**: INCOIS/NOAA ERDDAP adapter (enables hotspots and productivity in live mode).
-6. **Cyclone tracks**: GDACS/JTWC adapter for track-distance reasoning.
+4. ~~Real historical replay + evaluation~~ **Done**: three archived events and an ERA5 backtest (see
+   `DATA_SOURCES.md#historical-replay`). Next: more seasons and the east coast in the backtest, and buoy truth
+   (INCOIS moored buoys) where mentors can share it.
+5. **ISRO satellite products**: Oceansat-3 OCM chlorophyll and SST via MOSDAC/Bhoonidhi (needs registration), in
+   the same archive format as VIIRS/OISST.
+6. **Official cyclone tracks**: IMD best track or IBTrACS alongside the model cyclone watch.
 7. **Persistence**: PostgreSQL + PostGIS (observations, advisories, alerts, conversations), Redis cache.
 8. **Languages**: native-speaker review; add Marathi, Kannada, Gujarati, Bengali and Odia templates.
 9. **Delivery**: PWA offline cache of the last advisories with their age; SMS/push notifications.

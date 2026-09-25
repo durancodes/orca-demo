@@ -1,0 +1,5694 @@
+{
+ "matrix": {
+  "LOW": {
+   "LOW": 243,
+   "MODERATE": 36,
+   "HIGH": 0,
+   "SEVERE": 0
+  },
+  "MODERATE": {
+   "LOW": 35,
+   "MODERATE": 173,
+   "HIGH": 6,
+   "SEVERE": 0
+  },
+  "HIGH": {
+   "LOW": 0,
+   "MODERATE": 17,
+   "HIGH": 32,
+   "SEVERE": 3
+  },
+  "SEVERE": {
+   "LOW": 0,
+   "MODERATE": 0,
+   "HIGH": 1,
+   "SEVERE": 6
+  }
+ },
+ "persistence_matrix": {
+  "LOW": {
+   "LOW": 263,
+   "MODERATE": 17,
+   "HIGH": 0,
+   "SEVERE": 0
+  },
+  "MODERATE": {
+   "LOW": 15,
+   "MODERATE": 206,
+   "HIGH": 8,
+   "SEVERE": 3
+  },
+  "HIGH": {
+   "LOW": 0,
+   "MODERATE": 3,
+   "HIGH": 26,
+   "SEVERE": 2
+  },
+  "SEVERE": {
+   "LOW": 0,
+   "MODERATE": 0,
+   "HIGH": 5,
+   "SEVERE": 4
+  }
+ },
+ "scores": {
+  "site_days": 552,
+  "dangerous_observed": 48,
+  "hits": 42,
+  "misses": 6,
+  "false_alarms": 17,
+  "correct_negatives": 487,
+  "pod": 0.875,
+  "far": 0.288,
+  "missed_danger_rate": 0.125,
+  "exact_level_accuracy": 0.822,
+  "within_one_level": 1.0
+ },
+ "persistence_scores": {
+  "site_days": 552,
+  "dangerous_observed": 48,
+  "hits": 37,
+  "misses": 11,
+  "false_alarms": 3,
+  "correct_negatives": 501,
+  "pod": 0.771,
+  "far": 0.075,
+  "missed_danger_rate": 0.229,
+  "exact_level_accuracy": 0.904,
+  "within_one_level": 0.995
+ },
+ "rows": [
+  {
+   "date": "2021-05-01",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.83,
+   "obs_wave_max": 0.99,
+   "obs_wind_max": 13.4
+  },
+  {
+   "date": "2021-05-01",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.53,
+   "obs_wave_max": 0.81,
+   "obs_wind_max": 11.3
+  },
+  {
+   "date": "2021-05-01",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.74,
+   "obs_wave_max": 0.8,
+   "obs_wind_max": 11.4
+  },
+  {
+   "date": "2021-05-01",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.82,
+   "obs_wave_max": 0.71,
+   "obs_wind_max": 10.7
+  },
+  {
+   "date": "2021-05-01",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.66,
+   "obs_wave_max": 0.83,
+   "obs_wind_max": 9.0
+  },
+  {
+   "date": "2021-05-01",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.61,
+   "obs_wave_max": 0.8,
+   "obs_wind_max": 7.4
+  },
+  {
+   "date": "2021-05-01",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.61,
+   "obs_wave_max": 0.75,
+   "obs_wind_max": 5.7
+  },
+  {
+   "date": "2021-05-01",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.62,
+   "obs_wave_max": 0.68,
+   "obs_wind_max": 5.7
+  },
+  {
+   "date": "2021-05-01",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.62,
+   "obs_wave_max": 0.5,
+   "obs_wind_max": 7.2
+  },
+  {
+   "date": "2021-05-01",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.6,
+   "obs_wave_max": 0.68,
+   "obs_wind_max": 8.5
+  },
+  {
+   "date": "2021-05-01",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.7,
+   "obs_wave_max": 0.9,
+   "obs_wind_max": 6.5
+  },
+  {
+   "date": "2021-05-01",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.78,
+   "obs_wave_max": 1.01,
+   "obs_wind_max": 4.3
+  },
+  {
+   "date": "2021-05-02",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.7,
+   "obs_wave_max": 0.99,
+   "obs_wind_max": 14.4
+  },
+  {
+   "date": "2021-05-02",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.42,
+   "obs_wave_max": 0.78,
+   "obs_wind_max": 5.9
+  },
+  {
+   "date": "2021-05-02",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.53,
+   "obs_wave_max": 0.7,
+   "obs_wind_max": 5.2
+  },
+  {
+   "date": "2021-05-02",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.66,
+   "obs_wave_max": 0.62,
+   "obs_wind_max": 8.5
+  },
+  {
+   "date": "2021-05-02",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.56,
+   "obs_wave_max": 0.76,
+   "obs_wind_max": 8.7
+  },
+  {
+   "date": "2021-05-02",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.55,
+   "obs_wave_max": 0.71,
+   "obs_wind_max": 4.5
+  },
+  {
+   "date": "2021-05-02",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.52,
+   "obs_wave_max": 0.68,
+   "obs_wind_max": 6.3
+  },
+  {
+   "date": "2021-05-02",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.55,
+   "obs_wave_max": 0.62,
+   "obs_wind_max": 9.1
+  },
+  {
+   "date": "2021-05-02",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.38,
+   "obs_wave_max": 0.45,
+   "obs_wind_max": 6.1
+  },
+  {
+   "date": "2021-05-02",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.4,
+   "obs_wave_max": 0.62,
+   "obs_wind_max": 9.0
+  },
+  {
+   "date": "2021-05-02",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.7,
+   "obs_wave_max": 0.82,
+   "obs_wind_max": 9.7
+  },
+  {
+   "date": "2021-05-02",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.77,
+   "obs_wave_max": 0.92,
+   "obs_wind_max": 9.0
+  },
+  {
+   "date": "2021-05-03",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.76,
+   "obs_wave_max": 0.95,
+   "obs_wind_max": 15.9
+  },
+  {
+   "date": "2021-05-03",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.46,
+   "obs_wave_max": 0.71,
+   "obs_wind_max": 10.0
+  },
+  {
+   "date": "2021-05-03",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.61,
+   "obs_wave_max": 0.65,
+   "obs_wind_max": 10.3
+  },
+  {
+   "date": "2021-05-03",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.68,
+   "obs_wave_max": 0.62,
+   "obs_wind_max": 8.9
+  },
+  {
+   "date": "2021-05-03",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.53,
+   "obs_wave_max": 0.73,
+   "obs_wind_max": 7.3
+  },
+  {
+   "date": "2021-05-03",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.51,
+   "obs_wave_max": 0.69,
+   "obs_wind_max": 4.4
+  },
+  {
+   "date": "2021-05-03",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.48,
+   "obs_wave_max": 0.7,
+   "obs_wind_max": 13.7
+  },
+  {
+   "date": "2021-05-03",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.45,
+   "obs_wave_max": 0.63,
+   "obs_wind_max": 17.6
+  },
+  {
+   "date": "2021-05-03",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.48,
+   "obs_wave_max": 0.44,
+   "obs_wind_max": 9.9
+  },
+  {
+   "date": "2021-05-03",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.5,
+   "obs_wave_max": 0.58,
+   "obs_wind_max": 11.1
+  },
+  {
+   "date": "2021-05-03",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.56,
+   "obs_wave_max": 0.78,
+   "obs_wind_max": 8.6
+  },
+  {
+   "date": "2021-05-03",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.64,
+   "obs_wave_max": 0.89,
+   "obs_wind_max": 9.9
+  },
+  {
+   "date": "2021-05-04",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.79,
+   "obs_wave_max": 0.97,
+   "obs_wind_max": 21.9
+  },
+  {
+   "date": "2021-05-04",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.47,
+   "obs_wave_max": 0.69,
+   "obs_wind_max": 7.4
+  },
+  {
+   "date": "2021-05-04",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.58,
+   "obs_wave_max": 0.64,
+   "obs_wind_max": 11.0
+  },
+  {
+   "date": "2021-05-04",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.58,
+   "obs_wave_max": 0.57,
+   "obs_wind_max": 7.7
+  },
+  {
+   "date": "2021-05-04",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.43,
+   "obs_wave_max": 0.7,
+   "obs_wind_max": 8.6
+  },
+  {
+   "date": "2021-05-04",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.41,
+   "obs_wave_max": 0.65,
+   "obs_wind_max": 4.6
+  },
+  {
+   "date": "2021-05-04",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.46,
+   "obs_wave_max": 0.64,
+   "obs_wind_max": 6.3
+  },
+  {
+   "date": "2021-05-04",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.47,
+   "obs_wave_max": 0.59,
+   "obs_wind_max": 5.2
+  },
+  {
+   "date": "2021-05-04",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.37,
+   "obs_wave_max": 0.45,
+   "obs_wind_max": 4.2
+  },
+  {
+   "date": "2021-05-04",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.43,
+   "obs_wave_max": 0.61,
+   "obs_wind_max": 3.8
+  },
+  {
+   "date": "2021-05-04",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.72,
+   "obs_wave_max": 0.88,
+   "obs_wind_max": 4.2
+  },
+  {
+   "date": "2021-05-04",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.79,
+   "obs_wave_max": 1.01,
+   "obs_wind_max": 4.2
+  },
+  {
+   "date": "2021-05-05",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.82,
+   "obs_wave_max": 0.91,
+   "obs_wind_max": 18.0
+  },
+  {
+   "date": "2021-05-05",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.47,
+   "obs_wave_max": 0.76,
+   "obs_wind_max": 9.6
+  },
+  {
+   "date": "2021-05-05",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.61,
+   "obs_wave_max": 0.66,
+   "obs_wind_max": 8.2
+  },
+  {
+   "date": "2021-05-05",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.74,
+   "obs_wave_max": 0.59,
+   "obs_wind_max": 6.7
+  },
+  {
+   "date": "2021-05-05",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.58,
+   "obs_wave_max": 0.77,
+   "obs_wind_max": 6.7
+  },
+  {
+   "date": "2021-05-05",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.54,
+   "obs_wave_max": 0.78,
+   "obs_wind_max": 6.8
+  },
+  {
+   "date": "2021-05-05",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.63,
+   "obs_wave_max": 0.77,
+   "obs_wind_max": 8.2
+  },
+  {
+   "date": "2021-05-05",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.64,
+   "obs_wave_max": 0.7,
+   "obs_wind_max": 10.1
+  },
+  {
+   "date": "2021-05-05",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.48,
+   "obs_wave_max": 0.52,
+   "obs_wind_max": 4.9
+  },
+  {
+   "date": "2021-05-05",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.51,
+   "obs_wave_max": 0.68,
+   "obs_wind_max": 6.1
+  },
+  {
+   "date": "2021-05-05",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.84,
+   "obs_wave_max": 1.0,
+   "obs_wind_max": 8.3
+  },
+  {
+   "date": "2021-05-05",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.94,
+   "obs_wave_max": 1.16,
+   "obs_wind_max": 8.6
+  },
+  {
+   "date": "2021-05-06",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.74,
+   "obs_wave_max": 0.89,
+   "obs_wind_max": 16.0
+  },
+  {
+   "date": "2021-05-06",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.43,
+   "obs_wave_max": 0.71,
+   "obs_wind_max": 8.4
+  },
+  {
+   "date": "2021-05-06",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.56,
+   "obs_wave_max": 0.65,
+   "obs_wind_max": 9.5
+  },
+  {
+   "date": "2021-05-06",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.64,
+   "obs_wave_max": 0.6,
+   "obs_wind_max": 5.8
+  },
+  {
+   "date": "2021-05-06",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.5,
+   "obs_wave_max": 0.8,
+   "obs_wind_max": 7.0
+  },
+  {
+   "date": "2021-05-06",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.48,
+   "obs_wave_max": 0.79,
+   "obs_wind_max": 6.2
+  },
+  {
+   "date": "2021-05-06",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.52,
+   "obs_wave_max": 0.79,
+   "obs_wind_max": 7.7
+  },
+  {
+   "date": "2021-05-06",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.6,
+   "obs_wave_max": 0.71,
+   "obs_wind_max": 8.2
+  },
+  {
+   "date": "2021-05-06",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.46,
+   "obs_wave_max": 0.52,
+   "obs_wind_max": 10.6
+  },
+  {
+   "date": "2021-05-06",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.48,
+   "obs_wave_max": 0.67,
+   "obs_wind_max": 8.1
+  },
+  {
+   "date": "2021-05-06",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.79,
+   "obs_wave_max": 0.97,
+   "obs_wind_max": 6.9
+  },
+  {
+   "date": "2021-05-06",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.9,
+   "obs_wave_max": 1.12,
+   "obs_wind_max": 6.7
+  },
+  {
+   "date": "2021-05-07",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.78,
+   "obs_wave_max": 1.03,
+   "obs_wind_max": 18.9
+  },
+  {
+   "date": "2021-05-07",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.39,
+   "obs_wave_max": 0.78,
+   "obs_wind_max": 8.2
+  },
+  {
+   "date": "2021-05-07",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.57,
+   "obs_wave_max": 0.69,
+   "obs_wind_max": 11.1
+  },
+  {
+   "date": "2021-05-07",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.63,
+   "obs_wave_max": 0.62,
+   "obs_wind_max": 6.8
+  },
+  {
+   "date": "2021-05-07",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.51,
+   "obs_wave_max": 0.8,
+   "obs_wind_max": 6.4
+  },
+  {
+   "date": "2021-05-07",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.5,
+   "obs_wave_max": 0.75,
+   "obs_wind_max": 3.6
+  },
+  {
+   "date": "2021-05-07",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.59,
+   "obs_wave_max": 0.73,
+   "obs_wind_max": 4.7
+  },
+  {
+   "date": "2021-05-07",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.55,
+   "obs_wave_max": 0.67,
+   "obs_wind_max": 6.0
+  },
+  {
+   "date": "2021-05-07",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.42,
+   "obs_wave_max": 0.49,
+   "obs_wind_max": 4.8
+  },
+  {
+   "date": "2021-05-07",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.48,
+   "obs_wave_max": 0.61,
+   "obs_wind_max": 6.8
+  },
+  {
+   "date": "2021-05-07",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.76,
+   "obs_wave_max": 0.88,
+   "obs_wind_max": 8.0
+  },
+  {
+   "date": "2021-05-07",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.82,
+   "obs_wave_max": 1.02,
+   "obs_wind_max": 6.6
+  },
+  {
+   "date": "2021-05-08",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.87,
+   "obs_wave_max": 1.03,
+   "obs_wind_max": 18.2
+  },
+  {
+   "date": "2021-05-08",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.45,
+   "obs_wave_max": 0.81,
+   "obs_wind_max": 8.0
+  },
+  {
+   "date": "2021-05-08",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.55,
+   "obs_wave_max": 0.72,
+   "obs_wind_max": 11.8
+  },
+  {
+   "date": "2021-05-08",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.65,
+   "obs_wave_max": 0.66,
+   "obs_wind_max": 12.2
+  },
+  {
+   "date": "2021-05-08",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.52,
+   "obs_wave_max": 0.86,
+   "obs_wind_max": 16.9
+  },
+  {
+   "date": "2021-05-08",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.47,
+   "obs_wave_max": 0.84,
+   "obs_wind_max": 8.4
+  },
+  {
+   "date": "2021-05-08",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.5,
+   "obs_wave_max": 0.73,
+   "obs_wind_max": 6.7
+  },
+  {
+   "date": "2021-05-08",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.52,
+   "obs_wave_max": 0.65,
+   "obs_wind_max": 8.2
+  },
+  {
+   "date": "2021-05-08",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.41,
+   "obs_wave_max": 0.49,
+   "obs_wind_max": 7.2
+  },
+  {
+   "date": "2021-05-08",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.46,
+   "obs_wave_max": 0.62,
+   "obs_wind_max": 8.0
+  },
+  {
+   "date": "2021-05-08",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.73,
+   "obs_wave_max": 0.93,
+   "obs_wind_max": 13.6
+  },
+  {
+   "date": "2021-05-08",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.82,
+   "obs_wave_max": 1.09,
+   "obs_wind_max": 14.9
+  },
+  {
+   "date": "2021-05-09",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 0.85,
+   "obs_wave_max": 1.1,
+   "obs_wind_max": 16.5
+  },
+  {
+   "date": "2021-05-09",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.48,
+   "obs_wave_max": 0.9,
+   "obs_wind_max": 6.3
+  },
+  {
+   "date": "2021-05-09",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.64,
+   "obs_wave_max": 0.77,
+   "obs_wind_max": 12.0
+  },
+  {
+   "date": "2021-05-09",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.67,
+   "obs_wave_max": 0.68,
+   "obs_wind_max": 8.9
+  },
+  {
+   "date": "2021-05-09",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.57,
+   "obs_wave_max": 0.82,
+   "obs_wind_max": 10.6
+  },
+  {
+   "date": "2021-05-09",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.52,
+   "obs_wave_max": 0.78,
+   "obs_wind_max": 7.6
+  },
+  {
+   "date": "2021-05-09",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.5,
+   "obs_wave_max": 0.76,
+   "obs_wind_max": 5.1
+  },
+  {
+   "date": "2021-05-09",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.51,
+   "obs_wave_max": 0.69,
+   "obs_wind_max": 5.6
+  },
+  {
+   "date": "2021-05-09",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.43,
+   "obs_wave_max": 0.51,
+   "obs_wind_max": 4.7
+  },
+  {
+   "date": "2021-05-09",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.49,
+   "obs_wave_max": 0.67,
+   "obs_wind_max": 7.0
+  },
+  {
+   "date": "2021-05-09",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.75,
+   "obs_wave_max": 0.97,
+   "obs_wind_max": 12.6
+  },
+  {
+   "date": "2021-05-09",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.82,
+   "obs_wave_max": 1.13,
+   "obs_wind_max": 7.2
+  },
+  {
+   "date": "2021-05-10",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.8,
+   "obs_wave_max": 1.16,
+   "obs_wind_max": 20.8
+  },
+  {
+   "date": "2021-05-10",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.45,
+   "obs_wave_max": 0.91,
+   "obs_wind_max": 8.7
+  },
+  {
+   "date": "2021-05-10",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.6,
+   "obs_wave_max": 0.78,
+   "obs_wind_max": 14.3
+  },
+  {
+   "date": "2021-05-10",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.66,
+   "obs_wave_max": 0.69,
+   "obs_wind_max": 12.4
+  },
+  {
+   "date": "2021-05-10",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.53,
+   "obs_wave_max": 0.82,
+   "obs_wind_max": 12.4
+  },
+  {
+   "date": "2021-05-10",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.5,
+   "obs_wave_max": 0.8,
+   "obs_wind_max": 9.3
+  },
+  {
+   "date": "2021-05-10",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.47,
+   "obs_wave_max": 0.76,
+   "obs_wind_max": 8.4
+  },
+  {
+   "date": "2021-05-10",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.5,
+   "obs_wave_max": 0.7,
+   "obs_wind_max": 9.1
+  },
+  {
+   "date": "2021-05-10",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.42,
+   "obs_wave_max": 0.53,
+   "obs_wind_max": 12.3
+  },
+  {
+   "date": "2021-05-10",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.47,
+   "obs_wave_max": 0.68,
+   "obs_wind_max": 11.7
+  },
+  {
+   "date": "2021-05-10",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.74,
+   "obs_wave_max": 0.96,
+   "obs_wind_max": 13.1
+  },
+  {
+   "date": "2021-05-10",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.77,
+   "obs_wave_max": 1.11,
+   "obs_wind_max": 9.2
+  },
+  {
+   "date": "2021-05-11",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.81,
+   "obs_wave_max": 1.05,
+   "obs_wind_max": 13.7
+  },
+  {
+   "date": "2021-05-11",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.47,
+   "obs_wave_max": 0.89,
+   "obs_wind_max": 8.8
+  },
+  {
+   "date": "2021-05-11",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.64,
+   "obs_wave_max": 0.81,
+   "obs_wind_max": 14.3
+  },
+  {
+   "date": "2021-05-11",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.67,
+   "obs_wave_max": 0.75,
+   "obs_wind_max": 12.4
+  },
+  {
+   "date": "2021-05-11",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.55,
+   "obs_wave_max": 0.91,
+   "obs_wind_max": 15.1
+  },
+  {
+   "date": "2021-05-11",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.54,
+   "obs_wave_max": 0.84,
+   "obs_wind_max": 6.9
+  },
+  {
+   "date": "2021-05-11",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.55,
+   "obs_wave_max": 0.83,
+   "obs_wind_max": 10.4
+  },
+  {
+   "date": "2021-05-11",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.56,
+   "obs_wave_max": 0.77,
+   "obs_wind_max": 24.3
+  },
+  {
+   "date": "2021-05-11",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.45,
+   "obs_wave_max": 0.59,
+   "obs_wind_max": 3.4
+  },
+  {
+   "date": "2021-05-11",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.59,
+   "obs_wave_max": 0.79,
+   "obs_wind_max": 5.9
+  },
+  {
+   "date": "2021-05-11",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.8,
+   "obs_wave_max": 1.09,
+   "obs_wind_max": 9.6
+  },
+  {
+   "date": "2021-05-11",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 0.86,
+   "obs_wave_max": 1.26,
+   "obs_wind_max": 17.8
+  },
+  {
+   "date": "2021-05-12",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.97,
+   "obs_wave_max": 1.17,
+   "obs_wind_max": 18.8
+  },
+  {
+   "date": "2021-05-12",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.5,
+   "obs_wave_max": 0.87,
+   "obs_wind_max": 7.3
+  },
+  {
+   "date": "2021-05-12",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.66,
+   "obs_wave_max": 0.86,
+   "obs_wind_max": 12.2
+  },
+  {
+   "date": "2021-05-12",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.79,
+   "obs_wave_max": 0.86,
+   "obs_wind_max": 12.0
+  },
+  {
+   "date": "2021-05-12",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.77,
+   "obs_wave_max": 1.08,
+   "obs_wind_max": 12.0
+  },
+  {
+   "date": "2021-05-12",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.81,
+   "obs_wave_max": 1.1,
+   "obs_wind_max": 4.8
+  },
+  {
+   "date": "2021-05-12",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.08,
+   "obs_wave_max": 1.19,
+   "obs_wind_max": 5.6
+  },
+  {
+   "date": "2021-05-12",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.25,
+   "obs_wave_max": 1.19,
+   "obs_wind_max": 9.2
+  },
+  {
+   "date": "2021-05-12",
+   "site": "kozhikode",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.65,
+   "obs_wave_max": 0.91,
+   "obs_wind_max": 11.5
+  },
+  {
+   "date": "2021-05-12",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 2.2,
+   "obs_wave_max": 1.24,
+   "obs_wind_max": 12.6
+  },
+  {
+   "date": "2021-05-12",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.21,
+   "obs_wave_max": 1.57,
+   "obs_wind_max": 19.0
+  },
+  {
+   "date": "2021-05-12",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.2,
+   "obs_wave_max": 1.78,
+   "obs_wind_max": 23.6
+  },
+  {
+   "date": "2021-05-13",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.15,
+   "obs_wave_max": 1.18,
+   "obs_wind_max": 12.6
+  },
+  {
+   "date": "2021-05-13",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.65,
+   "obs_wave_max": 1.04,
+   "obs_wind_max": 8.0
+  },
+  {
+   "date": "2021-05-13",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.02,
+   "obs_wave_max": 1.09,
+   "obs_wind_max": 10.4
+  },
+  {
+   "date": "2021-05-13",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.2,
+   "obs_wave_max": 1.05,
+   "obs_wind_max": 6.5
+  },
+  {
+   "date": "2021-05-13",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.17,
+   "obs_wave_max": 1.26,
+   "obs_wind_max": 9.5
+  },
+  {
+   "date": "2021-05-13",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.35,
+   "obs_wind_max": 5.4
+  },
+  {
+   "date": "2021-05-13",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 2.02,
+   "obs_wave_max": 1.81,
+   "obs_wind_max": 10.3
+  },
+  {
+   "date": "2021-05-13",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 2.32,
+   "obs_wave_max": 2.03,
+   "obs_wind_max": 34.4
+  },
+  {
+   "date": "2021-05-13",
+   "site": "kozhikode",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 2.58,
+   "obs_wave_max": 1.68,
+   "obs_wind_max": 35.2
+  },
+  {
+   "date": "2021-05-13",
+   "site": "kochi",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 3.31,
+   "obs_wave_max": 2.19,
+   "obs_wind_max": 25.7
+  },
+  {
+   "date": "2021-05-13",
+   "site": "neendakara",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.8,
+   "obs_wave_max": 2.46,
+   "obs_wind_max": 14.5
+  },
+  {
+   "date": "2021-05-13",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.44,
+   "obs_wave_max": 2.25,
+   "obs_wind_max": 18.8
+  },
+  {
+   "date": "2021-05-14",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 1.09,
+   "obs_wave_max": 1.26,
+   "obs_wind_max": 18.7
+  },
+  {
+   "date": "2021-05-14",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.81,
+   "obs_wave_max": 1.19,
+   "obs_wind_max": 16.2
+  },
+  {
+   "date": "2021-05-14",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.56,
+   "obs_wave_max": 1.5,
+   "obs_wind_max": 17.0
+  },
+  {
+   "date": "2021-05-14",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.95,
+   "obs_wave_max": 1.51,
+   "obs_wind_max": 15.8
+  },
+  {
+   "date": "2021-05-14",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.79,
+   "obs_wave_max": 2.25,
+   "obs_wind_max": 19.2
+  },
+  {
+   "date": "2021-05-14",
+   "site": "karwar",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.35,
+   "obs_wave_max": 2.97,
+   "obs_wind_max": 18.2
+  },
+  {
+   "date": "2021-05-14",
+   "site": "malpe",
+   "forecast": "SEVERE",
+   "observed": "SEVERE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 4.05,
+   "obs_wave_max": 4.93,
+   "obs_wind_max": 42.0
+  },
+  {
+   "date": "2021-05-14",
+   "site": "mangaluru",
+   "forecast": "HIGH",
+   "observed": "SEVERE",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.88,
+   "obs_wave_max": 5.05,
+   "obs_wind_max": 66.3
+  },
+  {
+   "date": "2021-05-14",
+   "site": "kozhikode",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "MODERATE",
+   "fc_wave_max": 3.05,
+   "obs_wave_max": 2.79,
+   "obs_wind_max": 29.4
+  },
+  {
+   "date": "2021-05-14",
+   "site": "kochi",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.95,
+   "obs_wave_max": 3.38,
+   "obs_wind_max": 36.2
+  },
+  {
+   "date": "2021-05-14",
+   "site": "neendakara",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.77,
+   "obs_wave_max": 3.4,
+   "obs_wind_max": 36.4
+  },
+  {
+   "date": "2021-05-14",
+   "site": "vizhinjam",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.39,
+   "obs_wave_max": 3.24,
+   "obs_wind_max": 31.9
+  },
+  {
+   "date": "2021-05-15",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.4,
+   "obs_wave_max": 1.41,
+   "obs_wind_max": 20.9
+  },
+  {
+   "date": "2021-05-15",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 0.96,
+   "obs_wave_max": 1.36,
+   "obs_wind_max": 20.6
+  },
+  {
+   "date": "2021-05-15",
+   "site": "ratnagiri",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "MODERATE",
+   "fc_wave_max": 3.54,
+   "obs_wave_max": 1.6,
+   "obs_wind_max": 42.8
+  },
+  {
+   "date": "2021-05-15",
+   "site": "malvan",
+   "forecast": "SEVERE",
+   "observed": "SEVERE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 7.3,
+   "obs_wave_max": 3.59,
+   "obs_wind_max": 62.3
+  },
+  {
+   "date": "2021-05-15",
+   "site": "goa",
+   "forecast": "SEVERE",
+   "observed": "SEVERE",
+   "persistence": "HIGH",
+   "fc_wave_max": 5.13,
+   "obs_wave_max": 6.97,
+   "obs_wind_max": 90.3
+  },
+  {
+   "date": "2021-05-15",
+   "site": "karwar",
+   "forecast": "SEVERE",
+   "observed": "SEVERE",
+   "persistence": "SEVERE",
+   "fc_wave_max": 5.19,
+   "obs_wave_max": 6.66,
+   "obs_wind_max": 42.6
+  },
+  {
+   "date": "2021-05-15",
+   "site": "malpe",
+   "forecast": "SEVERE",
+   "observed": "SEVERE",
+   "persistence": "SEVERE",
+   "fc_wave_max": 4.79,
+   "obs_wave_max": 5.18,
+   "obs_wind_max": 32.4
+  },
+  {
+   "date": "2021-05-15",
+   "site": "mangaluru",
+   "forecast": "SEVERE",
+   "observed": "SEVERE",
+   "persistence": "SEVERE",
+   "fc_wave_max": 4.14,
+   "obs_wave_max": 4.58,
+   "obs_wind_max": 48.8
+  },
+  {
+   "date": "2021-05-15",
+   "site": "kozhikode",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.56,
+   "obs_wave_max": 1.88,
+   "obs_wind_max": 23.9
+  },
+  {
+   "date": "2021-05-15",
+   "site": "kochi",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.98,
+   "obs_wave_max": 2.4,
+   "obs_wind_max": 24.9
+  },
+  {
+   "date": "2021-05-15",
+   "site": "neendakara",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.77,
+   "obs_wave_max": 2.6,
+   "obs_wind_max": 22.7
+  },
+  {
+   "date": "2021-05-15",
+   "site": "vizhinjam",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.62,
+   "obs_wave_max": 2.62,
+   "obs_wind_max": 23.6
+  },
+  {
+   "date": "2021-05-16",
+   "site": "veraval",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.64,
+   "obs_wave_max": 2.44,
+   "obs_wind_max": 35.5
+  },
+  {
+   "date": "2021-05-16",
+   "site": "mumbai",
+   "forecast": "HIGH",
+   "observed": "SEVERE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.63,
+   "obs_wave_max": 6.64,
+   "obs_wind_max": 53.6
+  },
+  {
+   "date": "2021-05-16",
+   "site": "ratnagiri",
+   "forecast": "HIGH",
+   "observed": "SEVERE",
+   "persistence": "SEVERE",
+   "fc_wave_max": 3.9,
+   "obs_wave_max": 4.96,
+   "obs_wind_max": 47.9
+  },
+  {
+   "date": "2021-05-16",
+   "site": "malvan",
+   "forecast": "SEVERE",
+   "observed": "HIGH",
+   "persistence": "SEVERE",
+   "fc_wave_max": 4.14,
+   "obs_wave_max": 3.5,
+   "obs_wind_max": 40.4
+  },
+  {
+   "date": "2021-05-16",
+   "site": "goa",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "SEVERE",
+   "fc_wave_max": 3.15,
+   "obs_wave_max": 3.69,
+   "obs_wind_max": 40.8
+  },
+  {
+   "date": "2021-05-16",
+   "site": "karwar",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "SEVERE",
+   "fc_wave_max": 3.02,
+   "obs_wave_max": 3.23,
+   "obs_wind_max": 20.2
+  },
+  {
+   "date": "2021-05-16",
+   "site": "malpe",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.67,
+   "obs_wave_max": 2.8,
+   "obs_wind_max": 21.6
+  },
+  {
+   "date": "2021-05-16",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.43,
+   "obs_wave_max": 2.58,
+   "obs_wind_max": 28.2
+  },
+  {
+   "date": "2021-05-16",
+   "site": "kozhikode",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.78,
+   "obs_wave_max": 1.42,
+   "obs_wind_max": 15.2
+  },
+  {
+   "date": "2021-05-16",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.06,
+   "obs_wave_max": 1.9,
+   "obs_wind_max": 10.4
+  },
+  {
+   "date": "2021-05-16",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.92,
+   "obs_wave_max": 2.18,
+   "obs_wind_max": 9.6
+  },
+  {
+   "date": "2021-05-16",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.8,
+   "obs_wave_max": 2.16,
+   "obs_wind_max": 13.1
+  },
+  {
+   "date": "2021-05-17",
+   "site": "veraval",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "SEVERE",
+   "fc_wave_max": 2.99,
+   "obs_wave_max": 3.74,
+   "obs_wind_max": 57.2
+  },
+  {
+   "date": "2021-05-17",
+   "site": "mumbai",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "SEVERE",
+   "fc_wave_max": 2.07,
+   "obs_wave_max": 3.47,
+   "obs_wind_max": 38.8
+  },
+  {
+   "date": "2021-05-17",
+   "site": "ratnagiri",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.55,
+   "obs_wave_max": 2.54,
+   "obs_wind_max": 33.5
+  },
+  {
+   "date": "2021-05-17",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.42,
+   "obs_wave_max": 2.04,
+   "obs_wind_max": 31.1
+  },
+  {
+   "date": "2021-05-17",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.04,
+   "obs_wave_max": 2.35,
+   "obs_wind_max": 37.0
+  },
+  {
+   "date": "2021-05-17",
+   "site": "karwar",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.09,
+   "obs_wave_max": 2.26,
+   "obs_wind_max": 19.4
+  },
+  {
+   "date": "2021-05-17",
+   "site": "malpe",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.32,
+   "obs_wave_max": 2.15,
+   "obs_wind_max": 22.6
+  },
+  {
+   "date": "2021-05-17",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.26,
+   "obs_wave_max": 2.02,
+   "obs_wind_max": 30.1
+  },
+  {
+   "date": "2021-05-17",
+   "site": "kozhikode",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.45,
+   "obs_wave_max": 1.12,
+   "obs_wind_max": 18.0
+  },
+  {
+   "date": "2021-05-17",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.7,
+   "obs_wave_max": 1.49,
+   "obs_wind_max": 11.4
+  },
+  {
+   "date": "2021-05-17",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.6,
+   "obs_wave_max": 1.76,
+   "obs_wind_max": 7.4
+  },
+  {
+   "date": "2021-05-17",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.55,
+   "obs_wave_max": 1.82,
+   "obs_wind_max": 16.6
+  },
+  {
+   "date": "2021-05-18",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.44,
+   "obs_wave_max": 1.48,
+   "obs_wind_max": 20.6
+  },
+  {
+   "date": "2021-05-18",
+   "site": "mumbai",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.26,
+   "obs_wave_max": 1.73,
+   "obs_wind_max": 23.5
+  },
+  {
+   "date": "2021-05-18",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.69,
+   "obs_wave_max": 1.72,
+   "obs_wind_max": 19.4
+  },
+  {
+   "date": "2021-05-18",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.81,
+   "obs_wave_max": 1.6,
+   "obs_wind_max": 19.1
+  },
+  {
+   "date": "2021-05-18",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.57,
+   "obs_wave_max": 1.85,
+   "obs_wind_max": 22.5
+  },
+  {
+   "date": "2021-05-18",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.54,
+   "obs_wave_max": 1.83,
+   "obs_wind_max": 12.7
+  },
+  {
+   "date": "2021-05-18",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.51,
+   "obs_wave_max": 1.77,
+   "obs_wind_max": 19.0
+  },
+  {
+   "date": "2021-05-18",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.47,
+   "obs_wave_max": 1.65,
+   "obs_wind_max": 24.0
+  },
+  {
+   "date": "2021-05-18",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.12,
+   "obs_wave_max": 0.97,
+   "obs_wind_max": 15.6
+  },
+  {
+   "date": "2021-05-18",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.4,
+   "obs_wave_max": 1.33,
+   "obs_wind_max": 15.4
+  },
+  {
+   "date": "2021-05-18",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.41,
+   "obs_wave_max": 1.63,
+   "obs_wind_max": 13.7
+  },
+  {
+   "date": "2021-05-18",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.41,
+   "obs_wave_max": 1.71,
+   "obs_wind_max": 15.2
+  },
+  {
+   "date": "2021-05-19",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.14,
+   "obs_wave_max": 1.34,
+   "obs_wind_max": 17.9
+  },
+  {
+   "date": "2021-05-19",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 0.74,
+   "obs_wave_max": 1.19,
+   "obs_wind_max": 10.2
+  },
+  {
+   "date": "2021-05-19",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.18,
+   "obs_wave_max": 1.25,
+   "obs_wind_max": 11.7
+  },
+  {
+   "date": "2021-05-19",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.25,
+   "obs_wind_max": 15.5
+  },
+  {
+   "date": "2021-05-19",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.15,
+   "obs_wave_max": 1.47,
+   "obs_wind_max": 16.5
+  },
+  {
+   "date": "2021-05-19",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.17,
+   "obs_wave_max": 1.47,
+   "obs_wind_max": 8.4
+  },
+  {
+   "date": "2021-05-19",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.26,
+   "obs_wave_max": 1.44,
+   "obs_wind_max": 12.9
+  },
+  {
+   "date": "2021-05-19",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.19,
+   "obs_wave_max": 1.35,
+   "obs_wind_max": 16.7
+  },
+  {
+   "date": "2021-05-19",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.97,
+   "obs_wave_max": 0.83,
+   "obs_wind_max": 9.3
+  },
+  {
+   "date": "2021-05-19",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.28,
+   "obs_wave_max": 1.15,
+   "obs_wind_max": 8.3
+  },
+  {
+   "date": "2021-05-19",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.32,
+   "obs_wave_max": 1.45,
+   "obs_wind_max": 16.1
+  },
+  {
+   "date": "2021-05-19",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.36,
+   "obs_wave_max": 1.54,
+   "obs_wind_max": 19.3
+  },
+  {
+   "date": "2021-05-20",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.15,
+   "obs_wave_max": 1.34,
+   "obs_wind_max": 17.1
+  },
+  {
+   "date": "2021-05-20",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.62,
+   "obs_wave_max": 1.07,
+   "obs_wind_max": 6.7
+  },
+  {
+   "date": "2021-05-20",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.05,
+   "obs_wave_max": 1.07,
+   "obs_wind_max": 9.0
+  },
+  {
+   "date": "2021-05-20",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.08,
+   "obs_wave_max": 1.05,
+   "obs_wind_max": 6.8
+  },
+  {
+   "date": "2021-05-20",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 0.96,
+   "obs_wave_max": 1.24,
+   "obs_wind_max": 10.2
+  },
+  {
+   "date": "2021-05-20",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 0.97,
+   "obs_wave_max": 1.24,
+   "obs_wind_max": 8.7
+  },
+  {
+   "date": "2021-05-20",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.0,
+   "obs_wave_max": 1.22,
+   "obs_wind_max": 9.6
+  },
+  {
+   "date": "2021-05-20",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.06,
+   "obs_wave_max": 1.16,
+   "obs_wind_max": 10.6
+  },
+  {
+   "date": "2021-05-20",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.78,
+   "obs_wave_max": 0.71,
+   "obs_wind_max": 13.6
+  },
+  {
+   "date": "2021-05-20",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.97,
+   "obs_wave_max": 0.99,
+   "obs_wind_max": 9.1
+  },
+  {
+   "date": "2021-05-20",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.23,
+   "obs_wave_max": 1.25,
+   "obs_wind_max": 12.1
+  },
+  {
+   "date": "2021-05-20",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.27,
+   "obs_wave_max": 1.35,
+   "obs_wind_max": 19.9
+  },
+  {
+   "date": "2021-05-21",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.21,
+   "obs_wave_max": 1.4,
+   "obs_wind_max": 19.0
+  },
+  {
+   "date": "2021-05-21",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.61,
+   "obs_wave_max": 1.07,
+   "obs_wind_max": 5.2
+  },
+  {
+   "date": "2021-05-21",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.99,
+   "obs_wave_max": 1.03,
+   "obs_wind_max": 8.2
+  },
+  {
+   "date": "2021-05-21",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.97,
+   "obs_wave_max": 0.96,
+   "obs_wind_max": 5.4
+  },
+  {
+   "date": "2021-05-21",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.84,
+   "obs_wave_max": 1.1,
+   "obs_wind_max": 8.4
+  },
+  {
+   "date": "2021-05-21",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.84,
+   "obs_wave_max": 1.09,
+   "obs_wind_max": 6.9
+  },
+  {
+   "date": "2021-05-21",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.95,
+   "obs_wave_max": 1.06,
+   "obs_wind_max": 8.4
+  },
+  {
+   "date": "2021-05-21",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.0,
+   "obs_wave_max": 1.01,
+   "obs_wind_max": 11.0
+  },
+  {
+   "date": "2021-05-21",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.69,
+   "obs_wave_max": 0.64,
+   "obs_wind_max": 9.9
+  },
+  {
+   "date": "2021-05-21",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.95,
+   "obs_wave_max": 0.92,
+   "obs_wind_max": 10.4
+  },
+  {
+   "date": "2021-05-21",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 1.13,
+   "obs_wave_max": 1.26,
+   "obs_wind_max": 23.1
+  },
+  {
+   "date": "2021-05-21",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.21,
+   "obs_wave_max": 1.45,
+   "obs_wind_max": 23.0
+  },
+  {
+   "date": "2021-05-22",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.28,
+   "obs_wave_max": 1.49,
+   "obs_wind_max": 20.4
+  },
+  {
+   "date": "2021-05-22",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.66,
+   "obs_wave_max": 1.13,
+   "obs_wind_max": 6.7
+  },
+  {
+   "date": "2021-05-22",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.06,
+   "obs_wave_max": 1.1,
+   "obs_wind_max": 13.4
+  },
+  {
+   "date": "2021-05-22",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.02,
+   "obs_wave_max": 1.02,
+   "obs_wind_max": 11.3
+  },
+  {
+   "date": "2021-05-22",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.89,
+   "obs_wave_max": 1.18,
+   "obs_wind_max": 11.3
+  },
+  {
+   "date": "2021-05-22",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.91,
+   "obs_wave_max": 1.14,
+   "obs_wind_max": 8.2
+  },
+  {
+   "date": "2021-05-22",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.85,
+   "obs_wave_max": 1.08,
+   "obs_wind_max": 6.5
+  },
+  {
+   "date": "2021-05-22",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.9,
+   "obs_wave_max": 1.03,
+   "obs_wind_max": 9.7
+  },
+  {
+   "date": "2021-05-22",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.69,
+   "obs_wave_max": 0.64,
+   "obs_wind_max": 9.6
+  },
+  {
+   "date": "2021-05-22",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.03,
+   "obs_wave_max": 0.93,
+   "obs_wind_max": 8.8
+  },
+  {
+   "date": "2021-05-22",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.26,
+   "obs_wind_max": 19.5
+  },
+  {
+   "date": "2021-05-22",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.35,
+   "obs_wave_max": 1.39,
+   "obs_wind_max": 23.4
+  },
+  {
+   "date": "2021-05-23",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.2,
+   "obs_wave_max": 1.36,
+   "obs_wind_max": 19.0
+  },
+  {
+   "date": "2021-05-23",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.73,
+   "obs_wave_max": 1.15,
+   "obs_wind_max": 10.3
+  },
+  {
+   "date": "2021-05-23",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.17,
+   "obs_wave_max": 1.18,
+   "obs_wind_max": 16.2
+  },
+  {
+   "date": "2021-05-23",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.1,
+   "obs_wave_max": 1.01,
+   "obs_wind_max": 14.1
+  },
+  {
+   "date": "2021-05-23",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.97,
+   "obs_wave_max": 1.17,
+   "obs_wind_max": 13.2
+  },
+  {
+   "date": "2021-05-23",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.99,
+   "obs_wave_max": 1.15,
+   "obs_wind_max": 9.0
+  },
+  {
+   "date": "2021-05-23",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.14,
+   "obs_wave_max": 1.13,
+   "obs_wind_max": 13.4
+  },
+  {
+   "date": "2021-05-23",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.15,
+   "obs_wave_max": 1.07,
+   "obs_wind_max": 15.5
+  },
+  {
+   "date": "2021-05-23",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.78,
+   "obs_wave_max": 0.67,
+   "obs_wind_max": 17.3
+  },
+  {
+   "date": "2021-05-23",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.11,
+   "obs_wave_max": 0.94,
+   "obs_wind_max": 15.9
+  },
+  {
+   "date": "2021-05-23",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.2,
+   "obs_wave_max": 1.22,
+   "obs_wind_max": 22.0
+  },
+  {
+   "date": "2021-05-23",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.28,
+   "obs_wave_max": 1.45,
+   "obs_wind_max": 30.1
+  },
+  {
+   "date": "2021-05-24",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.26,
+   "obs_wave_max": 1.43,
+   "obs_wind_max": 25.6
+  },
+  {
+   "date": "2021-05-24",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 0.84,
+   "obs_wave_max": 1.26,
+   "obs_wind_max": 13.6
+  },
+  {
+   "date": "2021-05-24",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 1.33,
+   "obs_wave_max": 1.27,
+   "obs_wind_max": 21.2
+  },
+  {
+   "date": "2021-05-24",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.38,
+   "obs_wave_max": 1.22,
+   "obs_wind_max": 22.1
+  },
+  {
+   "date": "2021-05-24",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.42,
+   "obs_wind_max": 25.0
+  },
+  {
+   "date": "2021-05-24",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 1.23,
+   "obs_wave_max": 1.27,
+   "obs_wind_max": 14.5
+  },
+  {
+   "date": "2021-05-24",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.08,
+   "obs_wave_max": 1.14,
+   "obs_wind_max": 6.4
+  },
+  {
+   "date": "2021-05-24",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.12,
+   "obs_wave_max": 1.08,
+   "obs_wind_max": 14.3
+  },
+  {
+   "date": "2021-05-24",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.8,
+   "obs_wave_max": 0.67,
+   "obs_wind_max": 13.0
+  },
+  {
+   "date": "2021-05-24",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.04,
+   "obs_wave_max": 0.93,
+   "obs_wind_max": 14.0
+  },
+  {
+   "date": "2021-05-24",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 1.25,
+   "obs_wave_max": 1.28,
+   "obs_wind_max": 23.4
+  },
+  {
+   "date": "2021-05-24",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.56,
+   "obs_wave_max": 1.56,
+   "obs_wind_max": 27.9
+  },
+  {
+   "date": "2021-05-25",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.47,
+   "obs_wave_max": 1.54,
+   "obs_wind_max": 26.3
+  },
+  {
+   "date": "2021-05-25",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.86,
+   "obs_wave_max": 1.25,
+   "obs_wind_max": 13.5
+  },
+  {
+   "date": "2021-05-25",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.32,
+   "obs_wave_max": 1.25,
+   "obs_wind_max": 22.5
+  },
+  {
+   "date": "2021-05-25",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.4,
+   "obs_wave_max": 1.19,
+   "obs_wind_max": 17.1
+  },
+  {
+   "date": "2021-05-25",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.22,
+   "obs_wave_max": 1.43,
+   "obs_wind_max": 22.7
+  },
+  {
+   "date": "2021-05-25",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.2,
+   "obs_wave_max": 1.36,
+   "obs_wind_max": 11.9
+  },
+  {
+   "date": "2021-05-25",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.27,
+   "obs_wave_max": 1.22,
+   "obs_wind_max": 10.4
+  },
+  {
+   "date": "2021-05-25",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.15,
+   "obs_wind_max": 9.3
+  },
+  {
+   "date": "2021-05-25",
+   "site": "kozhikode",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.26,
+   "obs_wave_max": 0.94,
+   "obs_wind_max": 13.3
+  },
+  {
+   "date": "2021-05-25",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 1.87,
+   "obs_wave_max": 1.41,
+   "obs_wind_max": 18.6
+  },
+  {
+   "date": "2021-05-25",
+   "site": "neendakara",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.88,
+   "obs_wave_max": 2.25,
+   "obs_wind_max": 35.0
+  },
+  {
+   "date": "2021-05-25",
+   "site": "vizhinjam",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "MODERATE",
+   "fc_wave_max": 3.04,
+   "obs_wave_max": 2.58,
+   "obs_wind_max": 36.0
+  },
+  {
+   "date": "2021-05-26",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.84,
+   "obs_wave_max": 1.82,
+   "obs_wind_max": 25.5
+  },
+  {
+   "date": "2021-05-26",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.04,
+   "obs_wave_max": 1.57,
+   "obs_wind_max": 18.8
+  },
+  {
+   "date": "2021-05-26",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.46,
+   "obs_wave_max": 1.44,
+   "obs_wind_max": 20.1
+  },
+  {
+   "date": "2021-05-26",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.47,
+   "obs_wave_max": 1.29,
+   "obs_wind_max": 20.8
+  },
+  {
+   "date": "2021-05-26",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.28,
+   "obs_wave_max": 1.48,
+   "obs_wind_max": 24.5
+  },
+  {
+   "date": "2021-05-26",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.34,
+   "obs_wave_max": 1.47,
+   "obs_wind_max": 16.7
+  },
+  {
+   "date": "2021-05-26",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.43,
+   "obs_wave_max": 1.51,
+   "obs_wind_max": 18.3
+  },
+  {
+   "date": "2021-05-26",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.49,
+   "obs_wave_max": 1.42,
+   "obs_wind_max": 23.0
+  },
+  {
+   "date": "2021-05-26",
+   "site": "kozhikode",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.43,
+   "obs_wave_max": 1.05,
+   "obs_wind_max": 16.6
+  },
+  {
+   "date": "2021-05-26",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.92,
+   "obs_wave_max": 1.5,
+   "obs_wind_max": 15.0
+  },
+  {
+   "date": "2021-05-26",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.12,
+   "obs_wave_max": 2.01,
+   "obs_wind_max": 31.1
+  },
+  {
+   "date": "2021-05-26",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.25,
+   "obs_wave_max": 2.29,
+   "obs_wind_max": 39.8
+  },
+  {
+   "date": "2021-05-27",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.75,
+   "obs_wave_max": 1.76,
+   "obs_wind_max": 22.6
+  },
+  {
+   "date": "2021-05-27",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.04,
+   "obs_wave_max": 1.52,
+   "obs_wind_max": 14.0
+  },
+  {
+   "date": "2021-05-27",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.58,
+   "obs_wave_max": 1.45,
+   "obs_wind_max": 10.1
+  },
+  {
+   "date": "2021-05-27",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.53,
+   "obs_wave_max": 1.32,
+   "obs_wind_max": 11.5
+  },
+  {
+   "date": "2021-05-27",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.49,
+   "obs_wind_max": 11.8
+  },
+  {
+   "date": "2021-05-27",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.27,
+   "obs_wave_max": 1.42,
+   "obs_wind_max": 8.6
+  },
+  {
+   "date": "2021-05-27",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.31,
+   "obs_wave_max": 1.35,
+   "obs_wind_max": 6.2
+  },
+  {
+   "date": "2021-05-27",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.34,
+   "obs_wave_max": 1.27,
+   "obs_wind_max": 9.7
+  },
+  {
+   "date": "2021-05-27",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.01,
+   "obs_wave_max": 0.8,
+   "obs_wind_max": 16.5
+  },
+  {
+   "date": "2021-05-27",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.38,
+   "obs_wave_max": 1.15,
+   "obs_wind_max": 16.7
+  },
+  {
+   "date": "2021-05-27",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.48,
+   "obs_wave_max": 1.57,
+   "obs_wind_max": 25.6
+  },
+  {
+   "date": "2021-05-27",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.56,
+   "obs_wave_max": 1.83,
+   "obs_wind_max": 33.7
+  },
+  {
+   "date": "2021-05-28",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.6,
+   "obs_wave_max": 1.59,
+   "obs_wind_max": 16.0
+  },
+  {
+   "date": "2021-05-28",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 0.99,
+   "obs_wave_max": 1.42,
+   "obs_wind_max": 10.3
+  },
+  {
+   "date": "2021-05-28",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.59,
+   "obs_wave_max": 1.45,
+   "obs_wind_max": 9.6
+  },
+  {
+   "date": "2021-05-28",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.61,
+   "obs_wave_max": 1.39,
+   "obs_wind_max": 9.7
+  },
+  {
+   "date": "2021-05-28",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.38,
+   "obs_wave_max": 1.6,
+   "obs_wind_max": 13.2
+  },
+  {
+   "date": "2021-05-28",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.38,
+   "obs_wave_max": 1.56,
+   "obs_wind_max": 8.2
+  },
+  {
+   "date": "2021-05-28",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.5,
+   "obs_wave_max": 1.54,
+   "obs_wind_max": 14.3
+  },
+  {
+   "date": "2021-05-28",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.57,
+   "obs_wave_max": 1.46,
+   "obs_wind_max": 20.9
+  },
+  {
+   "date": "2021-05-28",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.08,
+   "obs_wave_max": 0.79,
+   "obs_wind_max": 14.0
+  },
+  {
+   "date": "2021-05-28",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.38,
+   "obs_wave_max": 1.1,
+   "obs_wind_max": 14.2
+  },
+  {
+   "date": "2021-05-28",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.5,
+   "obs_wave_max": 1.5,
+   "obs_wind_max": 25.7
+  },
+  {
+   "date": "2021-05-28",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.55,
+   "obs_wave_max": 1.76,
+   "obs_wind_max": 35.0
+  },
+  {
+   "date": "2021-05-29",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.45,
+   "obs_wave_max": 1.42,
+   "obs_wind_max": 15.6
+  },
+  {
+   "date": "2021-05-29",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 0.91,
+   "obs_wave_max": 1.31,
+   "obs_wind_max": 13.2
+  },
+  {
+   "date": "2021-05-29",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.49,
+   "obs_wave_max": 1.4,
+   "obs_wind_max": 15.4
+  },
+  {
+   "date": "2021-05-29",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.55,
+   "obs_wave_max": 1.35,
+   "obs_wind_max": 15.5
+  },
+  {
+   "date": "2021-05-29",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.35,
+   "obs_wave_max": 1.56,
+   "obs_wind_max": 15.4
+  },
+  {
+   "date": "2021-05-29",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.37,
+   "obs_wave_max": 1.54,
+   "obs_wind_max": 6.6
+  },
+  {
+   "date": "2021-05-29",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.47,
+   "obs_wave_max": 1.52,
+   "obs_wind_max": 13.0
+  },
+  {
+   "date": "2021-05-29",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.53,
+   "obs_wave_max": 1.44,
+   "obs_wind_max": 14.6
+  },
+  {
+   "date": "2021-05-29",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.07,
+   "obs_wave_max": 0.8,
+   "obs_wind_max": 16.2
+  },
+  {
+   "date": "2021-05-29",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.36,
+   "obs_wave_max": 1.1,
+   "obs_wind_max": 15.2
+  },
+  {
+   "date": "2021-05-29",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.54,
+   "obs_wave_max": 1.43,
+   "obs_wind_max": 25.1
+  },
+  {
+   "date": "2021-05-29",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.52,
+   "obs_wave_max": 1.64,
+   "obs_wind_max": 31.1
+  },
+  {
+   "date": "2021-05-30",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.35,
+   "obs_wave_max": 1.32,
+   "obs_wind_max": 18.6
+  },
+  {
+   "date": "2021-05-30",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.78,
+   "obs_wave_max": 1.17,
+   "obs_wind_max": 13.6
+  },
+  {
+   "date": "2021-05-30",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.35,
+   "obs_wave_max": 1.23,
+   "obs_wind_max": 12.5
+  },
+  {
+   "date": "2021-05-30",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.43,
+   "obs_wave_max": 1.21,
+   "obs_wind_max": 15.1
+  },
+  {
+   "date": "2021-05-30",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.4,
+   "obs_wind_max": 17.7
+  },
+  {
+   "date": "2021-05-30",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.34,
+   "obs_wave_max": 1.41,
+   "obs_wind_max": 11.2
+  },
+  {
+   "date": "2021-05-30",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.39,
+   "obs_wave_max": 1.4,
+   "obs_wind_max": 11.4
+  },
+  {
+   "date": "2021-05-30",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.47,
+   "obs_wave_max": 1.34,
+   "obs_wind_max": 11.5
+  },
+  {
+   "date": "2021-05-30",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.07,
+   "obs_wave_max": 0.83,
+   "obs_wind_max": 12.7
+  },
+  {
+   "date": "2021-05-30",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.32,
+   "obs_wave_max": 1.16,
+   "obs_wind_max": 15.4
+  },
+  {
+   "date": "2021-05-30",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.51,
+   "obs_wave_max": 1.6,
+   "obs_wind_max": 27.7
+  },
+  {
+   "date": "2021-05-30",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.66,
+   "obs_wave_max": 1.8,
+   "obs_wind_max": 32.5
+  },
+  {
+   "date": "2021-05-31",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.38,
+   "obs_wave_max": 1.37,
+   "obs_wind_max": 18.3
+  },
+  {
+   "date": "2021-05-31",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.74,
+   "obs_wave_max": 1.15,
+   "obs_wind_max": 12.5
+  },
+  {
+   "date": "2021-05-31",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.23,
+   "obs_wave_max": 1.21,
+   "obs_wind_max": 15.6
+  },
+  {
+   "date": "2021-05-31",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.29,
+   "obs_wave_max": 1.22,
+   "obs_wind_max": 20.3
+  },
+  {
+   "date": "2021-05-31",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.43,
+   "obs_wind_max": 25.5
+  },
+  {
+   "date": "2021-05-31",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.41,
+   "obs_wave_max": 1.52,
+   "obs_wind_max": 15.7
+  },
+  {
+   "date": "2021-05-31",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.54,
+   "obs_wave_max": 1.52,
+   "obs_wind_max": 19.6
+  },
+  {
+   "date": "2021-05-31",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.58,
+   "obs_wave_max": 1.47,
+   "obs_wind_max": 21.7
+  },
+  {
+   "date": "2021-05-31",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.16,
+   "obs_wave_max": 0.87,
+   "obs_wind_max": 9.8
+  },
+  {
+   "date": "2021-05-31",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.43,
+   "obs_wave_max": 1.23,
+   "obs_wind_max": 5.2
+  },
+  {
+   "date": "2021-05-31",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.61,
+   "obs_wave_max": 1.56,
+   "obs_wind_max": 17.7
+  },
+  {
+   "date": "2021-05-31",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.63,
+   "obs_wave_max": 1.75,
+   "obs_wind_max": 29.1
+  },
+  {
+   "date": "2021-06-01",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.42,
+   "obs_wave_max": 1.38,
+   "obs_wind_max": 18.9
+  },
+  {
+   "date": "2021-06-01",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.8,
+   "obs_wave_max": 1.18,
+   "obs_wind_max": 9.9
+  },
+  {
+   "date": "2021-06-01",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.28,
+   "obs_wave_max": 1.23,
+   "obs_wind_max": 16.9
+  },
+  {
+   "date": "2021-06-01",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.32,
+   "obs_wave_max": 1.2,
+   "obs_wind_max": 18.6
+  },
+  {
+   "date": "2021-06-01",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.2,
+   "obs_wave_max": 1.42,
+   "obs_wind_max": 19.9
+  },
+  {
+   "date": "2021-06-01",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.26,
+   "obs_wave_max": 1.41,
+   "obs_wind_max": 10.2
+  },
+  {
+   "date": "2021-06-01",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.4,
+   "obs_wave_max": 1.39,
+   "obs_wind_max": 12.1
+  },
+  {
+   "date": "2021-06-01",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.47,
+   "obs_wave_max": 1.35,
+   "obs_wind_max": 14.0
+  },
+  {
+   "date": "2021-06-01",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.14,
+   "obs_wave_max": 0.83,
+   "obs_wind_max": 7.7
+  },
+  {
+   "date": "2021-06-01",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.17,
+   "obs_wind_max": 4.3
+  },
+  {
+   "date": "2021-06-01",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.48,
+   "obs_wave_max": 1.48,
+   "obs_wind_max": 15.4
+  },
+  {
+   "date": "2021-06-01",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.49,
+   "obs_wave_max": 1.65,
+   "obs_wind_max": 25.0
+  },
+  {
+   "date": "2021-06-02",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.31,
+   "obs_wave_max": 1.32,
+   "obs_wind_max": 10.9
+  },
+  {
+   "date": "2021-06-02",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.78,
+   "obs_wave_max": 1.18,
+   "obs_wind_max": 6.4
+  },
+  {
+   "date": "2021-06-02",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.28,
+   "obs_wave_max": 1.21,
+   "obs_wind_max": 16.9
+  },
+  {
+   "date": "2021-06-02",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.29,
+   "obs_wave_max": 1.19,
+   "obs_wind_max": 19.8
+  },
+  {
+   "date": "2021-06-02",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.14,
+   "obs_wave_max": 1.4,
+   "obs_wind_max": 21.9
+  },
+  {
+   "date": "2021-06-02",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.15,
+   "obs_wave_max": 1.35,
+   "obs_wind_max": 10.7
+  },
+  {
+   "date": "2021-06-02",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.24,
+   "obs_wave_max": 1.33,
+   "obs_wind_max": 8.4
+  },
+  {
+   "date": "2021-06-02",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.35,
+   "obs_wave_max": 1.27,
+   "obs_wind_max": 11.6
+  },
+  {
+   "date": "2021-06-02",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.95,
+   "obs_wave_max": 0.81,
+   "obs_wind_max": 10.1
+  },
+  {
+   "date": "2021-06-02",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.16,
+   "obs_wave_max": 1.13,
+   "obs_wind_max": 7.1
+  },
+  {
+   "date": "2021-06-02",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.41,
+   "obs_wave_max": 1.47,
+   "obs_wind_max": 17.4
+  },
+  {
+   "date": "2021-06-02",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.56,
+   "obs_wave_max": 1.61,
+   "obs_wind_max": 21.6
+  },
+  {
+   "date": "2021-06-03",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.25,
+   "obs_wave_max": 1.23,
+   "obs_wind_max": 14.3
+  },
+  {
+   "date": "2021-06-03",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.73,
+   "obs_wave_max": 1.1,
+   "obs_wind_max": 8.6
+  },
+  {
+   "date": "2021-06-03",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.2,
+   "obs_wave_max": 1.14,
+   "obs_wind_max": 14.7
+  },
+  {
+   "date": "2021-06-03",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.24,
+   "obs_wave_max": 1.09,
+   "obs_wind_max": 12.6
+  },
+  {
+   "date": "2021-06-03",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.07,
+   "obs_wave_max": 1.28,
+   "obs_wind_max": 10.2
+  },
+  {
+   "date": "2021-06-03",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.1,
+   "obs_wave_max": 1.28,
+   "obs_wind_max": 6.3
+  },
+  {
+   "date": "2021-06-03",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.23,
+   "obs_wave_max": 1.31,
+   "obs_wind_max": 10.5
+  },
+  {
+   "date": "2021-06-03",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 1.35,
+   "obs_wave_max": 1.27,
+   "obs_wind_max": 15.3
+  },
+  {
+   "date": "2021-06-03",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.03,
+   "obs_wave_max": 0.8,
+   "obs_wind_max": 6.7
+  },
+  {
+   "date": "2021-06-03",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.32,
+   "obs_wave_max": 1.11,
+   "obs_wind_max": 6.7
+  },
+  {
+   "date": "2021-06-03",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.43,
+   "obs_wave_max": 1.43,
+   "obs_wind_max": 17.0
+  },
+  {
+   "date": "2021-06-03",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.58,
+   "obs_wave_max": 1.58,
+   "obs_wind_max": 23.9
+  },
+  {
+   "date": "2021-06-04",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.18,
+   "obs_wave_max": 1.21,
+   "obs_wind_max": 12.4
+  },
+  {
+   "date": "2021-06-04",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.68,
+   "obs_wave_max": 1.01,
+   "obs_wind_max": 6.9
+  },
+  {
+   "date": "2021-06-04",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.11,
+   "obs_wave_max": 1.05,
+   "obs_wind_max": 13.9
+  },
+  {
+   "date": "2021-06-04",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.11,
+   "obs_wave_max": 1.0,
+   "obs_wind_max": 9.5
+  },
+  {
+   "date": "2021-06-04",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.11,
+   "obs_wave_max": 1.19,
+   "obs_wind_max": 10.8
+  },
+  {
+   "date": "2021-06-04",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.19,
+   "obs_wave_max": 1.18,
+   "obs_wind_max": 5.7
+  },
+  {
+   "date": "2021-06-04",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.22,
+   "obs_wave_max": 1.21,
+   "obs_wind_max": 12.7
+  },
+  {
+   "date": "2021-06-04",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.17,
+   "obs_wind_max": 16.1
+  },
+  {
+   "date": "2021-06-04",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.88,
+   "obs_wave_max": 0.72,
+   "obs_wind_max": 13.7
+  },
+  {
+   "date": "2021-06-04",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.12,
+   "obs_wave_max": 1.0,
+   "obs_wind_max": 7.5
+  },
+  {
+   "date": "2021-06-04",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.3,
+   "obs_wind_max": 16.3
+  },
+  {
+   "date": "2021-06-04",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.43,
+   "obs_wave_max": 1.42,
+   "obs_wind_max": 19.4
+  },
+  {
+   "date": "2021-06-05",
+   "site": "veraval",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 1.16,
+   "obs_wave_max": 1.25,
+   "obs_wind_max": 15.7
+  },
+  {
+   "date": "2021-06-05",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.68,
+   "obs_wave_max": 1.08,
+   "obs_wind_max": 8.6
+  },
+  {
+   "date": "2021-06-05",
+   "site": "ratnagiri",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.08,
+   "obs_wave_max": 1.09,
+   "obs_wind_max": 7.5
+  },
+  {
+   "date": "2021-06-05",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.07,
+   "obs_wave_max": 1.06,
+   "obs_wind_max": 4.4
+  },
+  {
+   "date": "2021-06-05",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.99,
+   "obs_wave_max": 1.22,
+   "obs_wind_max": 9.9
+  },
+  {
+   "date": "2021-06-05",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.06,
+   "obs_wave_max": 1.2,
+   "obs_wind_max": 4.7
+  },
+  {
+   "date": "2021-06-05",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.15,
+   "obs_wave_max": 1.22,
+   "obs_wind_max": 5.7
+  },
+  {
+   "date": "2021-06-05",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.22,
+   "obs_wave_max": 1.18,
+   "obs_wind_max": 13.2
+  },
+  {
+   "date": "2021-06-05",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.81,
+   "obs_wave_max": 0.78,
+   "obs_wind_max": 6.8
+  },
+  {
+   "date": "2021-06-05",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.92,
+   "obs_wave_max": 1.08,
+   "obs_wind_max": 8.4
+  },
+  {
+   "date": "2021-06-05",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.24,
+   "obs_wave_max": 1.35,
+   "obs_wind_max": 18.4
+  },
+  {
+   "date": "2021-06-05",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.38,
+   "obs_wave_max": 1.49,
+   "obs_wind_max": 20.7
+  },
+  {
+   "date": "2021-06-06",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.31,
+   "obs_wave_max": 1.31,
+   "obs_wind_max": 16.3
+  },
+  {
+   "date": "2021-06-06",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.83,
+   "obs_wave_max": 1.19,
+   "obs_wind_max": 12.7
+  },
+  {
+   "date": "2021-06-06",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.26,
+   "obs_wave_max": 1.22,
+   "obs_wind_max": 9.1
+  },
+  {
+   "date": "2021-06-06",
+   "site": "malvan",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.18,
+   "obs_wave_max": 1.15,
+   "obs_wind_max": 10.1
+  },
+  {
+   "date": "2021-06-06",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 0.96,
+   "obs_wave_max": 1.29,
+   "obs_wind_max": 11.4
+  },
+  {
+   "date": "2021-06-06",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.96,
+   "obs_wave_max": 1.24,
+   "obs_wind_max": 10.2
+  },
+  {
+   "date": "2021-06-06",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.99,
+   "obs_wave_max": 1.21,
+   "obs_wind_max": 8.7
+  },
+  {
+   "date": "2021-06-06",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.06,
+   "obs_wave_max": 1.14,
+   "obs_wind_max": 6.6
+  },
+  {
+   "date": "2021-06-06",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.71,
+   "obs_wave_max": 0.65,
+   "obs_wind_max": 10.7
+  },
+  {
+   "date": "2021-06-06",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.89,
+   "obs_wave_max": 0.91,
+   "obs_wind_max": 9.2
+  },
+  {
+   "date": "2021-06-06",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.2,
+   "obs_wave_max": 1.24,
+   "obs_wind_max": 12.9
+  },
+  {
+   "date": "2021-06-06",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.28,
+   "obs_wave_max": 1.38,
+   "obs_wind_max": 18.8
+  },
+  {
+   "date": "2021-06-07",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.47,
+   "obs_wave_max": 1.44,
+   "obs_wind_max": 19.2
+  },
+  {
+   "date": "2021-06-07",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.88,
+   "obs_wave_max": 1.25,
+   "obs_wind_max": 15.8
+  },
+  {
+   "date": "2021-06-07",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.39,
+   "obs_wave_max": 1.26,
+   "obs_wind_max": 13.5
+  },
+  {
+   "date": "2021-06-07",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.38,
+   "obs_wave_max": 1.21,
+   "obs_wind_max": 15.7
+  },
+  {
+   "date": "2021-06-07",
+   "site": "goa",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.23,
+   "obs_wave_max": 1.36,
+   "obs_wind_max": 14.2
+  },
+  {
+   "date": "2021-06-07",
+   "site": "karwar",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.22,
+   "obs_wave_max": 1.3,
+   "obs_wind_max": 11.1
+  },
+  {
+   "date": "2021-06-07",
+   "site": "malpe",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.15,
+   "obs_wave_max": 1.22,
+   "obs_wind_max": 5.9
+  },
+  {
+   "date": "2021-06-07",
+   "site": "mangaluru",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.24,
+   "obs_wave_max": 1.15,
+   "obs_wind_max": 11.1
+  },
+  {
+   "date": "2021-06-07",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.74,
+   "obs_wave_max": 0.68,
+   "obs_wind_max": 14.2
+  },
+  {
+   "date": "2021-06-07",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.87,
+   "obs_wave_max": 0.96,
+   "obs_wind_max": 16.2
+  },
+  {
+   "date": "2021-06-07",
+   "site": "neendakara",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.09,
+   "obs_wave_max": 1.3,
+   "obs_wind_max": 25.0
+  },
+  {
+   "date": "2021-06-07",
+   "site": "vizhinjam",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.23,
+   "obs_wave_max": 1.45,
+   "obs_wind_max": 26.3
+  },
+  {
+   "date": "2021-06-08",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.78,
+   "obs_wave_max": 1.73,
+   "obs_wind_max": 22.6
+  },
+  {
+   "date": "2021-06-08",
+   "site": "mumbai",
+   "forecast": "LOW",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.14,
+   "obs_wave_max": 1.45,
+   "obs_wind_max": 14.8
+  },
+  {
+   "date": "2021-06-08",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.7,
+   "obs_wave_max": 1.69,
+   "obs_wind_max": 20.4
+  },
+  {
+   "date": "2021-06-08",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.69,
+   "obs_wave_max": 1.4,
+   "obs_wind_max": 15.0
+  },
+  {
+   "date": "2021-06-08",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.44,
+   "obs_wave_max": 1.57,
+   "obs_wind_max": 15.9
+  },
+  {
+   "date": "2021-06-08",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.4,
+   "obs_wave_max": 1.45,
+   "obs_wind_max": 10.6
+  },
+  {
+   "date": "2021-06-08",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.39,
+   "obs_wave_max": 1.36,
+   "obs_wind_max": 11.7
+  },
+  {
+   "date": "2021-06-08",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 1.43,
+   "obs_wave_max": 1.28,
+   "obs_wind_max": 13.1
+  },
+  {
+   "date": "2021-06-08",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.95,
+   "obs_wave_max": 0.74,
+   "obs_wind_max": 13.9
+  },
+  {
+   "date": "2021-06-08",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.25,
+   "obs_wave_max": 1.03,
+   "obs_wind_max": 14.1
+  },
+  {
+   "date": "2021-06-08",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.38,
+   "obs_wave_max": 1.33,
+   "obs_wind_max": 22.9
+  },
+  {
+   "date": "2021-06-08",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.38,
+   "obs_wave_max": 1.47,
+   "obs_wind_max": 27.1
+  },
+  {
+   "date": "2021-06-09",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.0,
+   "obs_wave_max": 2.12,
+   "obs_wind_max": 29.7
+  },
+  {
+   "date": "2021-06-09",
+   "site": "mumbai",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.85,
+   "obs_wind_max": 17.6
+  },
+  {
+   "date": "2021-06-09",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.91,
+   "obs_wave_max": 1.75,
+   "obs_wind_max": 12.9
+  },
+  {
+   "date": "2021-06-09",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.83,
+   "obs_wave_max": 1.61,
+   "obs_wind_max": 12.6
+  },
+  {
+   "date": "2021-06-09",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.52,
+   "obs_wave_max": 1.81,
+   "obs_wind_max": 16.9
+  },
+  {
+   "date": "2021-06-09",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.5,
+   "obs_wave_max": 1.71,
+   "obs_wind_max": 11.0
+  },
+  {
+   "date": "2021-06-09",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.53,
+   "obs_wave_max": 1.61,
+   "obs_wind_max": 9.5
+  },
+  {
+   "date": "2021-06-09",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.59,
+   "obs_wave_max": 1.52,
+   "obs_wind_max": 11.6
+  },
+  {
+   "date": "2021-06-09",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 0.99,
+   "obs_wave_max": 0.78,
+   "obs_wind_max": 10.5
+  },
+  {
+   "date": "2021-06-09",
+   "site": "kochi",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.18,
+   "obs_wave_max": 1.09,
+   "obs_wind_max": 13.4
+  },
+  {
+   "date": "2021-06-09",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.3,
+   "obs_wave_max": 1.39,
+   "obs_wind_max": 21.8
+  },
+  {
+   "date": "2021-06-09",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.31,
+   "obs_wave_max": 1.51,
+   "obs_wind_max": 28.6
+  },
+  {
+   "date": "2021-06-10",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.16,
+   "obs_wave_max": 2.15,
+   "obs_wind_max": 25.6
+  },
+  {
+   "date": "2021-06-10",
+   "site": "mumbai",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.36,
+   "obs_wave_max": 1.98,
+   "obs_wind_max": 20.3
+  },
+  {
+   "date": "2021-06-10",
+   "site": "ratnagiri",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.11,
+   "obs_wave_max": 1.93,
+   "obs_wind_max": 18.5
+  },
+  {
+   "date": "2021-06-10",
+   "site": "malvan",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.02,
+   "obs_wave_max": 1.88,
+   "obs_wind_max": 20.0
+  },
+  {
+   "date": "2021-06-10",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.71,
+   "obs_wave_max": 2.11,
+   "obs_wind_max": 21.7
+  },
+  {
+   "date": "2021-06-10",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.7,
+   "obs_wave_max": 1.92,
+   "obs_wind_max": 12.4
+  },
+  {
+   "date": "2021-06-10",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.73,
+   "obs_wave_max": 1.76,
+   "obs_wind_max": 11.8
+  },
+  {
+   "date": "2021-06-10",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.69,
+   "obs_wave_max": 1.62,
+   "obs_wind_max": 15.3
+  },
+  {
+   "date": "2021-06-10",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.09,
+   "obs_wave_max": 0.82,
+   "obs_wind_max": 9.3
+  },
+  {
+   "date": "2021-06-10",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.29,
+   "obs_wave_max": 1.1,
+   "obs_wind_max": 4.5
+  },
+  {
+   "date": "2021-06-10",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.43,
+   "obs_wave_max": 1.36,
+   "obs_wind_max": 21.5
+  },
+  {
+   "date": "2021-06-10",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.41,
+   "obs_wave_max": 1.48,
+   "obs_wind_max": 27.1
+  },
+  {
+   "date": "2021-06-11",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.27,
+   "obs_wave_max": 2.2,
+   "obs_wind_max": 23.2
+  },
+  {
+   "date": "2021-06-11",
+   "site": "mumbai",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.38,
+   "obs_wave_max": 2.0,
+   "obs_wind_max": 8.9
+  },
+  {
+   "date": "2021-06-11",
+   "site": "ratnagiri",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.65,
+   "obs_wave_max": 2.32,
+   "obs_wind_max": 24.8
+  },
+  {
+   "date": "2021-06-11",
+   "site": "malvan",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.65,
+   "obs_wave_max": 2.25,
+   "obs_wind_max": 24.1
+  },
+  {
+   "date": "2021-06-11",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "HIGH",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.24,
+   "obs_wave_max": 2.63,
+   "obs_wind_max": 33.5
+  },
+  {
+   "date": "2021-06-11",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.24,
+   "obs_wave_max": 2.5,
+   "obs_wind_max": 16.8
+  },
+  {
+   "date": "2021-06-11",
+   "site": "malpe",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.23,
+   "obs_wave_max": 2.21,
+   "obs_wind_max": 21.4
+  },
+  {
+   "date": "2021-06-11",
+   "site": "mangaluru",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.2,
+   "obs_wave_max": 2.0,
+   "obs_wind_max": 28.3
+  },
+  {
+   "date": "2021-06-11",
+   "site": "kozhikode",
+   "forecast": "LOW",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.21,
+   "obs_wave_max": 0.92,
+   "obs_wind_max": 14.2
+  },
+  {
+   "date": "2021-06-11",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.34,
+   "obs_wave_max": 1.21,
+   "obs_wind_max": 12.0
+  },
+  {
+   "date": "2021-06-11",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.35,
+   "obs_wave_max": 1.45,
+   "obs_wind_max": 23.3
+  },
+  {
+   "date": "2021-06-11",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.39,
+   "obs_wave_max": 1.62,
+   "obs_wind_max": 30.1
+  },
+  {
+   "date": "2021-06-12",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.36,
+   "obs_wave_max": 2.36,
+   "obs_wind_max": 20.6
+  },
+  {
+   "date": "2021-06-12",
+   "site": "mumbai",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.45,
+   "obs_wave_max": 2.11,
+   "obs_wind_max": 19.5
+  },
+  {
+   "date": "2021-06-12",
+   "site": "ratnagiri",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.69,
+   "obs_wave_max": 2.2,
+   "obs_wind_max": 14.6
+  },
+  {
+   "date": "2021-06-12",
+   "site": "malvan",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.52,
+   "obs_wave_max": 2.23,
+   "obs_wind_max": 16.8
+  },
+  {
+   "date": "2021-06-12",
+   "site": "goa",
+   "forecast": "MODERATE",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.28,
+   "obs_wave_max": 2.62,
+   "obs_wind_max": 22.2
+  },
+  {
+   "date": "2021-06-12",
+   "site": "karwar",
+   "forecast": "MODERATE",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.3,
+   "obs_wave_max": 2.59,
+   "obs_wind_max": 12.5
+  },
+  {
+   "date": "2021-06-12",
+   "site": "malpe",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.52,
+   "obs_wave_max": 2.54,
+   "obs_wind_max": 18.0
+  },
+  {
+   "date": "2021-06-12",
+   "site": "mangaluru",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.51,
+   "obs_wave_max": 2.38,
+   "obs_wind_max": 27.6
+  },
+  {
+   "date": "2021-06-12",
+   "site": "kozhikode",
+   "forecast": "MODERATE",
+   "observed": "LOW",
+   "persistence": "LOW",
+   "fc_wave_max": 1.56,
+   "obs_wave_max": 1.2,
+   "obs_wind_max": 26.0
+  },
+  {
+   "date": "2021-06-12",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.68,
+   "obs_wave_max": 1.58,
+   "obs_wind_max": 25.3
+  },
+  {
+   "date": "2021-06-12",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.72,
+   "obs_wave_max": 1.83,
+   "obs_wind_max": 31.6
+  },
+  {
+   "date": "2021-06-12",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.73,
+   "obs_wave_max": 1.97,
+   "obs_wind_max": 34.9
+  },
+  {
+   "date": "2021-06-13",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.27,
+   "obs_wave_max": 2.27,
+   "obs_wind_max": 20.4
+  },
+  {
+   "date": "2021-06-13",
+   "site": "mumbai",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.45,
+   "obs_wave_max": 2.07,
+   "obs_wind_max": 14.3
+  },
+  {
+   "date": "2021-06-13",
+   "site": "ratnagiri",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 3.07,
+   "obs_wave_max": 2.24,
+   "obs_wind_max": 14.5
+  },
+  {
+   "date": "2021-06-13",
+   "site": "malvan",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 3.25,
+   "obs_wave_max": 2.29,
+   "obs_wind_max": 13.7
+  },
+  {
+   "date": "2021-06-13",
+   "site": "goa",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.66,
+   "obs_wave_max": 2.93,
+   "obs_wind_max": 29.5
+  },
+  {
+   "date": "2021-06-13",
+   "site": "karwar",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.66,
+   "obs_wave_max": 2.97,
+   "obs_wind_max": 16.1
+  },
+  {
+   "date": "2021-06-13",
+   "site": "malpe",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.88,
+   "obs_wave_max": 2.91,
+   "obs_wind_max": 27.8
+  },
+  {
+   "date": "2021-06-13",
+   "site": "mangaluru",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.84,
+   "obs_wave_max": 2.75,
+   "obs_wind_max": 40.1
+  },
+  {
+   "date": "2021-06-13",
+   "site": "kozhikode",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "LOW",
+   "fc_wave_max": 1.76,
+   "obs_wave_max": 1.31,
+   "obs_wind_max": 24.6
+  },
+  {
+   "date": "2021-06-13",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.1,
+   "obs_wave_max": 1.77,
+   "obs_wind_max": 23.4
+  },
+  {
+   "date": "2021-06-13",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.05,
+   "obs_wave_max": 2.01,
+   "obs_wind_max": 26.3
+  },
+  {
+   "date": "2021-06-13",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.95,
+   "obs_wave_max": 1.98,
+   "obs_wind_max": 28.6
+  },
+  {
+   "date": "2021-06-14",
+   "site": "veraval",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.39,
+   "obs_wave_max": 2.49,
+   "obs_wind_max": 24.8
+  },
+  {
+   "date": "2021-06-14",
+   "site": "mumbai",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.42,
+   "obs_wave_max": 2.16,
+   "obs_wind_max": 15.2
+  },
+  {
+   "date": "2021-06-14",
+   "site": "ratnagiri",
+   "forecast": "HIGH",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.96,
+   "obs_wave_max": 2.35,
+   "obs_wind_max": 19.2
+  },
+  {
+   "date": "2021-06-14",
+   "site": "malvan",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "MODERATE",
+   "fc_wave_max": 3.31,
+   "obs_wave_max": 2.56,
+   "obs_wind_max": 21.5
+  },
+  {
+   "date": "2021-06-14",
+   "site": "goa",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.17,
+   "obs_wave_max": 3.13,
+   "obs_wind_max": 28.6
+  },
+  {
+   "date": "2021-06-14",
+   "site": "karwar",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.24,
+   "obs_wave_max": 3.09,
+   "obs_wind_max": 21.3
+  },
+  {
+   "date": "2021-06-14",
+   "site": "malpe",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.21,
+   "obs_wave_max": 2.81,
+   "obs_wind_max": 19.5
+  },
+  {
+   "date": "2021-06-14",
+   "site": "mangaluru",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.14,
+   "obs_wave_max": 2.62,
+   "obs_wind_max": 27.2
+  },
+  {
+   "date": "2021-06-14",
+   "site": "kozhikode",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.92,
+   "obs_wave_max": 1.27,
+   "obs_wind_max": 20.8
+  },
+  {
+   "date": "2021-06-14",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.08,
+   "obs_wave_max": 1.68,
+   "obs_wind_max": 22.7
+  },
+  {
+   "date": "2021-06-14",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.94,
+   "obs_wave_max": 1.92,
+   "obs_wind_max": 29.5
+  },
+  {
+   "date": "2021-06-14",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.93,
+   "obs_wave_max": 1.95,
+   "obs_wind_max": 28.7
+  },
+  {
+   "date": "2021-06-15",
+   "site": "veraval",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 2.61,
+   "obs_wave_max": 2.86,
+   "obs_wind_max": 32.7
+  },
+  {
+   "date": "2021-06-15",
+   "site": "mumbai",
+   "forecast": "MODERATE",
+   "observed": "HIGH",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.61,
+   "obs_wave_max": 2.53,
+   "obs_wind_max": 22.6
+  },
+  {
+   "date": "2021-06-15",
+   "site": "ratnagiri",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.31,
+   "obs_wave_max": 2.82,
+   "obs_wind_max": 25.0
+  },
+  {
+   "date": "2021-06-15",
+   "site": "malvan",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.54,
+   "obs_wave_max": 2.9,
+   "obs_wind_max": 28.9
+  },
+  {
+   "date": "2021-06-15",
+   "site": "goa",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.24,
+   "obs_wave_max": 3.38,
+   "obs_wind_max": 37.0
+  },
+  {
+   "date": "2021-06-15",
+   "site": "karwar",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.42,
+   "obs_wave_max": 3.23,
+   "obs_wind_max": 22.8
+  },
+  {
+   "date": "2021-06-15",
+   "site": "malpe",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.44,
+   "obs_wave_max": 3.17,
+   "obs_wind_max": 22.5
+  },
+  {
+   "date": "2021-06-15",
+   "site": "mangaluru",
+   "forecast": "HIGH",
+   "observed": "HIGH",
+   "persistence": "HIGH",
+   "fc_wave_max": 3.36,
+   "obs_wave_max": 2.97,
+   "obs_wind_max": 30.9
+  },
+  {
+   "date": "2021-06-15",
+   "site": "kozhikode",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.04,
+   "obs_wave_max": 1.39,
+   "obs_wind_max": 21.6
+  },
+  {
+   "date": "2021-06-15",
+   "site": "kochi",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.23,
+   "obs_wave_max": 1.8,
+   "obs_wind_max": 20.5
+  },
+  {
+   "date": "2021-06-15",
+   "site": "neendakara",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 2.01,
+   "obs_wave_max": 2.06,
+   "obs_wind_max": 24.3
+  },
+  {
+   "date": "2021-06-15",
+   "site": "vizhinjam",
+   "forecast": "MODERATE",
+   "observed": "MODERATE",
+   "persistence": "MODERATE",
+   "fc_wave_max": 1.95,
+   "obs_wave_max": 2.06,
+   "obs_wind_max": 26.2
+  }
+ ],
+ "generated_at": "2026-09-25T13:42:19.662659+00:00",
+ "rule_version": "orca-rules-0.2.0",
+ "season": {
+  "from": "2021-05-01",
+  "to": "2021-06-15"
+ },
+ "window": "06:00\u201312:00 IST next morning (00, 03, 06 UTC), decided at 21:30 IST",
+ "sites": [
+  {
+   "id": "veraval",
+   "name": "Veraval",
+   "lat": 20.846,
+   "lon": 70.438
+  },
+  {
+   "id": "mumbai",
+   "name": "Mumbai (Sassoon Dock)",
+   "lat": 18.974,
+   "lon": 72.897
+  },
+  {
+   "id": "ratnagiri",
+   "name": "Ratnagiri",
+   "lat": 16.9,
+   "lon": 73.27
+  },
+  {
+   "id": "malvan",
+   "name": "Malvan",
+   "lat": 15.973,
+   "lon": 73.484
+  },
+  {
+   "id": "goa",
+   "name": "Vasco / Mormugao (Goa)",
+   "lat": 15.332,
+   "lon": 73.837
+  },
+  {
+   "id": "karwar",
+   "name": "Karwar",
+   "lat": 14.722,
+   "lon": 74.156
+  },
+  {
+   "id": "malpe",
+   "name": "Malpe (Udupi)",
+   "lat": 13.26,
+   "lon": 74.7
+  },
+  {
+   "id": "mangaluru",
+   "name": "Mangaluru",
+   "lat": 12.783,
+   "lon": 74.806
+  },
+  {
+   "id": "kozhikode",
+   "name": "Kozhikode (Beypore)",
+   "lat": 11.083,
+   "lon": 75.824
+  },
+  {
+   "id": "kochi",
+   "name": "Kochi",
+   "lat": 9.88,
+   "lon": 76.24
+  },
+  {
+   "id": "neendakara",
+   "name": "Neendakara (Kollam)",
+   "lat": 8.85,
+   "lon": 76.54
+  },
+  {
+   "id": "vizhinjam",
+   "name": "Vizhinjam",
+   "lat": 8.316,
+   "lon": 77.054
+  }
+ ],
+ "method": {
+  "forecast": "NOAA GFS 0.5\u00b0 winds + GFS-Wave 0.25\u00b0 significant wave height from the 12Z run (on NOAA's server by about 21:15 IST), leads 12/15/18 h; nearest sea cell to a point 10 km off each harbour.",
+  "truth": "ECMWF ERA5 hourly reanalysis (0.25\u00b0, via Google's public ARCO-ERA5 store), same hours and points.",
+  "scoring": "ORCA rule set orca-rules-0.2.0: wave height (WMO sea state) and 10 m wind (Beaufort); a window takes its worst hour. 'Dangerous' = HIGH or SEVERE.",
+  "baseline": "Persistence: the level ERA5 shows at 20:30 IST that evening, used as tomorrow's forecast.",
+  "limits": "Warnings, thunderstorms and visibility are not part of this test (no independent truth for them). ERA5 is itself a model reanalysis, not a buoy measurement."
+ },
+ "sources": [
+  "s3://noaa-gfs-bdp-pds (NOAA Open Data Dissemination)",
+  "gs://gcp-public-data-arco-era5 (ECMWF ERA5, Copernicus Climate Change Service)"
+ ]
+}

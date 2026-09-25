@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/in-imd-en/alert-style.xsl" ?>
+<cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+  <cap:identifier>urn:oid:2.49.0.1.356.0.2021.5.12.12.51.44</cap:identifier>
+  <cap:sender>cyclonewarning@gmail.com</cap:sender>
+  <cap:sent>2021-05-12T18:21:44+05:30</cap:sent>
+  <cap:status>Actual</cap:status>
+  <cap:msgType>Update</cap:msgType>
+  <cap:scope>Public</cap:scope>
+  <cap:references>cyclonewarning@gmail.com,urn:oid:2.49.0.1.356.0.2021.5.11.12.36.52,2021-05-11T18:06:52+05:30</cap:references>
+  <cap:info>
+    <cap:language>en</cap:language>
+    <cap:category>Met</cap:category>
+    <cap:event>rough seas</cap:event>
+    <cap:responseType>Monitor</cap:responseType>
+    <cap:urgency>Expected</cap:urgency>
+    <cap:severity>Moderate</cap:severity>
+    <cap:certainty>Likely</cap:certainty>
+    <cap:onset>2021-05-12T08:30:00+05:30</cap:onset>
+    <cap:expires>2021-05-15T08:30:00+05:30</cap:expires>
+    <cap:senderName>RSMC IMD, NEW DELHI</cap:senderName>
+    <cap:headline>Fishermen warning</cap:headline>
+    <cap:description>Fishermen are advised not to venture out to the southeast Arabian Sea and adjoining Maldives,
+Comorin and Lakshadweep area, Kerala coast from morning of 13 May and east central Arabian sea and along and off Karnataka-Goa and Maharashtra and
+Goa coasts from 14th Night. Those, who are in Sea are advised to return to the coast by the night of 12th May, 2021.
+♦ A Western Disturbance as a trough runs along Longitude 70oE and north of Latitude 28oN in middle tropospheric
+ The development of this system is being closely monitored and concerned state governments are being informed regularly.</cap:description>
+    <cap:instruction>Action suggested:
+• Deep se fishermen are advised to return to coasts by 14th May.</cap:instruction>
+    <cap:web>http://www.rsmcnewdelhi.imd.gov.in</cap:web>
+    <cap:area>
+      <cap:areaDesc>south Arabian Sea, Lakshadweep area, Kerala coast</cap:areaDesc>
+      <cap:polygon>11.1143,52.3357 9.6073,51.6100 8.8114,50.8843 7.5344,50.3199 7.0545,49.7554 5.6120,49.5135 4.6483,49.5135 3.4418,49.6748 3.2003,49.9167 2.6366,50.9649 2.3144,52.2551 2.2338,52.8195 2.1532,54.5128 2.1532,55.5610 2.2338,56.7705 2.3144,58.6251 2.4755,58.9476 2.7977,60.8022 3.0393,61.2054 3.8441,62.1730 4.8090,62.8181 5.1303,62.8181 5.2106,62.7374 6.0932,62.6568 6.8143,62.5762 7.6143,62.8987 9.6073,62.4149 10.4014,60.7216 11.1934,59.5927 11.7466,58.4638 11.8255,57.4156 11.5886,56.3674 11.9044,55.6417 11.7466,54.3515 11.4306,53.1420 11.1143,52.3357</cap:polygon>
+      <cap:circle>7.374,69.833 710</cap:circle>
+    </cap:area>
+  </cap:info>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+  <ds:Reference><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>LKoM5RCuFlMdvX68i43248rje3l76riMKDDjI3s61Nc=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>jOM7Q52QqwU+2wFTUNrYFtFlPNtcaceR1d9DU6/OZc2p5Eg4l890L0HtYeZVM17opABn0QthM9d+Cz4qFyypdZvNbutvmRXcw1u4PnW7kBLjY9z96TrDC9pNLF90318XPL14+nqwyP/PZUhzjjGlodRfVvAyrvpXK3Cp4b6trmw8Eip4e0V4NVgtfcmOqk5tzvofe05CgqazCcVgaKqB2GxEz5Ca8Ew+bi/MoVO5YV9d6ckknzRODH7mpVQ0WbIUGyYTANgps7ZPoaSUOxjw93V8XZLVBc29tOqgoHFPV1dhvmPBg1BYS9Y4BB9yEWoZBeqg8bHC1+4NSINhMRqfbA==</ds:SignatureValue>
+<ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIECzCCAvOgAwIBAgIBADANBgkqhkiG9w0BAQsFADCBnzELMAkGA1UEBhMCVVMxETAPBgNVBAgMCFZpcmdpbmlhMQ8wDQYDVQQHDAZSZXN0b24xFjAUBgNVBAoMDWFsZXJ0LWh1Yi5vcmcxDjAMBgNVBAsMBWFkbWluMRgwFgYDVQQDDA9FbGlvdCBDaHJpc3RpYW4xKjAoBgkqhkiG9w0BCQEWG2VsaW90LmouY2hyaXN0aWFuQGdtYWlsLmNvbTAeFw0xOTA3MjIxMDQzMzRaFw0yOTA3MTkxMDQzMzRaMIGfMQswCQYDVQQGEwJVUzERMA8GA1UECAwIVmlyZ2luaWExDzANBgNVBAcMBlJlc3RvbjEWMBQGA1UECgwNYWxlcnQtaHViLm9yZzEOMAwGA1UECwwFYWRtaW4xGDAWBgNVBAMMD0VsaW90IENocmlzdGlhbjEqMCgGCSqGSIb3DQEJARYbZWxpb3Quai5jaHJpc3RpYW5AZ21haWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw5KiaOWF0XAG8LmFOFmGpbf4a+Ro3Y7t85+ytyiPLWcdLyjvbiwzRBVu5A2MCBHjJQWmHm3Et3nJxnI58pN3VZ7/3cEEOYpsveR1EJuWwC6Ow9bU1qJjLvIfw+IQ9dmZ1XZuJZCUooeVdWb0JVjedUZ7gwBs3qHxypxEAFFYljDZsK3hjQVUBerE8U0TMSnpiol3slLcKtvY3ZDiSv+EIpmjjOVJqT4BlMB9+W+tYDDhb1uwBY+f9pa2kYgE4KUxA1uyn/HOi+KAYPK525EWnbfGM2xf001lwHDEo7W0fuooTi/WkUpz+WMKuxxhivCnE3WOTu1FCdBTCujfaLGsQwIDAQABo1AwTjAdBgNVHQ4EFgQU78XZNJmiTJXTwsXoPa1oXLbC0pkwHwYDVR0jBBgwFoAU78XZNJmiTJXTwsXoPa1oXLbC0pkwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAQf+N3RFE0qrcJ1R6PkfVBok3Pv3YV3C0BxKQkA4+3C56W16bVT27fBbLh2HL9UPfux2rzWJjBfthroz6hxFKs/OWmdKhBkjvpM5J261+HTQEbIuZEASq2DjS7CfUq4xAzL2GhBL440xmmWuMrcu7Mw6T8YedsVfid4P5bN4Wsa30Ffj+FgPdApiDOu4BLz7n632hZrKUk951ChdomJs/vLk1fu737IyzVzw0m3iMtR7MrU0FPBC+W9AxubmLTruaSnhOs6j9sJKhRmGqw9AyAxey19NaMy0O6qILTrlA2Pe+S1t2Xa0wWzB6cQu8v8viLnp5SKaWf/j69hwkf5139g==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></cap:alert>
+

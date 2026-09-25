@@ -207,7 +207,7 @@ def build_plan(
 def _marine_source(svc: Services, results: dict) -> str:
     if "data" in results:
         return results["data"].value[1].marine_source
-    return "replay" if svc.mode == "replay" else "live"
+    return svc.offline_source or "live"
 
 
 def _top_zone_latlon(results: dict) -> tuple[float, float] | None:

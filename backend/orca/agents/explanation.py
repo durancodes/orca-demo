@@ -199,6 +199,8 @@ def template_explanation(language: str, ctx: dict[str, Any]) -> Explanation:
                 lines.append(t("pfz.issue", lang, issues="; ".join(top["issues"])))
             if top.get("demo"):
                 lines.append(t("pfz.demo", lang))
+            elif top.get("derived"):
+                lines.append(t("pfz.derived", lang, basis=top.get("basis") or "SST"))
         else:
             lines.append(t("pfz.none", lang))
 
@@ -214,6 +216,9 @@ def template_explanation(language: str, ctx: dict[str, Any]) -> Explanation:
             lines.append(t("safety.go_window", lang, start=_ist(w.start), end=_ist(w.end)))
         elif level != "LOW":
             lines.append(t("safety.no_go_window", lang))
+        if level in ("MODERATE", "HIGH", "SEVERE") and not rising and decision.key_factors:
+            kf = decision.key_factors[0]
+            lines.append(t("safety.reason", lang, factor=factor_text(kf.variable, kf.value)))
         for c in decision.hard_constraints:
             lines.append(t("safety.constraint", lang, text=c))
         actions.append(t(f"advice.{level}", lang))
@@ -223,7 +228,8 @@ def template_explanation(language: str, ctx: dict[str, Any]) -> Explanation:
     cond = ctx.get("conditions")
     if cond is not None and decision is None:
         now = cond.get("now", {})
-        lines.append(t("conditions.now", lang, place=place, wave=_fmt(now.get("wave_height_m")), wind=_fmt(now.get("wind_kmh")),
+        key = "conditions.now" if now.get("sea_level_m") is not None else "conditions.now_notide"
+        lines.append(t(key, lang, place=place, wave=_fmt(now.get("wave_height_m")), wind=_fmt(now.get("wind_kmh")),
                        sst=_fmt(now.get("sst_c")), tide=_fmt(now.get("sea_level_m"), 2)))
         if cond.get("risk_level"):
             lines.append(t("conditions.trend", lang, level=t(f"level.{cond['risk_level']}", lang)))
@@ -231,11 +237,14 @@ def template_explanation(language: str, ctx: dict[str, Any]) -> Explanation:
 
     alerts = ctx.get("alerts")
     if alerts is not None:
-        covering = alerts.get("covering", [])
+        covering = [a for a in alerts.get("covering", []) if a.get("data_type") != "derived"]
         if covering:
             lines.append(t("alerts.some", lang, list="; ".join(f"{a['event']} ({a['severity']}, {a['source']})" for a in covering)))
         else:
             lines.append(t("alerts.none", lang))
+        watches = [a for a in alerts.get("covering", []) + alerts.get("elsewhere", []) if a.get("data_type") == "derived"]
+        if watches:
+            lines.append(t("alerts.cyclone_watch", lang, headline=watches[0]["headline"]))
 
     geo = ctx.get("geofence")
     if geo is not None and ("avoid" in intents or "safety" in intents or "alerts" in intents or "route" in intents):
@@ -263,12 +272,18 @@ def template_explanation(language: str, ctx: dict[str, Any]) -> Explanation:
             items = "; ".join(f"{h['lat']:.2f}N {h['lon']:.2f}E — {h['chl']} mg/m³, {h['sst']} °C" + (" (SST front)" if h.get("sst_front") else "")
                               for h in hot["hotspots"][:4])
             lines.append(t("hotspots.list", lang, list=items))
+        elif (ctx.get("data") or {}).get("marine_source") == "historical":
+            lines.append(t("hotspots.no_archive", lang))
         else:
             lines.append(t("hotspots.unavailable", lang))
 
     prod = ctx.get("productivity")
     if prod is not None:
-        if prod.get("available"):
+        if prod.get("available") and prod.get("sst_anomaly_c") is not None:  # real satellite SST record
+            lines.append(t("productivity.sst", lang, place=place, sst=f"{prod['sst_change_c']:+.1f}",
+                           days=prod["period_days"]["recent"], anom=f"{prod['sst_anomaly_c']:+.1f}"))
+            lines.append(t("productivity.warm" if prod["sst_anomaly_c"] >= 0.5 else "productivity.not_warm", lang))
+        elif prod.get("available"):
             lines.append(t("productivity.summary", lang, place=place, sst=f"{prod['sst_change_c']:+.1f}", chl=f"{prod['chl_change_pct']:+.0f}"))
             lines.append(t("productivity.interpretation", lang))
         else:
@@ -285,6 +300,9 @@ def template_explanation(language: str, ctx: dict[str, Any]) -> Explanation:
 
     if (ctx.get("data") or {}).get("simulated"):
         lines.append(t("simulated", lang))
+    hist = ctx.get("historical")
+    if hist:
+        lines.append(t("historical", lang, event=hist["event"], as_of=hist["as_of"]))
     note = None
     if language not in SUPPORTED_TEMPLATE_LANGUAGES:
         note = t("fallback.language", "en", language=LANGUAGE_NAMES.get(language, language))

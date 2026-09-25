@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/in-imd-en/alert-style.xsl" ?>
+<cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+  <cap:identifier>urn:oid:2.49.0.1.356.0.2021.5.15.11.6.23</cap:identifier>
+  <cap:sender>cyclonewarning@gmail.com</cap:sender>
+  <cap:sent>2021-05-15T16:36:23+05:30</cap:sent>
+  <cap:status>Actual</cap:status>
+  <cap:msgType>Alert</cap:msgType>
+  <cap:scope>Public</cap:scope>
+  <cap:info>
+    <cap:language>en</cap:language>
+    <cap:category>Met</cap:category>
+    <cap:event>Sea conditions Very rough and Phenomenal</cap:event>
+    <cap:responseType>Monitor</cap:responseType>
+    <cap:urgency>Expected</cap:urgency>
+    <cap:severity>Severe</cap:severity>
+    <cap:certainty>Likely</cap:certainty>
+    <cap:onset>2021-05-15T08:30:00+05:30</cap:onset>
+    <cap:expires>2021-05-16T08:30:00+05:30</cap:expires>
+    <cap:senderName>RSMC IMD, NEW DELHI</cap:senderName>
+    <cap:headline>Fishermen warning</cap:headline>
+    <cap:description>Gale Wind (speed reaching 120-130 kmph gusting to 145 kmph) very likely eastcentral Arabian Sea from 16th May morning. Gale Wind (speed reaching 60-70 kmph gusting to 80 kmph) very likely along and off Maharashtra
+and Goa Coasts. Sea conditions will be very high to phenomenal over east central Arabian Sea; very rough to high over along and off Maharashtra and Goa Coasts. Fishermen are advised not to venture into these areas.</cap:description>
+    <cap:instruction>Action suggested:
+• Deep sea fishermen are advised to return to coasts.</cap:instruction>
+    <cap:web>http://www.rsmcnewdelhi.imd.gov.in</cap:web>
+    <cap:area>
+      <cap:areaDesc>East central Arabian Sea, Maharashtra
+and Goa Coasts.</cap:areaDesc>
+      <cap:polygon>18.0728,64.3035 17.0778,64.2486 15.6548,64.4683 14.6474,65.5669 14.4879,68.4234 15.2842,72.1587 15.8662,73.8616 17.1303,72.9827 18.4900,72.5982 19.5287,72.5982 19.4770,69.2473 19.0102,66.8303 18.0728,64.3035</cap:polygon>
+    </cap:area>
+  </cap:info>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+  <ds:Reference><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>pCsbOXy0f67fMTeMQjoB6B8qwDaa1aOFytGYeNjTgko=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>pGnCWPPprHyZn4cAyddfU7VH6kMdz7nAOZHTUvTmJQaCovfne/Jpqu+4iB/bx59feTb0e/U6vJM9VxDDLu4R+NNTD/YEWrhg4E4k0W4KJ3yKJyjroO1UBT3MrW+stti8UHryUjH1thcWQ62ZgF8lOFZTL82eNKPIkq5ARFab5MtXstaxkaUvyUHbrnoJtBemvxffRlODPmaWO2yWmB0f6Js6CQCqEB3zYzYJ8QgGoCa0ZMaBrDtkBwa8o7xd8Bnp4PcbHvNhRMvIbAzukESzlpNsaqB685jmgIHFcohhjQlUb+TBt1qg+UFgMwpTZTlxKoBcgw0Y7k/KcBERw74SNA==</ds:SignatureValue>
+<ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIECzCCAvOgAwIBAgIBADANBgkqhkiG9w0BAQsFADCBnzELMAkGA1UEBhMCVVMxETAPBgNVBAgMCFZpcmdpbmlhMQ8wDQYDVQQHDAZSZXN0b24xFjAUBgNVBAoMDWFsZXJ0LWh1Yi5vcmcxDjAMBgNVBAsMBWFkbWluMRgwFgYDVQQDDA9FbGlvdCBDaHJpc3RpYW4xKjAoBgkqhkiG9w0BCQEWG2VsaW90LmouY2hyaXN0aWFuQGdtYWlsLmNvbTAeFw0xOTA3MjIxMDQzMzRaFw0yOTA3MTkxMDQzMzRaMIGfMQswCQYDVQQGEwJVUzERMA8GA1UECAwIVmlyZ2luaWExDzANBgNVBAcMBlJlc3RvbjEWMBQGA1UECgwNYWxlcnQtaHViLm9yZzEOMAwGA1UECwwFYWRtaW4xGDAWBgNVBAMMD0VsaW90IENocmlzdGlhbjEqMCgGCSqGSIb3DQEJARYbZWxpb3Quai5jaHJpc3RpYW5AZ21haWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw5KiaOWF0XAG8LmFOFmGpbf4a+Ro3Y7t85+ytyiPLWcdLyjvbiwzRBVu5A2MCBHjJQWmHm3Et3nJxnI58pN3VZ7/3cEEOYpsveR1EJuWwC6Ow9bU1qJjLvIfw+IQ9dmZ1XZuJZCUooeVdWb0JVjedUZ7gwBs3qHxypxEAFFYljDZsK3hjQVUBerE8U0TMSnpiol3slLcKtvY3ZDiSv+EIpmjjOVJqT4BlMB9+W+tYDDhb1uwBY+f9pa2kYgE4KUxA1uyn/HOi+KAYPK525EWnbfGM2xf001lwHDEo7W0fuooTi/WkUpz+WMKuxxhivCnE3WOTu1FCdBTCujfaLGsQwIDAQABo1AwTjAdBgNVHQ4EFgQU78XZNJmiTJXTwsXoPa1oXLbC0pkwHwYDVR0jBBgwFoAU78XZNJmiTJXTwsXoPa1oXLbC0pkwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAQf+N3RFE0qrcJ1R6PkfVBok3Pv3YV3C0BxKQkA4+3C56W16bVT27fBbLh2HL9UPfux2rzWJjBfthroz6hxFKs/OWmdKhBkjvpM5J261+HTQEbIuZEASq2DjS7CfUq4xAzL2GhBL440xmmWuMrcu7Mw6T8YedsVfid4P5bN4Wsa30Ffj+FgPdApiDOu4BLz7n632hZrKUk951ChdomJs/vLk1fu737IyzVzw0m3iMtR7MrU0FPBC+W9AxubmLTruaSnhOs6j9sJKhRmGqw9AyAxey19NaMy0O6qILTrlA2Pe+S1t2Xa0wWzB6cQu8v8viLnp5SKaWf/j69hwkf5139g==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></cap:alert>
+

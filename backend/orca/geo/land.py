@@ -25,3 +25,19 @@ def is_land(lat: float, lon: float) -> bool:
 
 def is_sea(lat: float, lon: float) -> bool:
     return not is_land(lat, lon)
+
+
+def near_land(lat: float, lon: float, km: float = 10.0) -> bool:
+    """True if land lies within about `km` (checked on two rings of 12 bearings)."""
+    import math
+
+    if is_land(lat, lon):
+        return True
+    for r in (km / 2, km):
+        dlat = r / 111.2
+        dlon = r / (111.2 * max(0.2, math.cos(math.radians(lat))))
+        for k in range(12):
+            a = math.radians(k * 30)
+            if is_land(lat + dlat * math.cos(a), lon + dlon * math.sin(a)):
+                return True
+    return False

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/in-imd-en/alert-style.xsl" ?>
+<cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+  <cap:identifier>urn:oid:2.49.0.1.356.0.2021.5.12.7.45.23</cap:identifier>
+  <cap:sender>rainfallnwfc@gmail.com</cap:sender>
+  <cap:sent>2021-05-12T13:15:23+05:30</cap:sent>
+  <cap:status>Actual</cap:status>
+  <cap:msgType>Update</cap:msgType>
+  <cap:scope>Public</cap:scope>
+  <cap:references>rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.5.10.9.5.32,2021-05-10T14:35:32+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.5.9.8.48.36,2021-05-09T14:18:36+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.5.6.8.41.51,2021-05-06T14:11:51+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.5.6.8.27.13,2021-05-06T13:57:13+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.5.5.9.5.6,2021-05-05T14:35:06+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.5.5.9.0.13,2021-05-05T14:30:13+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.5.2.6.59.41,2021-05-02T12:29:41+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.5.1.9.40.33,2021-05-01T15:10:33+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.5.1.9.35.3,2021-05-01T15:05:03+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.5.1.9.31.54,2021-05-01T15:01:54+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.4.30.9.8.6,2021-04-30T14:38:06+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.4.28.8.10.58,2021-04-28T13:40:58+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.4.23.7.51.47,2021-04-23T13:21:47+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.4.22.6.51.58,2021-04-22T12:21:58+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.4.21.6.48.47,2021-04-21T12:18:47+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.4.20.7.18.8,2021-04-20T12:48:08+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.4.17.8.22.7,2021-04-17T13:52:07+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.4.15.8.54.55,2021-04-15T14:24:55+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.4.14.9.22.33,2021-04-14T14:52:33+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.4.11.8.11.16,2021-04-11T13:41:16+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.4.10.8.57.2,2021-04-10T14:27:02+05:30 rainfallnwfc@gmail.com,urn:oid:2.49.0.1.356.0.2021.4.9.7.20.13,2021-04-09T12:50:13+05:30</cap:references>
+  <cap:info>
+    <cap:language>en</cap:language>
+    <cap:category>Met</cap:category>
+    <cap:event>Thunderstorm</cap:event>
+    <cap:responseType>Monitor</cap:responseType>
+    <cap:urgency>Expected</cap:urgency>
+    <cap:severity>Severe</cap:severity>
+    <cap:certainty>Likely</cap:certainty>
+    <cap:onset>2021-05-12T08:30:00+05:30</cap:onset>
+    <cap:expires>2021-05-13T08:30:00+05:30</cap:expires>
+    <cap:senderName>NWFC DIVISION, IMD, NEW DELHI</cap:senderName>
+    <cap:headline>Thunderstorm</cap:headline>
+    <cap:description>Thunderstorm with lightning,hail squall (speed reaching 50-60
+kmph) very likely at isolated places over Punjab and Haryana, Chandigarh, Delhi;  with lightning, hail , gusty wind(speed reaching 30-40 kmph) very likely at isolated places over Jammu, Kashmir, Ladakh, Gilgit, Baltistan, Muzaffarabad, Himachal Pradesh, Uttarakhand, north Rajasthan, Odisha and Telangana.</cap:description>
+    <cap:instruction>Action suggested:
+• Stay indoors, close windows, doors and avoid travel if possible.
+• Take safe shelters, do not take shelter under trees.
+• Do not lie on concrete floors and do not lean against concrete walls.
+• Unplug electrical/ electronic appliances.
+• Immediately get out of water bodies.
+• Keep away from all the objects that conduct electricity</cap:instruction>
+    <cap:web>https://mausam.imd.gov.in/imd_latest/contents/subdivisionwise-warning.php</cap:web>
+    <cap:area>
+      <cap:areaDesc>Jammu, Kashmir, Ladakh, Gilgit, Baltistan, Muzaffarabad, Himachal Pradesh, Uttarakhand,  Punjab, Haryana, Chandigarh, Delhi, north Rajasthan, Odisha and Telangana.</cap:areaDesc>
+      <cap:polygon>28.8250,79.8729 29.1709,80.2684 30.4293,80.7298 31.4470,79.6092 32.3425,78.7523 32.9530,79.1478 35.0140,79.8340 35.9839,78.6182 36.4210,75.9178 36.9382,75.0244 36.3073,73.0957 35.3333,73.5400 33.7487,73.7207 33.1188,74.3357 31.9518,74.7971 29.9164,73.5447 28.0133,73.2151 26.7255,74.0720 25.7202,75.5882 26.1944,76.9065 26.6666,77.8294 27.8969,77.3021 28.9981,77.2361 30.2017,77.4998 29.5730,78.6864 28.8250,79.8729</cap:polygon>
+      <cap:circle>17.663,78.738 122</cap:circle>
+    </cap:area>
+  </cap:info>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+  <ds:Reference><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>3sPhrmR1NZivepmlCV+xMdpFXjqJzPk0rQ7468+yqRQ=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>NmeicIupZhhCFM/83asTam6tkvaByslnt8vlXtXKIfXFDCoCbeZI617MWBA/1KJua/Uu466ebJRTSUdx22SV8nrgGFLil0ES2Z9GXgzX//6H4TL2qjpXmEbztjk4MnCK2c346vBMMnfIZPtSuPSlV0/vBSmP361evqELomKgcmFff/8C5WzxlRjXg7Q1qQgdAdAuqZf44BjNP86WguU/nk4+BCULl3JiApp1+3DAEdtEQ7Hr1s4I0J2wy3NZCCy4pGXo/hQCsBLwIMIwwug+A/sFJqwzq9aX8vczurTyvkaQjU3kFTgd7YgSX/G6gIev8ZNWYBjWClH2BmN6KhkL4A==</ds:SignatureValue>
+<ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIECzCCAvOgAwIBAgIBADANBgkqhkiG9w0BAQsFADCBnzELMAkGA1UEBhMCVVMxETAPBgNVBAgMCFZpcmdpbmlhMQ8wDQYDVQQHDAZSZXN0b24xFjAUBgNVBAoMDWFsZXJ0LWh1Yi5vcmcxDjAMBgNVBAsMBWFkbWluMRgwFgYDVQQDDA9FbGlvdCBDaHJpc3RpYW4xKjAoBgkqhkiG9w0BCQEWG2VsaW90LmouY2hyaXN0aWFuQGdtYWlsLmNvbTAeFw0xOTA3MjIxMDQzMzRaFw0yOTA3MTkxMDQzMzRaMIGfMQswCQYDVQQGEwJVUzERMA8GA1UECAwIVmlyZ2luaWExDzANBgNVBAcMBlJlc3RvbjEWMBQGA1UECgwNYWxlcnQtaHViLm9yZzEOMAwGA1UECwwFYWRtaW4xGDAWBgNVBAMMD0VsaW90IENocmlzdGlhbjEqMCgGCSqGSIb3DQEJARYbZWxpb3Quai5jaHJpc3RpYW5AZ21haWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw5KiaOWF0XAG8LmFOFmGpbf4a+Ro3Y7t85+ytyiPLWcdLyjvbiwzRBVu5A2MCBHjJQWmHm3Et3nJxnI58pN3VZ7/3cEEOYpsveR1EJuWwC6Ow9bU1qJjLvIfw+IQ9dmZ1XZuJZCUooeVdWb0JVjedUZ7gwBs3qHxypxEAFFYljDZsK3hjQVUBerE8U0TMSnpiol3slLcKtvY3ZDiSv+EIpmjjOVJqT4BlMB9+W+tYDDhb1uwBY+f9pa2kYgE4KUxA1uyn/HOi+KAYPK525EWnbfGM2xf001lwHDEo7W0fuooTi/WkUpz+WMKuxxhivCnE3WOTu1FCdBTCujfaLGsQwIDAQABo1AwTjAdBgNVHQ4EFgQU78XZNJmiTJXTwsXoPa1oXLbC0pkwHwYDVR0jBBgwFoAU78XZNJmiTJXTwsXoPa1oXLbC0pkwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAQf+N3RFE0qrcJ1R6PkfVBok3Pv3YV3C0BxKQkA4+3C56W16bVT27fBbLh2HL9UPfux2rzWJjBfthroz6hxFKs/OWmdKhBkjvpM5J261+HTQEbIuZEASq2DjS7CfUq4xAzL2GhBL440xmmWuMrcu7Mw6T8YedsVfid4P5bN4Wsa30Ffj+FgPdApiDOu4BLz7n632hZrKUk951ChdomJs/vLk1fu737IyzVzw0m3iMtR7MrU0FPBC+W9AxubmLTruaSnhOs6j9sJKhRmGqw9AyAxey19NaMy0O6qILTrlA2Pe+S1t2Xa0wWzB6cQu8v8viLnp5SKaWf/j69hwkf5139g==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></cap:alert>
+

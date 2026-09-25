@@ -14,6 +14,7 @@ from typing import Any
 from ..data_service import DataStatus
 from ..geo.geofences import GeofenceStatus
 from ..geo.geometry import haversine_km
+from ..geo.land import near_land
 from ..geo.ports import nearest_port, snap_to_sea
 from ..geo.regulations import fishing_ban_notice
 from ..models import Advisory
@@ -145,7 +146,11 @@ async def pfz_agent(svc: Services, lat: float, lon: float, now: datetime, marine
             provider = svc.pfz_live.name
         except Exception as exc:  # official feed unreachable
             note = f"INCOIS PFZ feed unavailable ({type(exc).__name__})"
-    if not zones and (marine_source == "replay" or svc.mode in ("replay", "auto")):
+    if not zones and marine_source == "historical" and svc.pfz_historical is not None:
+        # historical replay: candidate zones computed from the archived satellite SST and chlorophyll
+        zones = await svc.pfz_historical.zones(now)
+        provider = svc.pfz_historical.name
+    elif not zones and (marine_source == "replay" or svc.mode in ("replay", "auto")):
         # auto mode: the official feed failed or is empty -> clearly-labelled DEMO zones
         zones = await svc.pfz_demo.zones(now)
         provider = svc.pfz_demo.name
@@ -193,14 +198,16 @@ async def eo_hotspots(svc: Services, lat: float, lon: float, now: datetime, mari
         sst = vals.get("sea_surface_temperature")
         chl = vals.get("chlorophyll")
         if sst is not None and sst.value is not None:
+            if marine_source == "historical" and near_land(p[0], p[1], 10.0):
+                continue  # satellite chlorophyll is unreliable in turbid near-shore water
             cells[p] = {"sst": sst.value, "chl": chl.value if chl is not None else None, "data_type": sst.data_type.value}
     if not cells:
         return AgentResult({"available": False, "hotspots": [], "reason": "no SST data"}, "no SST data", [])
     if all(c["chl"] is None for c in cells.values()):
-        return AgentResult(
-            {"available": False, "hotspots": [], "reason": "chlorophyll source not connected in live mode"},
-            "chlorophyll unavailable", ["Open-Meteo marine (SST only)"],
-        )
+        reason = ("no satellite chlorophyll archive for this date (NOAA-20 VIIRS archive starts 2022)"
+                  if marine_source == "historical" else "chlorophyll source not connected in live mode")
+        return AgentResult({"available": False, "hotspots": [], "reason": reason}, "chlorophyll unavailable",
+                           ["NOAA OISST (SST only)" if marine_source == "historical" else "Open-Meteo marine (SST only)"])
     # SST front strength: max absolute SST difference to 4-neighbours per 10 km
     for (a, b), c in cells.items():
         diffs = []
@@ -222,7 +229,9 @@ async def eo_hotspots(svc: Services, lat: float, lon: float, now: datetime, mari
         "available": True,
         "hotspots": ranked,
         "method": "cells in the top 10% of chlorophyll within the scanned area; 'sst_front' marks the strongest 10% SST "
-        "gradients (fronts are a standard PFZ indicator). Relative ranking — no absolute thresholds are assumed.",
+        "gradients (fronts are a standard PFZ indicator). Relative ranking — no absolute thresholds are assumed."
+        + (" Cells within 10 km of land are skipped: satellite chlorophyll is unreliable in turbid near-shore water."
+           if marine_source == "historical" else ""),
         "grid_step_deg": step,
         "chl_p90": round(chl_p90, 2),
         "data_type": next(iter(cells.values()))["data_type"],
@@ -232,6 +241,8 @@ async def eo_hotspots(svc: Services, lat: float, lon: float, now: datetime, mari
 
 # ---- ocean analytics: productivity change -------------------------------------------
 def productivity_agent(svc: Services, lat: float, lon: float, marine_source: str) -> AgentResult:
+    if marine_source == "historical" and svc.replay is not None:
+        return historical_productivity(svc, lat, lon)
     if marine_source != "replay":
         return AgentResult({"available": False, "reason": "historical satellite series (SST/chlorophyll) not connected in live mode"},
                            "history unavailable", [])
@@ -253,6 +264,37 @@ def productivity_agent(svc: Services, lat: float, lon: float, marine_source: str
         "caveat": "Correlation only: fishing pressure, monsoon timing and market factors are not assessed.",
     }
     return AgentResult(value, f"SST {value['sst_change_c']:+.2f} °C, chlorophyll {value['chl_change_pct']:+.1f}% (last 21 d vs earlier)", ["ORCA simulated scenario (history)"])
+
+
+def historical_productivity(svc: Services, lat: float, lon: float) -> AgentResult:
+    """Real satellite SST record (NOAA OISST): recent vs earlier weeks, and the anomaly against the
+    1971–2000 climatology. Warmer-than-normal, nutrient-poor surface water is a well-known cause
+    of lower plankton and catches; the chlorophyll composite is reported where it exists."""
+    arc = svc.replay.archive
+    now = svc.clock()
+    series = arc.sst_series(lat, lon, now)
+    if len(series) < 21:
+        return AgentResult({"available": False, "reason": "not enough archived SST days at this location"}, "no history", [])
+    recent, earlier = series[-14:], series[:-14]
+    sst_r = statistics.mean(s[1] for s in recent)
+    sst_e = statistics.mean(s[1] for s in earlier)
+    anom_r = statistics.mean(s[2] for s in recent)
+    chl = arc.chl_at(lat, lon, now, radius_cells=6)
+    value = {
+        "available": True,
+        "period_days": {"recent": len(recent), "earlier": len(earlier)},
+        "sst_recent_c": round(sst_r, 2), "sst_earlier_c": round(sst_e, 2), "sst_change_c": round(sst_r - sst_e, 2),
+        "sst_anomaly_c": round(anom_r, 2),
+        "chl_recent": round(chl, 3) if chl is not None else None,
+        "chl_earlier": None, "chl_change_pct": None,
+        "series": [{"date": d.isoformat(), "sea_surface_temperature": round(v, 2), "anomaly": round(a, 2)} for d, v, a in series],
+        "data_type": "observation",
+        "source": "NOAA OISST v2.1 daily (AVHRR satellite + in-situ), anomaly vs 1971–2000",
+        "caveat": "Correlation only: fishing pressure, monsoon timing and market factors are not assessed. "
+                  "One chlorophyll composite exists per event, so no chlorophyll trend is claimed.",
+    }
+    return AgentResult(value, f"SST {value['sst_change_c']:+.2f} °C (last 14 d vs earlier), anomaly {anom_r:+.2f} °C",
+                       ["NOAA OISST v2.1"])
 
 
 # ---- zones to avoid ----------------------------------------------------------------------
@@ -331,6 +373,10 @@ def window_label(start: datetime, end: datetime) -> str:
     if s.date() == e.date():
         return f"{s:%d %b %H:%M}–{e:%H:%M} IST"
     return f"{s:%d %b %H:%M} – {e:%d %b %H:%M} IST"
+
+
+def ist_label(dt: datetime) -> str:
+    return f"{ensure_utc(dt).astimezone(IST):%d %b %Y, %H:%M} IST"
 
 
 def departure_default(now: datetime) -> datetime:

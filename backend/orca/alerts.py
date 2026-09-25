@@ -89,6 +89,12 @@ class AlertEngine:
         self.watches[w.id] = w
         return w
 
+    def clear(self) -> None:
+        """Forget watches, alerts and vessel states (the replay moved to another event)."""
+        self.watches.clear()
+        self.alerts.clear()
+        self._vessel_status.clear()
+
     def remove_watch(self, watch_id: str) -> bool:
         return self.watches.pop(watch_id, None) is not None
 
@@ -153,7 +159,7 @@ class AlertEngine:
     # ---- vessel geofencing ------------------------------------------------------------
     async def track(self, vessel_id: str, lat: float, lon: float, language: str = "en") -> tuple[dict, Alert | None]:
         now = self.svc.clock()
-        advisories, _, _ = await self.svc.data.advisories("replay" if self.svc.mode == "replay" else "live")
+        advisories, _, _ = await self.svc.data.advisories(self.svc.current_source())
         status = self.svc.geofences.check(lat, lon, now, advisories)
         previous = self._vessel_status.get(vessel_id, "clear")
         self._vessel_status[vessel_id] = status.status

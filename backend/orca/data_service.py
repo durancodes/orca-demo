@@ -1,8 +1,10 @@
 """Data service: picks adapters by mode and records exactly what was used.
 
 Modes (ORCA_DATA_MODE):
-  live   — live adapters only; failures surface as missing data (never faked)
-  replay — simulated scenario only (clearly labelled)
+  live       — live adapters only; failures surface as missing data (never faked)
+  historical — real archived data (NOAA GFS/GFS-Wave runs as issued, OISST, VIIRS,
+               IMD CAP warnings) replayed as of a past moment, with no look-ahead
+  replay     — simulated scenario only (clearly labelled)
   auto   — live first; if the live marine source fails, fall back to the
            simulated scenario and say so in every response (guide §33:
            'fallback demo dataset in case external services fail')
@@ -33,7 +35,7 @@ ROUTE_VARIABLES = ("wave_height", "wind_speed", "weather_code", "visibility")
 
 class DataStatus(BaseModel):
     mode: str
-    marine_source: str  # live | replay | none
+    marine_source: str  # live | historical | replay | none
     fallback_reason: str | None = None
     advisory_sources: list[str] = Field(default_factory=list)
     advisory_errors: list[str] = Field(default_factory=list)
@@ -47,12 +49,16 @@ class DataService:
     live_advisories: list[AdvisoryAdapter]
     replay_advisories: list[AdvisoryAdapter]
     clock: Clock
+    historical_marine: MarineDataAdapter | None = None
+    historical_advisories: list[AdvisoryAdapter] = field(default_factory=list)
     breaker_s: float = 60.0  # auto mode: after a live failure, skip live for this long
     _last_status: DataStatus | None = field(default=None, init=False)
     _live_down_until: float = field(default=0.0, init=False)
     _live_down_reason: str | None = field(default=None, init=False)
 
     async def _marine(self, query: PointQuery) -> tuple[list[MarineObservation], str, str | None]:
+        if self.mode == "historical" and self.historical_marine is not None:
+            return await self.historical_marine.observe(query), "historical", None
         if self.mode == "replay":
             return await self.replay_marine.observe(query), "replay", None
         if self.mode == "auto" and time.monotonic() < self._live_down_until:
@@ -76,6 +82,8 @@ class DataService:
             adapters += self.live_advisories
         if marine_source == "replay":
             adapters += self.replay_advisories
+        if marine_source == "historical":
+            adapters += self.historical_advisories
         now = self.clock()
         results = await asyncio.gather(*(a.fetch_advisories(now) for a in adapters), return_exceptions=True)
         advisories: list[Advisory] = []
@@ -109,9 +117,9 @@ class DataService:
 
         Replay is evaluated lazily (only samples actually visited); live data is
         fetched up-front in batched multi-coordinate requests."""
-        if marine_source == "replay":
-            replay = self.replay_marine
-            return lambda lat, lon, t: replay.values_at(lat, lon, t, variables)  # type: ignore[attr-defined]
+        if marine_source in ("replay", "historical"):
+            offline = self.replay_marine if marine_source == "replay" else self.historical_marine
+            return lambda lat, lon, t: offline.values_at(lat, lon, t, variables)  # type: ignore[union-attr]
         by_point = await self.live_marine.observe_many(points, start, end)  # type: ignore[attr-defined]
         states = {p: MarineState(p[0], p[1], obs) for p, obs in by_point.items()}
         empty = MarineState(0, 0, [])
@@ -119,6 +127,8 @@ class DataService:
 
     def health(self) -> list[AdapterHealth]:
         adapters = [self.live_marine, self.replay_marine, *self.live_advisories, *self.replay_advisories]
+        if self.historical_marine is not None:
+            adapters += [self.historical_marine, *self.historical_advisories]
         return [a.health() for a in adapters]
 
     @property

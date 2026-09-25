@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/in-imd-en/alert-style.xsl" ?>
+<cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+  <cap:identifier>urn:oid:2.49.0.1.356.0.2021.5.15.9.42.12</cap:identifier>
+  <cap:sender>cyclonewarning@gmail.com</cap:sender>
+  <cap:sent>2021-05-15T15:12:12+05:30</cap:sent>
+  <cap:status>Actual</cap:status>
+  <cap:msgType>Alert</cap:msgType>
+  <cap:scope>Public</cap:scope>
+  <cap:info>
+    <cap:language>en</cap:language>
+    <cap:category>Met</cap:category>
+    <cap:event>Sea conditions Very rough and Phenomenal</cap:event>
+    <cap:responseType>Monitor</cap:responseType>
+    <cap:urgency>Expected</cap:urgency>
+    <cap:severity>Severe</cap:severity>
+    <cap:certainty>Likely</cap:certainty>
+    <cap:onset>2021-05-15T08:30:00+05:30</cap:onset>
+    <cap:expires>2021-05-16T08:30:00+05:30</cap:expires>
+    <cap:senderName>RSMC IMD, NEW DELHI</cap:senderName>
+    <cap:headline>Fishermen warning</cap:headline>
+    <cap:description>Gale Wind (speed reaching 75-85 kmph gusting to 95 kmph) very likely over eastcentral Arabian Sea and adjoining southeast Arabian sea and Lakshadweep area. Squally Wind (speed reaching 45-55 kmph gusting to
+65 kmph) very likely over Maldives area and Equatorial Indian Ocean during next 6 hours. Squally Wind (speed reaching 50-60 kmph gusting to 70 kmph) very likely along and off Kerala coast, Karnataka , South Maharashtra and Goa Coasts. Sea conditions will be very rough over southeast Arabian Sea and adjoining Lakshadweep, Maldives area and Equatorial Indian Ocean during next 6 hours. High to very high over Eastcentral Arabian Sea; rough to very rough over Comorin area and along and off Kerala coast; very rough to high over Eastcentral Arabian
+Sea and along and off Karnataka coast, Maharashtra-Goa coasts. Fishermen are advised not to venture into these
+areas.</cap:description>
+    <cap:instruction>Action suggested:
+• Deep sea fishermen are advised to return to coasts by 14th May.</cap:instruction>
+    <cap:web>http://www.rsmcnewdelhi.imd.gov.in</cap:web>
+    <cap:area>
+      <cap:areaDesc>Eastcentral Arabian Sea and adjoining southeast Arabian sea and Lakshadweep area, Maldives area, Equatorial Indian Ocean and along and off Kerala coast, Karnataka , South Maharashtra and Goa Coasts.</cap:areaDesc>
+      <cap:polygon>17.146,64.565 14.271,65.365 11.358,65.739 8.942,65.739 4.918,65.899 3.375,67.553 2.736,70.007 2.736,73.421 3.162,76.356 5.396,76.942 8.257,77.156 10.467,75.982 12.037,75.022 14.115,74.275 16.278,73.475 17.859,73.048 19.325,72.621 20.229,72.248 19.928,70.540 19.023,68.726 18.619,66.859 17.146,64.565</cap:polygon>
+    </cap:area>
+  </cap:info>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+  <ds:Reference><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>hWFl0f8ox0Bu1xZ++dR7M/sbmTVlmL+8J/X+IZs90zc=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>NN2LHemjh+6CDW2Z5/rDtd+6szZfxjGFcdjRLSHXRBjGa3x8ti5+izPjXdndMPbIbXKmGl6m0f85w+77Neof5IYZ8t37neRjRSYVtp1osnNV8gNQTcYV99Yvc+diJO8AH0xPUHqDa1UqVeEoOZlXvO8AmbMkYlRKj/Bh34GgKLyeSQ9UcwSuH8Y+o+FnMNaVpm+TfpBBvCf79fc0D5So64tV44FD0sZMvdkAYcCwHVdbMy3xmQoGE4UGdVzCc7fLDtBvxBahcmRSAXcdXAeAIoOZxlfzfCcOULtIMRNbQhBpqyK3aHHi1BI5x1g1CKGEfGnW/7q8zIKMSB9H6fuvaw==</ds:SignatureValue>
+<ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIECzCCAvOgAwIBAgIBADANBgkqhkiG9w0BAQsFADCBnzELMAkGA1UEBhMCVVMxETAPBgNVBAgMCFZpcmdpbmlhMQ8wDQYDVQQHDAZSZXN0b24xFjAUBgNVBAoMDWFsZXJ0LWh1Yi5vcmcxDjAMBgNVBAsMBWFkbWluMRgwFgYDVQQDDA9FbGlvdCBDaHJpc3RpYW4xKjAoBgkqhkiG9w0BCQEWG2VsaW90LmouY2hyaXN0aWFuQGdtYWlsLmNvbTAeFw0xOTA3MjIxMDQzMzRaFw0yOTA3MTkxMDQzMzRaMIGfMQswCQYDVQQGEwJVUzERMA8GA1UECAwIVmlyZ2luaWExDzANBgNVBAcMBlJlc3RvbjEWMBQGA1UECgwNYWxlcnQtaHViLm9yZzEOMAwGA1UECwwFYWRtaW4xGDAWBgNVBAMMD0VsaW90IENocmlzdGlhbjEqMCgGCSqGSIb3DQEJARYbZWxpb3Quai5jaHJpc3RpYW5AZ21haWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw5KiaOWF0XAG8LmFOFmGpbf4a+Ro3Y7t85+ytyiPLWcdLyjvbiwzRBVu5A2MCBHjJQWmHm3Et3nJxnI58pN3VZ7/3cEEOYpsveR1EJuWwC6Ow9bU1qJjLvIfw+IQ9dmZ1XZuJZCUooeVdWb0JVjedUZ7gwBs3qHxypxEAFFYljDZsK3hjQVUBerE8U0TMSnpiol3slLcKtvY3ZDiSv+EIpmjjOVJqT4BlMB9+W+tYDDhb1uwBY+f9pa2kYgE4KUxA1uyn/HOi+KAYPK525EWnbfGM2xf001lwHDEo7W0fuooTi/WkUpz+WMKuxxhivCnE3WOTu1FCdBTCujfaLGsQwIDAQABo1AwTjAdBgNVHQ4EFgQU78XZNJmiTJXTwsXoPa1oXLbC0pkwHwYDVR0jBBgwFoAU78XZNJmiTJXTwsXoPa1oXLbC0pkwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAQf+N3RFE0qrcJ1R6PkfVBok3Pv3YV3C0BxKQkA4+3C56W16bVT27fBbLh2HL9UPfux2rzWJjBfthroz6hxFKs/OWmdKhBkjvpM5J261+HTQEbIuZEASq2DjS7CfUq4xAzL2GhBL440xmmWuMrcu7Mw6T8YedsVfid4P5bN4Wsa30Ffj+FgPdApiDOu4BLz7n632hZrKUk951ChdomJs/vLk1fu737IyzVzw0m3iMtR7MrU0FPBC+W9AxubmLTruaSnhOs6j9sJKhRmGqw9AyAxey19NaMy0O6qILTrlA2Pe+S1t2Xa0wWzB6cQu8v8viLnp5SKaWf/j69hwkf5139g==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></cap:alert>
+

@@ -18,14 +18,22 @@ def system_clock() -> datetime:
 
 class SimClock:
     """System clock with an adjustable offset — lets a demo 'fast-forward' the
-    replay scenario to show proactive alerts. Offset is always reported in the UI."""
+    replay scenario to show proactive alerts. Offset is always reported in the UI.
+
+    In historical replay the clock is anchored: 'now' is a fixed past moment
+    (plus any fast-forward offset) instead of the wall clock."""
 
     def __init__(self, base: Clock = system_clock) -> None:
         self._base = base
         self.offset = timedelta(0)
+        self.anchor: datetime | None = None
 
     def __call__(self) -> datetime:
-        return self._base() + self.offset
+        return (self.anchor if self.anchor is not None else self._base()) + self.offset
+
+    def set_anchor(self, moment: datetime | None) -> None:
+        self.anchor = moment.astimezone(UTC) if moment is not None else None
+        self.offset = timedelta(0)
 
     def advance(self, hours: float) -> None:
         self.offset += timedelta(hours=hours)

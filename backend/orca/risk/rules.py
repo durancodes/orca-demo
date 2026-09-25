@@ -23,7 +23,7 @@ class RiskLevel(str, Enum):
 
 RANK = {RiskLevel.LOW: 0, RiskLevel.MODERATE: 1, RiskLevel.HIGH: 2, RiskLevel.SEVERE: 3}
 
-RULESET_VERSION = "orca-rules-0.1.0"
+RULESET_VERSION = "orca-rules-0.2.0"
 
 
 @dataclass(frozen=True)
@@ -108,6 +108,12 @@ ADVISORY_SEVERITY = {
 }
 ADVISORY_REFERENCE = "OASIS CAP 1.2 <severity> as issued by the warning agency; point-in-polygon on the alert area"
 
+# IMD draws 'along and off the coast' warning polygons coarsely: during Cyclone Tauktae the
+# Maharashtra–Goa fishermen warning ended about 40 km off the Goa coast, leaving near-shore boats
+# outside it. ORCA therefore treats official warnings whose area or text names a coast as covering
+# points within this distance of the polygon. Safety-conservative policy; validate with IMD.
+COASTAL_WARNING_BUFFER_KM = 50.0
+
 NOT_SCORED = {
     "wind_gusts": "shown as evidence; no citable gust threshold adopted in this rule set yet",
     "swell_wave_height": "already contained in significant wave height",
@@ -152,6 +158,9 @@ def rules_table() -> dict:
                 "variable": "advisory",
                 "mapping": {k: v.value for k, v in ADVISORY_SEVERITY.items()},
                 "reference": ADVISORY_REFERENCE,
+                "coastal_buffer_km": COASTAL_WARNING_BUFFER_KM,
+                "note": "Official warnings that name a coast also cover points within this distance of their polygon "
+                "(IMD coastal polygons can stop tens of km offshore). Model-derived cyclone watches are shown but not scored.",
             },
         ],
         "not_scored": NOT_SCORED,

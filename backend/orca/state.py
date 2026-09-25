@@ -8,7 +8,7 @@ from __future__ import annotations
 from collections import defaultdict
 from datetime import datetime
 
-from .geo.geometry import point_in_polygon
+from .geo.geometry import distance_to_polygon_km, point_in_polygon
 from .models import Advisory, DataType, Evidence, MarineObservation
 from .timeutil import ensure_utc, floor_hour
 
@@ -22,9 +22,17 @@ def advisories_at_point(lat: float, lon: float, t: datetime, advisories: list[Ad
             continue
         if adv.expires and t >= adv.expires:
             continue
-        if any(point_in_polygon(lat, lon, poly) for poly in adv.polygons):
+        if any(point_in_polygon(lat, lon, poly) for poly in adv.polygons) or _coastal_cover(adv, lat, lon):
             out.append(adv)
     return out
+
+
+def _coastal_cover(adv: Advisory, lat: float, lon: float) -> bool:
+    from .risk.rules import COASTAL_WARNING_BUFFER_KM  # local import: risk.engine imports this module
+
+    if adv.data_type != DataType.OFFICIAL_ADVISORY or "coast" not in f"{adv.area_desc} {adv.description}".lower():
+        return False
+    return any(distance_to_polygon_km(lat, lon, poly) <= COASTAL_WARNING_BUFFER_KM for poly in adv.polygons)
 
 
 class MarineState:
@@ -65,7 +73,8 @@ class MarineState:
         return advisories_at_point(self.lat, self.lon, t, self.advisories)
 
     def advisories_containing_point(self) -> list[Advisory]:
-        return [a for a in self.advisories if any(point_in_polygon(self.lat, self.lon, p) for p in a.polygons)]
+        return [a for a in self.advisories
+                if any(point_in_polygon(self.lat, self.lon, p) for p in a.polygons) or _coastal_cover(a, self.lat, self.lon)]
 
     def data_types(self) -> set[DataType]:
         return {o.data_type for o in self.observations} | {a.data_type for a in self.advisories}

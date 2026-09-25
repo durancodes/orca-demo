@@ -1,12 +1,12 @@
-// Build the static preview: the real UI replaying answers recorded from the
-// real backend (see src/demo.ts). Output is one self-contained page plus its
-// data files, for hosting where no ORCA backend can run.
+// Build the static preview: the real UI replaying API responses recorded from the real backend
+// (see src/demo.ts). Output is one self-contained page plus its data files, for hosting where no
+// ORCA backend can run.
 //
-//   npm run build:demo        ->  dist-demo/orca.html, demo-data.json, land-india.png
+//   1. npm run build, then start the backend (it serves web/dist) in historical mode
+//   2. node scripts/record-demo.cjs http://localhost:8000      ->  demo-recording/demo-data.json
+//   3. npm run build:demo                                        ->  dist-demo/orca.html + data files
 //
-// Needs the backend's Python dependencies (set PYTHON to pick the interpreter).
-import { execFileSync } from "node:child_process";
-import { readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { build } from "vite";
@@ -41,7 +41,7 @@ const page = [
 ].join("\n");
 writeFileSync(join(out, "orca.html"), page);
 
-execFileSync(process.env.PYTHON ?? "python3", [join(web, "..", "backend", "scripts", "record_demo.py"), join(out, "demo-data.json")], {
-  stdio: "inherit",
-});
+const recording = join(web, "demo-recording", "demo-data.json");
+if (!existsSync(recording)) throw new Error("no recording: run scripts/record-demo.cjs against a running backend first");
+copyFileSync(recording, join(out, "demo-data.json"));
 console.log(`wrote ${join(out, "orca.html")} (${(page.length / 1024).toFixed(0)} KB)`);

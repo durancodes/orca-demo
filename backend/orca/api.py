@@ -24,6 +24,8 @@ from .agents.specialists import summarize_decision
 from .alerts import AlertEngine
 from .data_service import ROUTE_VARIABLES
 from .geo.ports import PORTS, offshore_point, snap_to_sea
+from .historical.events import EVENTS
+from .historical.layers import field_layers, replay_timeline
 from .pfz import rank_zones
 from .risk import assess_window, rules_table
 from .risk.engine import assess_hour
@@ -58,6 +60,11 @@ class TrackRequest(BaseModel):
     lat: float = Field(ge=-90, le=90)
     lon: float = Field(ge=-180, le=180)
     language: str = "en"
+
+
+class ReplayEventRequest(BaseModel):
+    event_id: str
+    as_of: datetime | None = None
 
 
 class AdvanceRequest(BaseModel):
@@ -115,9 +122,10 @@ def create_app(svc: Services | None = None, alert_interval_s: float | None = Non
             "clock": svc.clock().isoformat(),
             "clock_offset_hours": svc.clock.offset.total_seconds() / 3600,
             "scenario": {"name": svc.scenario.name, "title": svc.scenario.title, "day1_starts": svc.scenario.anchor.isoformat()},
+            "replay": _replay_info(),
             "llm": {"provider": svc.llm.name, "model": svc.llm.model, "available": svc.llm.available},
             "adapters": [h.model_dump(mode="json") for h in svc.data.health()]
-            + [p.health().model_dump(mode="json") for p in (svc.pfz_live, svc.pfz_demo) if p is not None],
+            + [p.health().model_dump(mode="json") for p in (svc.pfz_live, svc.pfz_demo, svc.pfz_historical) if p is not None],
             "watches": len(alerts.watches),
         }
 
@@ -138,8 +146,8 @@ def create_app(svc: Services | None = None, alert_interval_s: float | None = Non
         ]}
 
     @app.get("/api/advisories")
-    async def advisories(source: str = Query("auto", pattern="^(auto|live|replay)$")):
-        marine_source = source if source != "auto" else ("replay" if svc.mode == "replay" or (svc.data.last_status and svc.data.last_status.marine_source == "replay") else "live")
+    async def advisories(source: str = Query("auto", pattern="^(auto|live|replay|historical)$")):
+        marine_source = source if source != "auto" else svc.current_source()
         items, used, errors = await svc.data.advisories(marine_source)
         return {"used": used, "errors": errors, "type": "FeatureCollection", "features": [
             _feature(_geom(poly, "polygon"), id=a.id, event=a.event, headline=a.headline, severity=a.severity, source=a.source,
@@ -172,10 +180,36 @@ def create_app(svc: Services | None = None, alert_interval_s: float | None = Non
                 "evidence": [index[e].model_dump(mode="json") for e in decision.evidence_ids if e in index],
                 "data_status": status.model_dump(mode="json"), "simulated": decision.simulated}
 
+    @app.get("/api/conditions")
+    async def conditions(lat: float = Query(ge=-90, le=90), lon: float = Query(ge=-180, le=180), hours: int = Query(48, ge=6, le=48)):
+        """Hourly series of every variable at a point (6 h back for context, then ahead), with hourly risk levels."""
+        now = svc.clock()
+        start, end = floor_hour(now) - timedelta(hours=6), floor_hour(now) + timedelta(hours=hours)
+        state, status = await svc.data.marine_state(lat, lon, start, end)
+        series = {}
+        for var in ("wave_height", "wave_period", "wind_speed", "wind_gusts", "wind_direction", "visibility", "precipitation",
+                    "weather_code", "sea_surface_temperature", "chlorophyll", "sea_level", "current_speed"):
+            pts = state.series(var)
+            if any(v is not None for _, v in pts):
+                series[var] = [{"t": t.isoformat(), "v": None if v is None else round(float(v), 3)} for t, v in pts]
+        decision = assess_window(state, start, end, now)
+        return {
+            "now": now.isoformat(),
+            "lat": lat, "lon": lon,
+            "series": series,
+            "levels": [{"t": h.time.isoformat(), "level": h.level.value, "dominant": h.dominant.variable if h.dominant else None}
+                       for h in decision.hours],
+            "sources": [s | {"retrieved_at": s["retrieved_at"].isoformat() if hasattr(s.get("retrieved_at"), "isoformat") else s.get("retrieved_at")}
+                        for s in state.sources()],
+            "advisories": [{"id": a.id, "event": a.event, "headline": a.headline, "severity": a.severity, "source": a.source,
+                            "data_type": a.data_type.value} for a in state.advisories_containing_point()],
+            "data_status": status.model_dump(mode="json"),
+        }
+
     @app.get("/api/pfz")
     async def pfz(lat: float = Query(ge=-90, le=90), lon: float = Query(ge=-180, le=180), limit: int = Query(5, ge=1, le=20)):
         from .agents.specialists import pfz_agent
-        res = await pfz_agent(svc, lat, lon, svc.clock(), "replay" if svc.mode == "replay" else "live", limit)
+        res = await pfz_agent(svc, lat, lon, svc.clock(), svc.offline_source or "live", limit)
         return {"provider": res.value["provider"], "note": res.value["note"],
                 "candidates": [c.model_dump(mode="json") for c in res.value["candidates"]]}
 
@@ -191,7 +225,7 @@ def create_app(svc: Services | None = None, alert_interval_s: float | None = Non
         else:
             raise HTTPException(422, "give start_port or start_lat/start_lon")
         departure = ensure_utc(req.departure) if req.departure else svc.clock()
-        marine_source = "replay" if svc.mode == "replay" else "live"
+        marine_source = svc.offline_source or "live"
         advisories, _, _ = await svc.data.advisories(marine_source)
         try:
             result = await plan_route(svc.data, svc.geofences, start, (req.end_lat, req.end_lon), departure, req.speed_knots,
@@ -214,9 +248,9 @@ def create_app(svc: Services | None = None, alert_interval_s: float | None = Non
         """Risk-level grid for the map overlay at one hour (replay is cheap; live is capped to 300 cells)."""
         if lat_max <= lat_min or lon_max <= lon_min:
             raise HTTPException(422, "invalid bbox")
-        marine_source = "replay" if svc.mode == "replay" or (svc.data.last_status and svc.data.last_status.marine_source == "replay") else "live"
+        marine_source = svc.current_source()
         cells = ((lat_max - lat_min) / step + 1) * ((lon_max - lon_min) / step + 1)
-        cap = 2500 if marine_source == "replay" else 300
+        cap = 2500 if marine_source in ("replay", "historical") else 300
         while cells > cap:
             step *= 1.5
             cells = ((lat_max - lat_min) / step + 1) * ((lon_max - lon_min) / step + 1)
@@ -233,6 +267,69 @@ def create_app(svc: Services | None = None, alert_interval_s: float | None = Non
             h = assess_hour(t, vals, advisories_at_point(lat, lon, t, advisories))
             out.append({"lat": lat, "lon": lon, "level": h.level.value, "dominant": h.dominant.variable if h.dominant else None})
         return {"time": t.isoformat(), "step": step, "marine_source": marine_source, "cells": out}
+
+    # ---- historical replay ("time machine") ---------------------------------------------
+    def _replay_info() -> dict | None:
+        if svc.replay is None:
+            return None
+        ev = svc.replay.event
+        return {"event": ev.id, "title": ev.title, "kind": ev.kind, "as_of": svc.clock().isoformat(),
+                "start": ev.replay_start.isoformat(), "end": ev.replay_end.isoformat(),
+                "place": {"lat": ev.place[0], "lon": ev.place[1], "label": ev.place[2]}}
+
+    def _need_replay():
+        if svc.replay is None:
+            raise HTTPException(409, "historical replay is off (start with ORCA_DATA_MODE=historical)")
+        return svc.replay
+
+    @app.get("/api/replay/events")
+    async def replay_events():
+        from .historical.archive import EventArchive
+        out = []
+        for ev in EVENTS.values():
+            arc = EventArchive(ev)
+            out.append({
+                "id": ev.id, "title": ev.title, "kind": ev.kind, "summary": ev.summary, "region": ev.region,
+                "start": ev.replay_start.isoformat(), "end": ev.replay_end.isoformat(),
+                "default_as_of": ev.default_as_of.isoformat(), "tags": ev.tags,
+                "place": {"lat": ev.place[0], "lon": ev.place[1], "label": ev.place[2]}, "language_hint": ev.language_hint,
+                "available": arc.available, "products": arc.meta.get("products", {}) if arc.available else {},
+            })
+        return {"active": _replay_info(), "events": out}
+
+    @app.post("/api/replay/event")
+    async def replay_set_event(req: ReplayEventRequest):
+        _need_replay()
+        ev = EVENTS.get(req.event_id)
+        if ev is None:
+            raise HTTPException(404, f"unknown event {req.event_id}")
+        as_of = ensure_utc(req.as_of) if req.as_of else None
+        if as_of is not None and not (ev.replay_start <= as_of <= ev.replay_end):
+            raise HTTPException(422, f"as_of must be between {ev.replay_start.isoformat()} and {ev.replay_end.isoformat()}")
+        svc.set_event(ev.id, as_of)
+        alerts.clear()
+        return _replay_info()
+
+    @app.get("/api/replay/timeline")
+    async def replay_timeline_endpoint():
+        ctx = _need_replay()
+        cap = next(a for a in svc.data.historical_advisories if a.name == "imd-cap-archive")
+        return replay_timeline(ctx.archive, cap, svc.clock())
+
+    @app.get("/api/layers/fields")
+    async def layer_fields(fields: str = "wind,waves", time: datetime | None = None):
+        """Gridded archive fields for animated map layers (historical mode)."""
+        ctx = _need_replay()
+        which = {f.strip() for f in fields.split(",") if f.strip()} & {"wind", "waves", "sst", "chl"}
+        t = floor_hour(ensure_utc(time) if time else svc.clock())
+        return field_layers(ctx.archive, t, svc.clock(), which)
+
+    @app.get("/api/backtest")
+    async def backtest():
+        path = Path(__file__).resolve().parents[1] / "data" / "backtest" / "results.json"
+        if not path.exists():
+            raise HTTPException(404, "no backtest results yet: run python scripts/historical/backtest.py")
+        return json.loads(path.read_text())
 
     @app.get("/api/sea-point")
     async def sea_point(lat: float, lon: float):
