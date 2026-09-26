@@ -44,10 +44,15 @@ export function useRoute(): RouteId {
   useEffect(() => {
     const onChange = () => {
       const next = current();
-      const doc = document as Document & { startViewTransition?: (cb: () => void) => unknown };
+      type Transition = { ready: Promise<void>; finished: Promise<void> };
+      const doc = document as Document & { startViewTransition?: (cb: () => void) => Transition };
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (doc.startViewTransition && !reduce) doc.startViewTransition(() => flushSync(() => setRoute(next)));
-      else setRoute(next);
+      if (doc.startViewTransition && !reduce) {
+        const t = doc.startViewTransition(() => flushSync(() => setRoute(next)));
+        // a quick second navigation skips the running transition; that is expected, not an error
+        t.ready.catch(() => undefined);
+        t.finished.catch(() => undefined);
+      } else setRoute(next);
       window.scrollTo({ top: 0 });
     };
     window.addEventListener("hashchange", onChange);

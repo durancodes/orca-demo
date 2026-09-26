@@ -151,7 +151,7 @@ class EventArchive:
     @cached_property
     def meta(self) -> dict:
         p = self.dir / "meta.json"
-        return json.loads(p.read_text()) if p.exists() else {}
+        return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
 
     # ---- sea-surface temperature (NOAA OISST v2.1)
     @cached_property

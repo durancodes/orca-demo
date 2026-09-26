@@ -12,7 +12,7 @@
  7 validate data               variables.py plausibility ranges → quality flags; adapter health
  8 build Marine State          state.py — hour-indexed observations + advisories containing the point
  9 spatial + temporal analysis geo/geofences.py, risk/engine.py hourly trajectory
-10 risk                        risk/rules.py (orca-rules-0.2.0) → RiskDecision
+10 risk                        risk/rules.py (orca-rules-0.2.1) → RiskDecision
 11 route / alerts              route/planner.py time-dependent A*; alerts.py
 12 evidence + provenance       Evidence objects for every value used; map features
 13 explanation                 agents/explanation.py — Claude + verdict lock, or templates
@@ -67,7 +67,7 @@ than interpolating.
 ## Route engine (guide §21)
 
 - Grid over the start–end bounding box (≈ 50 × 50 nodes), 8-connected.
-- Edge cost = travel time × (1 + w[level at arrival time]); w: LOW 0, MODERATE 1, INSUFFICIENT_DATA 3, HIGH 6.
+- Edge cost = travel time × (1 + w[level at arrival time]); w: LOW 0, MODERATE 1, INSUFFICIENT_DATA 3; HIGH and SEVERE edges are forbidden.
 - Forbidden: land (GLOBE mask sampled every ~1 km), restricted/protected/sensitive polygons, maritime-boundary
   crossing, SEVERE at arrival time.
 - Risk field sampled lazily (replay) or batched (live); nearest sea sample used at harbour mouths.

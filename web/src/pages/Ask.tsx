@@ -31,6 +31,26 @@ const featureStyle = (f: any) => {
 };
 const featurePopup = (f: any) => `<b>${f.properties.label ?? f.properties.kind}</b>`;
 
+// The map frames the answer's place plus what the answer drew near it (zones, routes, hotspots) — not warning
+// or geofence polygons, which can span the whole coast and would zoom the chart out to all of India.
+const FOCUS_KINDS = new Set(["pfz", "route_recommended", "route_direct", "safety_target", "hotspot", "avoid"]);
+const MIN_HALF_SPAN = 0.6;
+
+function answerBounds(focus: { lat: number; lon: number } | null, features: any[]): [[number, number], [number, number]] | null {
+  const pts: [number, number][] = focus ? [[focus.lat, focus.lon]] : [];
+  const collect = (c: any): void => {
+    if (typeof c[0] === "number") pts.push([c[1], c[0]]);
+    else c.forEach(collect);
+  };
+  features.filter((f) => FOCUS_KINDS.has(f.properties.kind)).forEach((f) => collect(f.geometry.coordinates));
+  if (!pts.length) return null;
+  const lats = pts.map((p) => p[0]), lons = pts.map((p) => p[1]);
+  const midLat = (Math.min(...lats) + Math.max(...lats)) / 2, midLon = (Math.min(...lons) + Math.max(...lons)) / 2;
+  const hLat = Math.max(MIN_HALF_SPAN, (Math.max(...lats) - Math.min(...lats)) / 2);
+  const hLon = Math.max(MIN_HALF_SPAN, (Math.max(...lons) - Math.min(...lons)) / 2);
+  return [[midLat - hLat, midLon - hLon], [midLat + hLat, midLon + hLon]];
+}
+
 export default function Ask() {
   const { messages, busy, lang, setLang, active, setActiveId, ask, place, script, staticDemo } = useApp();
   const asked = useMemo(() => new Set(messages.filter((m) => m.role === "user").map((m) => normMessage(m.text))), [messages]);
@@ -38,6 +58,8 @@ export default function Ask() {
   const features = active?.map.features.filter((f) => f.properties.kind !== "location") ?? [];
   const fc = useMemo(() => ({ type: "FeatureCollection", features }), [features]);
   const safety = active?.cards.safety;
+  const focus = active?.place ?? null;
+  const bounds = useMemo(() => answerBounds(focus, features), [focus, fc]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Page
@@ -91,11 +113,11 @@ export default function Ask() {
                   <HourStrip hours={safety.timeline} lang={active.language} />
                 </Panel>
               )}
-              {features.length > 0 && (
+              {(features.length > 0 || focus) && (
                 <Panel title="On the chart">
-                  <ChartMap className="desk-map" label="Map for the answer">
+                  <ChartMap className="desk-map" label="Map for the answer" bounds={bounds}>
                     <GeoLayer data={fc} style={featureStyle} popup={featurePopup} animate />
-                    <PlaceMarker lat={place.lat} lon={place.lon} label={place.label} />
+                    <PlaceMarker lat={(focus ?? place).lat} lon={(focus ?? place).lon} label={(focus ?? place).label} />
                   </ChartMap>
                 </Panel>
               )}

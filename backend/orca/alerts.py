@@ -58,8 +58,9 @@ class Alert(BaseModel):
 
 
 class AlertEngine:
-    def __init__(self, svc, max_alerts: int = 200) -> None:
+    def __init__(self, svc, max_alerts: int = 200, max_watches: int = 500, max_vessels: int = 5000) -> None:
         self.svc = svc
+        self.max_watches, self.max_vessels = max_watches, max_vessels
         self.watches: dict[str, Watch] = {}
         self.alerts: deque[Alert] = deque(maxlen=max_alerts)
         self._subscribers: set[asyncio.Queue] = set()
@@ -161,8 +162,10 @@ class AlertEngine:
         now = self.svc.clock()
         advisories, _, _ = await self.svc.data.advisories(self.svc.current_source())
         status = self.svc.geofences.check(lat, lon, now, advisories)
-        previous = self._vessel_status.get(vessel_id, "clear")
-        self._vessel_status[vessel_id] = status.status
+        previous = self._vessel_status.pop(vessel_id, "clear")
+        self._vessel_status[vessel_id] = status.status  # re-inserted, so the dict stays ordered oldest report first
+        while len(self._vessel_status) > self.max_vessels:
+            del self._vessel_status[next(iter(self._vessel_status))]
         alert = None
         worsened = SEVERITY_ORDER.index(status.status) > SEVERITY_ORDER.index(previous)
         if status.status != "clear" and (worsened or status.status != previous):

@@ -1,6 +1,7 @@
 import { AppProvider } from "./store";
 import { useRoute } from "./router";
 import Navbar from "./ui/Navbar";
+import Splash from "./ui/Splash";
 import Home from "./pages/Home";
 import Ask from "./pages/Ask";
 import Safety from "./pages/Safety";
@@ -23,6 +24,7 @@ function Shell() {
       <a href="#main" className="skip">
         Skip to content
       </a>
+      <Splash />
       <Navbar route={route} />
       <PageComponent key={route} />
       <footer className="foot">

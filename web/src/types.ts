@@ -315,6 +315,7 @@ export interface Health {
   scenario: { name: string; title: string; day1_starts: string };
   replay: ReplayInfo | null;
   llm: { provider: string; model: string | null; available: boolean };
+  stt?: { available: boolean; engines: string[] };
   adapters: { name: string; mode: string; status: string; last_success: string | null; last_error: string | null; last_latency_ms: number | null }[];
   watches: number;
 }
