@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { flushSync } from "react-dom";
 
-export type RouteId = "home" | "ask" | "safety" | "zones" | "route" | "conditions" | "alerts" | "boundaries" | "replay" | "agents" | "data";
+export type RouteId = "home" | "fishermen" | "ask" | "safety" | "zones" | "route" | "conditions" | "alerts" | "boundaries" | "replay" | "agents" | "data";
 
 export interface RouteInfo {
   id: RouteId;
@@ -14,6 +14,7 @@ export interface RouteInfo {
 // Hash routes are bare words (#zones) so a shared link can open a page directly.
 export const ROUTES: RouteInfo[] = [
   { id: "home", label: "Bridge", title: "Bridge", blurb: "Today's verdict, the sea around you and every tool in one view.", group: "sea" },
+  { id: "fishermen", label: "For Fishermen", title: "For Fishermen", blurb: "One clear answer before you go to sea, in your language, read aloud.", group: "sea" },
   { id: "ask", label: "Ask ORCA", title: "Ask ORCA", blurb: "Ask in your own language. The agents plan, fetch the data and explain.", group: "sea" },
   { id: "safety", label: "Sea Safety", title: "Sea Safety", blurb: "Can I go? Hour-by-hour risk for your window, with the reason for each change.", group: "sea" },
   { id: "zones", label: "Fishing Zones", title: "Fishing Zones", blurb: "Candidate zones where a temperature front meets chlorophyll-rich water.", group: "sea" },

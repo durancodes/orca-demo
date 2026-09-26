@@ -154,3 +154,40 @@ def test_transcribe_rejects_bad_requests(tmp_path):
         assert failed.status_code == 502 and "API error 500" in failed.json()["detail"]
     with _stt_client(tmp_path, []) as c:
         assert c.post("/api/transcribe", content=b"x", headers={"Content-Type": "audio/wav"}).status_code == 503
+
+
+class _Speaker:
+    name, model = "fake-tts", "m"
+
+    def __init__(self, error=None):
+        self.error, self.calls = error, []
+
+    async def speak(self, text, language):
+        from orca.speech import SpeechError, pcm_to_wav
+
+        self.calls.append((text, language))
+        if self.error:
+            raise SpeechError(self.error)
+        return pcm_to_wav(b"\x00\x00" * 240)
+
+
+def _tts_client(tmp_path, speaker):
+    svc = build_services(mode="replay", llm=NullProvider(), clock=SimClock(base=lambda: NOW))
+    return TestClient(create_app(svc, alert_interval_s=0, web_dir=tmp_path, speaker=speaker))
+
+
+def test_speak_returns_wav(tmp_path):
+    sp = _Speaker()
+    with _tts_client(tmp_path, sp) as c:
+        assert c.get("/api/health").json()["tts"] == {"available": True, "engine": "fake-tts:m"}
+        r = c.post("/api/speak", json={"text": "கடலுக்குச் செல்ல வேண்டாம்", "language": "ta"})
+        assert r.status_code == 200 and r.headers["content-type"] == "audio/wav" and r.content[:4] == b"RIFF"
+        assert sp.calls == [("கடலுக்குச் செல்ல வேண்டாம்", "ta")]
+
+
+def test_speak_errors(tmp_path):
+    with _tts_client(tmp_path, _Speaker(error="rate limited")) as c:
+        assert c.post("/api/speak", json={"text": "hi", "language": "en"}).status_code == 502
+        assert c.post("/api/speak", json={"text": "x" * 601, "language": "en"}).status_code == 422
+    with _tts_client(tmp_path, None) as c:
+        assert c.post("/api/speak", json={"text": "hi", "language": "en"}).status_code == 503

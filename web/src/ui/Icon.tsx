@@ -30,6 +30,16 @@ const SHAPES: Record<IconName, ReactElement> = {
       </g>
     </>
   ),
+  fishermen: (
+    <>
+      <g className="i-bob">
+        <path {...P} d="M3 14.5h18l-2.8 4.5H5.8z" />
+        <path {...P} d="M9 14.5V5.5M9 6l8.5 5.5" />
+        <path {...P} className="i-line" d="M17.5 11.5v2.2a1.1 1.1 0 0 1-2.2 0" />
+      </g>
+      <path {...P} className="i-wave" d="M2.5 21.5c1.6-1.2 3.2-1.2 4.8 0s3.2 1.2 4.8 0 3.2-1.2 4.8 0 3.2 1.2 4.8 0" />
+    </>
+  ),
   ask: (
     <>
       <path {...P} d="M4 4.5h16a1.5 1.5 0 0 1 1.5 1.5v9.5A1.5 1.5 0 0 1 20 17H10.5L6 20.5V17H4a1.5 1.5 0 0 1-1.5-1.5V6A1.5 1.5 0 0 1 4 4.5z" />

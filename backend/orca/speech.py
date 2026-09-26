@@ -124,3 +124,66 @@ def transcriber_from_env() -> Transcriber:
     if os.getenv("GROQ_API_KEY"):
         engines.append(WhisperTranscriber())
     return Transcriber(engines)
+
+
+# ------------------------------------------------------------------------------ text-to-speech
+# Phones often have no Tamil, Telugu or Malayalam voice, so the fishermen's page can ask the server to read the
+# verdict aloud. Gemini's speech model (default gemini-2.5-flash-preview-tts, override ORCA_GEMINI_TTS_MODEL)
+# returns 24 kHz 16-bit PCM, wrapped here as WAV. Answers repeat a lot (same harbour, same verdict), so a small
+# in-memory cache saves the free-tier quota.
+MAX_SPEECH_CHARS = 600
+
+
+class SpeechError(Exception):
+    pass
+
+
+def pcm_to_wav(pcm: bytes, rate: int = 24000) -> bytes:
+    import struct
+
+    header = b"RIFF" + struct.pack("<I", 36 + len(pcm)) + b"WAVEfmt " + struct.pack("<IHHIIHH", 16, 1, 1, rate, rate * 2, 2, 16)
+    return header + b"data" + struct.pack("<I", len(pcm)) + pcm
+
+
+class GeminiSpeaker:
+    name = "gemini-tts"
+
+    def __init__(self, timeout_s: float = 60.0, cache_size: int = 64) -> None:
+        self.model = os.getenv("ORCA_GEMINI_TTS_MODEL", "gemini-2.5-flash-preview-tts")
+        self._client = httpx.AsyncClient(timeout=timeout_s, headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]})
+        self._cache: dict[tuple[str, str], bytes] = {}
+        self._cache_size = cache_size
+
+    async def speak(self, text: str, language: str) -> bytes:
+        key = (text, language)
+        if key in self._cache:
+            return self._cache[key]
+        body = {
+            "contents": [{"parts": [{"text": f"Read this aloud slowly and clearly, exactly as written: {text}"}]}],
+            "generationConfig": {
+                "responseModalities": ["AUDIO"],
+                "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": "Kore"}}},
+            },
+        }
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent"
+        try:
+            r = await self._client.post(url, json=body)
+        except httpx.HTTPError as exc:
+            raise SpeechError(f"connection error: {type(exc).__name__}") from exc
+        if r.status_code != 200:
+            log.warning("gemini speech error %s: %s", r.status_code, r.text[:500])
+            raise SpeechError("rate limited" if r.status_code == 429 else f"API error {r.status_code}")
+        try:
+            part = r.json()["candidates"][0]["content"]["parts"][0]["inlineData"]
+            pcm = base64.b64decode(part["data"])
+        except (KeyError, IndexError, ValueError) as exc:
+            raise SpeechError(f"unexpected response: {type(exc).__name__}") from exc
+        wav = pcm_to_wav(pcm)
+        if len(self._cache) >= self._cache_size:
+            self._cache.pop(next(iter(self._cache)))
+        self._cache[key] = wav
+        return wav
+
+
+def speaker_from_env() -> GeminiSpeaker | None:
+    return GeminiSpeaker() if os.getenv("GEMINI_API_KEY") else None

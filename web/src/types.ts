@@ -316,6 +316,7 @@ export interface Health {
   replay: ReplayInfo | null;
   llm: { provider: string; model: string | null; available: boolean };
   stt?: { available: boolean; engines: string[] };
+  tts?: { available: boolean; engine: string | null };
   adapters: { name: string; mode: string; status: string; last_success: string | null; last_error: string | null; last_latency_ms: number | null }[];
   watches: number;
 }

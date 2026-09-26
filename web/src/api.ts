@@ -82,6 +82,11 @@ export const api = {
   advisories: () => request<{ used: string[]; errors: string[]; type: "FeatureCollection"; features: any[] }>("/api/advisories"),
 
   chat: (body: ChatBody) => request<ChatResponse>("/api/chat", post(body)),
+  speak: async (text: string, language: string): Promise<Blob> => {
+    const res = await fetch("/api/speak", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, language }) });
+    if (!res.ok) throw new Error(`speech ${res.status}`);
+    return res.blob();
+  },
   transcribe: (wav: Blob, language?: string) =>
     request<{ text: string; language: string | null; engine: string; latency_ms: number }>(
       `/api/transcribe${language ? `?${q({ language })}` : ""}`,

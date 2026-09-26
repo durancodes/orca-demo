@@ -71,6 +71,7 @@ export default function Home() {
   const nearest = pfz.data?.candidates.find((c) => c.viable) ?? pfz.data?.candidates[0];
 
   const tiles: { id: RouteId; stat: React.ReactNode }[] = [
+    { id: "fishermen", stat: <span>Go or don't go, read aloud</span> },
     { id: "ask", stat: <span>Hindi, Tamil, Telugu, Malayalam, English</span> },
     { id: "safety", stat: d ? <LevelChip level={d.risk_level} lang="en" /> : <span className="muted">…</span> },
     { id: "zones", stat: nearest ? <span className="mono">{nearest.distance_km} km {nearest.compass}</span> : <span className="muted">none today</span> },
@@ -119,8 +120,11 @@ export default function Home() {
             Ask by voice or text in English, हिन्दी, தமிழ், తెలుగు, മലയാളം and more.
           </p>
           <div className="intro-actions">
-            <button className="btn-hero" onClick={() => go("ask")}>
-              <Icon name="ask" size={19} /> Ask ORCA
+            <button className="btn-hero" onClick={() => go("fishermen")}>
+              <Icon name="fishermen" size={19} /> For Fishermen
+            </button>
+            <button className="ghost" onClick={() => go("ask")}>
+              <Icon name="ask" size={18} /> Ask ORCA
             </button>
             <button className="ghost" onClick={() => document.getElementById("bridge")?.scrollIntoView({ behavior: "smooth" })}>
               <Icon name="down" size={18} /> Tomorrow's verdict

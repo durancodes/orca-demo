@@ -5,8 +5,8 @@ import { useApp } from "../store";
 
 const IST_FMT: Intl.DateTimeFormatOptions = { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Kolkata" };
 
-const PRIMARY: RouteId[] = ["ask", "safety", "zones", "route", "conditions", "alerts", "boundaries", "replay"];
-const MORE: RouteId[] = ["agents", "data"];
+const PRIMARY: RouteId[] = ["fishermen", "ask", "safety", "zones", "route", "conditions", "alerts", "replay"];
+const MORE: RouteId[] = ["boundaries", "agents", "data"];
 
 /** The mark: an orca surfacing inside a sonar ring, a wave running beneath. The ring draws itself in, the wave
  *  keeps moving, and on hover the orca lifts out of the water. */
@@ -104,9 +104,10 @@ export default function Navbar({ route }: { route: RouteId }) {
                 key={id}
                 href={`#${id}`}
                 data-route={id}
-                className={`nav-link ${route === id ? "active" : ""} ${id === "replay" ? "nav-replay" : ""}`}
+                className={`nav-link ${route === id ? "active" : ""} ${id === "replay" ? "nav-replay" : ""} ${id === "fishermen" ? "nav-fisher" : ""}`}
                 aria-current={route === id ? "page" : undefined}
               >
+                {id === "fishermen" && <Icon name="fishermen" size={17} />}
                 {info(id).label}
                 {id === "alerts" && unread > 0 && <span className="badge-count">{unread}</span>}
               </a>

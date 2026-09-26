@@ -15,7 +15,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request
-from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -32,7 +32,7 @@ from .risk import assess_window, rules_table
 from .risk.engine import assess_hour
 from .route import plan_route
 from .services import Services, build_services
-from .speech import MAX_AUDIO_BYTES, Transcriber, TranscriptionError, transcriber_from_env
+from .speech import MAX_AUDIO_BYTES, MAX_SPEECH_CHARS, GeminiSpeaker, SpeechError, Transcriber, TranscriptionError, speaker_from_env, transcriber_from_env
 from .state import advisories_at_point
 from .timeutil import ensure_utc, floor_hour
 
@@ -69,6 +69,11 @@ class ReplayEventRequest(BaseModel):
     as_of: datetime | None = None
 
 
+class SpeakRequest(BaseModel):
+    text: str = Field(min_length=1, max_length=MAX_SPEECH_CHARS)
+    language: str = Field(default="en", pattern="^[a-z]{2}$")
+
+
 class AdvanceRequest(BaseModel):
     hours: float = Field(gt=-72, le=72)
 
@@ -87,9 +92,10 @@ def _geom(coords: list[tuple[float, float]], kind: str) -> dict:
 
 
 def create_app(svc: Services | None = None, alert_interval_s: float | None = None, web_dir: Path | None = None,
-               transcriber: Transcriber | None = None) -> FastAPI:
+               transcriber: Transcriber | None = None, speaker: GeminiSpeaker | None | bool = True) -> FastAPI:
     svc = svc or build_services()
     stt = transcriber or transcriber_from_env()
+    tts = speaker_from_env() if speaker is True else (speaker or None)
     alerts = AlertEngine(svc)
     svc.alerts = alerts
     orchestrator = Orchestrator(svc)
@@ -138,6 +144,7 @@ def create_app(svc: Services | None = None, alert_interval_s: float | None = Non
             "replay": _replay_info(),
             "llm": {"provider": svc.llm.name, "model": svc.llm.model, "available": svc.llm.available},
             "stt": stt.describe(),
+            "tts": {"available": tts is not None, "engine": f"{tts.name}:{tts.model}" if tts else None},
             "adapters": [h.model_dump(mode="json") for h in svc.data.health()]
             + [p.health().model_dump(mode="json") for p in (svc.pfz_live, svc.pfz_demo, svc.pfz_historical) if p is not None],
             "watches": len(alerts.watches),
@@ -176,6 +183,17 @@ def create_app(svc: Services | None = None, alert_interval_s: float | None = Non
         if not req.message.strip():
             raise HTTPException(422, "message must not be empty")
         return await orchestrator.handle(req)
+
+    @app.post("/api/speak")
+    async def speak(req: SpeakRequest):
+        """Read a short answer aloud (WAV) — for languages the phone has no voice for."""
+        if tts is None:
+            raise HTTPException(503, "no speech engine configured (set GEMINI_API_KEY)")
+        try:
+            wav = await tts.speak(req.text.strip(), req.language)
+        except SpeechError as exc:
+            raise HTTPException(502, f"speech failed: {exc}") from exc
+        return Response(content=wav, media_type="audio/wav", headers={"Cache-Control": "private, max-age=3600"})
 
     @app.post("/api/transcribe")
     async def transcribe(request: Request, language: str | None = Query(None, pattern="^[a-z]{2}$")):
