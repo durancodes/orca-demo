@@ -14,8 +14,9 @@ import Boundaries from "./pages/Boundaries";
 import Replay from "./pages/Replay";
 import Agents from "./pages/Agents";
 import Data from "./pages/Data";
+import Board from "./pages/Board";
 
-const PAGES = { home: Home, fishermen: Fishermen, ask: Ask, safety: Safety, zones: Zones, route: Route, conditions: Conditions, alerts: Alerts, boundaries: Boundaries, replay: Replay, agents: Agents, data: Data };
+const PAGES = { home: Home, fishermen: Fishermen, ask: Ask, safety: Safety, zones: Zones, route: Route, conditions: Conditions, alerts: Alerts, boundaries: Boundaries, replay: Replay, agents: Agents, data: Data, board: Board };
 
 function Shell() {
   const route = useRoute();

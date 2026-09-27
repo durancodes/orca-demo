@@ -764,6 +764,200 @@ button:active:not(:disabled) {
   }
 }
 
+/* ---------------------------------------------------------------- harbour board (authorities) */
+.board-counts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.board-count {
+  display: grid;
+  gap: 2px;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 6px solid var(--lv-unknown);
+}
+.board-count b {
+  font-family: var(--display);
+  font-size: 2.2rem;
+  line-height: 1;
+}
+.board-count.g-hold {
+  border-left-color: var(--lv-severe);
+}
+.board-count.g-care {
+  border-left-color: var(--lv-moderate);
+}
+.board-count.g-go {
+  border-left-color: var(--lv-low);
+}
+.board-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.board-side {
+  display: grid;
+  gap: 16px;
+}
+.board-map {
+  height: 320px;
+}
+.board-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.board-table th,
+.board-table td {
+  text-align: left;
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.board-table th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+}
+.bulletin-text {
+  white-space: pre-wrap;
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--surface-2);
+}
+.ghost-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--rule-strong);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+.ghost-link:hover {
+  border-color: #25d366;
+  color: var(--ink);
+  background: color-mix(in srgb, #25d366 14%, transparent);
+}
+@media (max-width: 1000px) {
+  .board-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .board-counts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .board-table th:nth-child(4),
+  .board-table td:nth-child(4) {
+    display: none;
+  }
+}
+@media print {
+  .navbar,
+  .navbar-sub,
+  .foot,
+  .plate-actions,
+  .board-map,
+  .row-actions,
+  .splash {
+    display: none !important;
+  }
+  .board-grid {
+    grid-template-columns: 1fr;
+  }
+  .panel::before {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------- harbour comparison (Ask) */
+.compare-list {
+  margin: 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 6px;
+}
+.compare-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: var(--surface-2);
+}
+.compare-list li .small {
+  grid-column: 1 / -1;
+}
+.compare-list li.best {
+  background: var(--lv-low-soft);
+  outline: 2px solid var(--lv-low);
+}
+.compare-name {
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------- data catalogue (How it decided) */
+.discovery-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.discovery-list li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 2px 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  border-left: 4px solid var(--rule);
+}
+.discovery-list li.src-covers,
+.discovery-list li.src-found_on_mosdac {
+  border-left-color: var(--lv-low);
+}
+.discovery-list li.src-outside,
+.discovery-list li.src-not_downloaded,
+.discovery-list li.src-not_published {
+  border-left-color: var(--lv-moderate);
+}
+.discovery-list .src-status {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.discovery-list .src-detail {
+  grid-column: 2 / -1;
+  color: var(--ink-2);
+}
+.agency {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+.agency-isro {
+  background: #ff9933;
+  border-color: #ff9933;
+  color: #1a1a1a;
+}
+
 /* ---------------------------------------------------------------- live voice bubble */
 .msg.voice-live {
   display: flex;

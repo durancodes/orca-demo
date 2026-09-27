@@ -66,6 +66,7 @@ class AlertEngine:
         self._subscribers: set[asyncio.Queue] = set()
         self._vessel_status: dict[str, str] = {}
         self._task: asyncio.Task | None = None
+        self.listeners: list = []  # async callables(alert) — e.g. SMS/WhatsApp delivery
 
     # ---- subscriptions (SSE) ---------------------------------------------------------
     def subscribe(self) -> asyncio.Queue:
@@ -83,6 +84,11 @@ class AlertEngine:
                 q.put_nowait(alert)
             except asyncio.QueueFull:
                 pass
+        for listener in list(self.listeners):
+            try:
+                await listener(alert)
+            except Exception as exc:  # a failed SMS must never stop the alert itself
+                log.warning("alert listener failed: %s", exc)
 
     # ---- watches -------------------------------------------------------------------------
     def add_watch(self, lat: float, lon: float, label: str, language: str = "en") -> Watch:

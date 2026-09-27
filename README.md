@@ -84,6 +84,9 @@ answers the recorded questions.
 | `ORCA_ANTHROPIC_MODEL` | `claude-opus-5` | Model for explanations |
 | `ORCA_LLM_EFFORT` | `low` | Explanations are short rewrites of structured evidence |
 | `ORCA_ALERT_INTERVAL_S` | `300` | Background re-evaluation period for watched locations (0 = off) |
+| `MOSDAC_USERNAME` / `MOSDAC_PASSWORD` | unset | ISRO MOSDAC login, only for `scripts/historical/fetch_mosdac.py` (INSAT-3DR/3D L3B daily SST into the replay archive). ORCA prefers ISRO SST over NOAA OISST wherever it has a cloud-free value |
+| `ORCA_MOSDAC_SEARCH` | `1` | The catalogue agent searches ISRO MOSDAC (public, no login) for satellite products covering each question; `0` turns it off |
+| `TWILIO_ACCOUNT_SID` / `TWILIO_AUTH_TOKEN` / `TWILIO_SMS_FROM` / `TWILIO_WHATSAPP_FROM` | unset | SMS/WhatsApp alerts to subscribed phones; without them messages are kept in the `/api/outbox` demo outbox |
 | `ORCA_ADMIN_TOKEN` | unset | When set, the shared clock, replay-event and re-evaluate endpoints require header `X-Orca-Admin-Token`; in the UI run `localStorage.setItem("orca.adminToken", "<token>")` once. Set it whenever the server is reachable by others |
 | `GROQ_API_KEY` / `ORCA_GROQ_MODEL` | unset / `openai/gpt-oss-120b` | Groq LLM (used first by `ORCA_LLM_PROVIDER=auto`) |
 | `GEMINI_API_KEY` / `ORCA_GEMINI_MODEL` | unset / `gemini-2.5-flash` | Gemini LLM; with both keys, `auto` tries Groq then Gemini (e.g. when Groq's free tier is rate-limited) |

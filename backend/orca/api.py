@@ -32,11 +32,19 @@ from .risk import assess_window, rules_table
 from .risk.engine import assess_hour
 from .route import plan_route
 from .services import Services, build_services
+from .notify import Notifier
 from .speech import MAX_AUDIO_BYTES, MAX_SPEECH_CHARS, GeminiSpeaker, SpeechError, Transcriber, TranscriptionError, speaker_from_env, transcriber_from_env
 from .state import advisories_at_point
 from .timeutil import ensure_utc, floor_hour
 
 log = logging.getLogger("orca.api")
+
+# Windows takes MIME types from the registry, which can map .js to text/plain; browsers refuse service workers
+# and modules served that way, and expect the app manifest as manifest+json.
+import mimetypes  # noqa: E402
+
+mimetypes.add_type("text/javascript", ".js")
+mimetypes.add_type("application/manifest+json", ".webmanifest")
 DEFAULT_WEB_DIR = Path(__file__).resolve().parents[2] / "web" / "dist"
 
 
@@ -74,6 +82,13 @@ class SpeakRequest(BaseModel):
     language: str = Field(default="en", pattern="^[a-z]{2}$")
 
 
+class SubscribeRequest(BaseModel):
+    phone: str = Field(min_length=8, max_length=16)
+    channel: str = Field(default="sms", pattern="^(sms|whatsapp)$")
+    harbour_id: str = Field(min_length=2, max_length=30)
+    language: str = Field(default="en", pattern="^[a-z]{2}$")
+
+
 class AdvanceRequest(BaseModel):
     hours: float = Field(gt=-72, le=72)
 
@@ -92,12 +107,13 @@ def _geom(coords: list[tuple[float, float]], kind: str) -> dict:
 
 
 def create_app(svc: Services | None = None, alert_interval_s: float | None = None, web_dir: Path | None = None,
-               transcriber: Transcriber | None = None, speaker: GeminiSpeaker | None | bool = True) -> FastAPI:
+               transcriber: Transcriber | None = None, speaker: GeminiSpeaker | None | bool = True, sender=None) -> FastAPI:
     svc = svc or build_services()
     stt = transcriber or transcriber_from_env()
     tts = speaker_from_env() if speaker is True else (speaker or None)
     alerts = AlertEngine(svc)
     svc.alerts = alerts
+    notifier = Notifier(alerts, sender)
     orchestrator = Orchestrator(svc)
     interval = alert_interval_s if alert_interval_s is not None else float(os.getenv("ORCA_ALERT_INTERVAL_S", "300"))
     web_dir = web_dir or Path(os.getenv("ORCA_WEB_DIR", DEFAULT_WEB_DIR))
@@ -145,6 +161,7 @@ def create_app(svc: Services | None = None, alert_interval_s: float | None = Non
             "llm": {"provider": svc.llm.name, "model": svc.llm.model, "available": svc.llm.available},
             "stt": stt.describe(),
             "tts": {"available": tts is not None, "engine": f"{tts.name}:{tts.model}" if tts else None},
+            "notify": {"provider": notifier.sender.name, "subscriptions": len(notifier.subs)},
             "adapters": [h.model_dump(mode="json") for h in svc.data.health()]
             + [p.health().model_dump(mode="json") for p in (svc.pfz_live, svc.pfz_demo, svc.pfz_historical) if p is not None],
             "watches": len(alerts.watches),
@@ -319,6 +336,23 @@ def create_app(svc: Services | None = None, alert_interval_s: float | None = Non
             out.append({"lat": lat, "lon": lon, "level": h.level.value, "dominant": h.dominant.variable if h.dominant else None})
         return {"time": t.isoformat(), "step": step, "marine_source": marine_source, "cells": out}
 
+    # ---- harbour board + bulletin (authorities) -------------------------------------------
+    @app.get("/api/board")
+    async def board(day: str = Query("tomorrow", pattern="^(today|tomorrow)$"),
+                    part: str = Query("morning", pattern="^(now|morning|afternoon|evening|night)$")):
+        from .board import harbour_board
+
+        return await harbour_board(svc, day, part, svc.clock())
+
+    @app.get("/api/bulletin")
+    async def bulletin_endpoint(day: str = Query("tomorrow", pattern="^(today|tomorrow)$"),
+                                part: str = Query("morning", pattern="^(now|morning|afternoon|evening|night)$"),
+                                language: str = Query("en", pattern="^[a-z]{2}$")):
+        from .board import bulletin, harbour_board
+
+        b = await harbour_board(svc, day, part, svc.clock())
+        return bulletin(b, language) | {"board": b}
+
     # ---- historical replay ("time machine") ---------------------------------------------
     def _replay_info() -> dict | None:
         if svc.replay is None:
@@ -442,6 +476,39 @@ def create_app(svc: Services | None = None, alert_interval_s: float | None = Non
                 alerts.unsubscribe(queue)
 
         return StreamingResponse(events(), media_type="text/event-stream", headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
+
+    # ---- SMS / WhatsApp alerts ---------------------------------------------------------------
+    @app.post("/api/subscriptions")
+    async def subscribe(req: SubscribeRequest):
+        from .agents.llm_planner import Step, run_step
+
+        port = next((p for p in PORTS if p.id == req.harbour_id), None)
+        if port is None:
+            raise HTTPException(404, f"unknown harbour {req.harbour_id}")
+        now_check = await run_step(svc, Step("harbour_safety", port, "today", "now"), svc.clock())
+        lat, lon = now_check["lat"], now_check["lon"]
+        try:
+            sub = await notifier.subscribe(req.phone.replace(" ", ""), req.channel, port, req.language, lat, lon, now_check["level"])
+        except ValueError as exc:
+            raise HTTPException(422, str(exc)) from exc
+        except OverflowError as exc:
+            raise HTTPException(429, str(exc)) from exc
+        return sub.public() | {"provider": notifier.sender.name}
+
+    @app.delete("/api/subscriptions/{sub_id}")
+    async def unsubscribe(sub_id: str):
+        if not notifier.unsubscribe(sub_id):
+            raise HTTPException(404, "subscription not found")
+        return {"deleted": sub_id}
+
+    @app.get("/api/subscriptions", dependencies=admin)
+    async def subscriptions():
+        return [s.public() for s in notifier.subs.values()]
+
+    @app.get("/api/outbox", dependencies=admin)
+    async def outbox():
+        """Messages sent (or, without a provider, that would have been sent) — numbers masked."""
+        return {"provider": notifier.sender.name, "messages": [m.model_dump(mode="json") for m in notifier.outbox]}
 
     @app.post("/api/track")
     async def track(req: TrackRequest):

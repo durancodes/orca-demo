@@ -73,6 +73,20 @@ export default function Fishermen() {
   const [lang, setFmLang] = useState<FmLang>(() => (load("orca.fmLang") as FmLang) || "en");
   const [portId, setPortId] = useState<string | null>(() => load("orca.harbour"));
   const [when, setWhen] = useState<"now" | "tomorrow">("tomorrow");
+  const [phone, setPhone] = useState("");
+  const [channel, setChannel] = useState<"sms" | "whatsapp">("sms");
+  const [subState, setSubState] = useState<"idle" | "sending" | "done" | "bad">("idle");
+  const [online, setOnline] = useState(() => (typeof navigator === "undefined" ? true : navigator.onLine));
+  useEffect(() => {
+    const up = () => setOnline(true);
+    const down = () => setOnline(false);
+    window.addEventListener("online", up);
+    window.addEventListener("offline", down);
+    return () => {
+      window.removeEventListener("online", up);
+      window.removeEventListener("offline", down);
+    };
+  }, []);
   const t = (k: string, vars?: Record<string, string | number>) => fm(lang, k, vars);
 
   useEffect(() => {
@@ -205,6 +219,7 @@ export default function Fishermen() {
         </div>
       </header>
 
+      {!online && <p className="fm-replay fm-offline">{t("offline")}</p>}
       {replay && ev && <p className="fm-replay">{t("replay", { event: ev.title.split(" — ")[0] })}</p>}
 
       <div className="fm-controls">
@@ -341,6 +356,49 @@ export default function Fishermen() {
           <Icon name="mic" size={24} /> {t("askVoice")}
         </button>
       </div>
+
+      <section className="fm-card fm-subscribe">
+        <h3>
+          <Icon name="alerts" size={22} /> {t("alertsTitle")}
+        </h3>
+        <p className="fm-note">{t("alertsSub", { harbour: port?.name ?? "" })}</p>
+        {subState === "done" ? (
+          <p className="fm-mid fm-ok">{t("subscribed")}</p>
+        ) : (
+          <form
+            className="fm-sub-form"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const clean = phone.replace(/[\s-]/g, "");
+              const full = clean.startsWith("+") ? clean : `+91${clean.replace(/^0/, "")}`;
+              if (!/^\+[1-9]\d{7,14}$/.test(full) || !port) return setSubState("bad");
+              setSubState("sending");
+              try {
+                await api.subscribe({ phone: full, channel, harbour_id: port.id, language: lang });
+                setSubState("done");
+              } catch {
+                setSubState("bad");
+              }
+            }}
+          >
+            <label>
+              <span>{t("phone")}</span>
+              <input type="tel" inputMode="tel" autoComplete="tel" placeholder="+91 98765 43210" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            </label>
+            <div className="fm-when" role="radiogroup" aria-label="Channel">
+              {(["sms", "whatsapp"] as const).map((c) => (
+                <button type="button" key={c} role="radio" aria-checked={channel === c} className={channel === c ? "on" : ""} onClick={() => setChannel(c)}>
+                  {t(c)}
+                </button>
+              ))}
+            </div>
+            <button type="submit" className="fm-ask" disabled={subState === "sending"}>
+              {t("subscribe")}
+            </button>
+            {subState === "bad" && <p className="fm-note fm-bad">{t("badPhone")}</p>}
+          </form>
+        )}
+      </section>
 
       <section className="fm-sos" aria-label={t("emergency")}>
         <h3>{t("emergency")}</h3>

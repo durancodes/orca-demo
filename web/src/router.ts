@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { flushSync } from "react-dom";
 
-export type RouteId = "home" | "fishermen" | "ask" | "safety" | "zones" | "route" | "conditions" | "alerts" | "boundaries" | "replay" | "agents" | "data";
+export type RouteId = "home" | "fishermen" | "ask" | "safety" | "zones" | "route" | "conditions" | "alerts" | "boundaries" | "replay" | "agents" | "data" | "board";
 
 export interface RouteInfo {
   id: RouteId;
@@ -24,6 +24,7 @@ export const ROUTES: RouteInfo[] = [
   { id: "boundaries", label: "Boundaries", title: "Boundaries", blurb: "Maritime boundary, restricted and protected waters, with a check for any point.", group: "sea" },
   { id: "replay", label: "Time Machine", title: "Time Machine", blurb: "Replay real past events and see how well ORCA's verdicts held up.", group: "insight" },
   { id: "agents", label: "How it decided", title: "How ORCA Decided", blurb: "The plan, each agent's step and the evidence behind the last answer.", group: "insight" },
+  { id: "board", label: "Harbour Board", title: "Harbour Board", blurb: "Every harbour at once: where to hold boats, with a bulletin to print or share.", group: "insight" },
   { id: "data", label: "Data & Rules", title: "Data & Rules", blurb: "Every source, when it was published, and the safety rules ORCA applies.", group: "insight" },
 ];
 

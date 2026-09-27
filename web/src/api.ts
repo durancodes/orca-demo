@@ -6,6 +6,7 @@ import type {
   ConditionsSeries,
   FieldLayers,
   GeofenceFeature,
+  HarbourBoard,
   Health,
   PfzResponse,
   Port,
@@ -82,6 +83,11 @@ export const api = {
   advisories: () => request<{ used: string[]; errors: string[]; type: "FeatureCollection"; features: any[] }>("/api/advisories"),
 
   chat: (body: ChatBody) => request<ChatResponse>("/api/chat", post(body)),
+  board: (day: string, part: string) => request<HarbourBoard>(`/api/board?${q({ day, part })}`),
+  bulletin: (day: string, part: string, language: string) =>
+    request<{ language: string; lines: string[]; text: string; board: HarbourBoard }>(`/api/bulletin?${q({ day, part, language })}`),
+  subscribe: (body: { phone: string; channel: "sms" | "whatsapp"; harbour_id: string; language: string }) =>
+    request<{ id: string; phone: string; harbour: string; provider: string }>("/api/subscriptions", post(body)),
   speak: async (text: string, language: string): Promise<Blob> => {
     const res = await fetch("/api/speak", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, language }) });
     if (!res.ok) throw new Error(`speech ${res.status}`);

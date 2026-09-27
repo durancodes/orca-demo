@@ -57,7 +57,15 @@ def test_geofence_status(lat, lon, status):
 def test_boundary_hit_carries_accuracy_label():
     s = GEOFENCES.check(9.40, 79.60, T)
     assert s.hard_constraints
-    assert s.hits[0].accuracy == "unverified-transcription"
+    assert s.hits[0].accuracy == "official"  # turning points checked against the 1974/1976 treaty texts
+    assert "treaty" in s.hits[0].authority.lower() or "agreement" in s.hits[0].authority.lower()
+
+
+def test_bay_of_bengal_boundaries_have_the_right_home_side():
+    assert GEOFENCES.check(10.3, 81.8, T).status == "beyond_boundary"  # Sri Lankan side of the 1976 line
+    assert GEOFENCES.check(11.8, 81.8, T).status in ("clear", "approaching")
+    assert GEOFENCES.check(20.0, 89.8, T).status == "beyond_boundary"  # east of the 2014 India–Bangladesh line
+    assert GEOFENCES.check(21.3, 88.2, T).status in ("clear", "approaching")  # off Digha
 
 
 def test_seasonal_sensitive_zone_only_active_in_season():

@@ -461,3 +461,31 @@ button.fm-ask {
   background: var(--surface);
   border: 1.5px solid var(--v);
 }
+
+/* ---- alerts on my phone */
+.fm-sub-form {
+  display: grid;
+  gap: 10px;
+}
+.fm-sub-form label {
+  display: grid;
+  gap: 6px;
+  font-weight: 700;
+}
+.fm-sub-form input {
+  min-height: 56px;
+  font-size: 1.15rem;
+  padding: 0 14px;
+  letter-spacing: 0.03em;
+}
+.fm-ok {
+  color: var(--lv-low);
+}
+.fm-bad {
+  color: var(--lv-severe);
+}
+.fm-offline {
+  border-style: solid;
+  background: var(--lv-moderate-soft);
+  color: var(--ink);
+}

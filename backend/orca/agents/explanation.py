@@ -157,7 +157,7 @@ def build_packet(question: str, language: str, ctx: dict[str, Any]) -> dict[str,
             if e is not None:
                 evidence.append({"id": e.id, "source": e.source, "data_type": e.data_type.value, "variable": e.variable,
                                  "value": e.value, "unit": e.unit, "valid_time_ist": _ist(e.valid_time) if e.valid_time else None})
-    for key in ("pfz", "route", "conditions", "alerts", "geofence", "hotspots", "productivity", "avoid", "regulations"):
+    for key in ("coverage", "pfz", "route", "conditions", "alerts", "geofence", "hotspots", "productivity", "avoid", "regulations"):
         if ctx.get(key) is not None:
             packet[key] = ctx[key]
     for extra in ctx.get("extra_evidence", []):
@@ -308,6 +308,8 @@ def template_explanation(language: str, ctx: dict[str, Any]) -> Explanation:
     if (ctx.get("data") or {}).get("simulated"):
         lines.append(t("simulated", lang))
     hist = ctx.get("historical")
+    if hist and "outside_replay" in (ctx.get("coverage") or {}).get("gaps", []):
+        lines.insert(0, t("coverage.outside", lang, event=hist["event"], place=place))
     if hist:
         lines.append(t("historical", lang, event=hist["event"], as_of=hist["as_of"]))
     note = None
@@ -350,6 +352,9 @@ async def explain(provider: LLMProvider, question: str, language: str, ctx: dict
         advice = t(f"advice.{expected}", template_language(language))
         answer = f"{advice} {answer}"
         actions = [advice, *(a for a in actions if a != advice)]
+    hist = ctx.get("historical")
+    if hist and "outside_replay" in (ctx.get("coverage") or {}).get("gaps", []):
+        answer = f"{t('coverage.outside', template_language(language), event=hist['event'], place=ctx.get('place') or '—')} {answer}"
     return Explanation(
         answer=answer,
         key_factors=result.data["key_factors"],

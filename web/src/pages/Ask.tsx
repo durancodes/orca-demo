@@ -26,6 +26,7 @@ const featureStyle = (f: any) => {
   if (k === "advisory") return { className: `adv adv-${(f.properties.severity || "").toLowerCase()}`, weight: 1.5, fillOpacity: 0.08 };
   if (k === "safety_target") return { className: `target lv-stroke-${(f.properties.level || "").toLowerCase()}`, weight: 3, fillOpacity: 0.15 };
   if (k === "hotspot") return { className: "hotspot", weight: 1, fillOpacity: 0.8 };
+  if (k === "harbour") return { className: `target lv-stroke-${(f.properties.level || "").toLowerCase()}`, weight: 3, fillOpacity: 0.35 };
   if (k === "avoid") return { className: "avoid", weight: 2, fillOpacity: 0.8 };
   return { className: "feat", weight: 2 };
 };
@@ -33,7 +34,7 @@ const featurePopup = (f: any) => `<b>${f.properties.label ?? f.properties.kind}<
 
 // The map frames the answer's place plus what the answer drew near it (zones, routes, hotspots) — not warning
 // or geofence polygons, which can span the whole coast and would zoom the chart out to all of India.
-const FOCUS_KINDS = new Set(["pfz", "route_recommended", "route_direct", "safety_target", "hotspot", "avoid"]);
+const FOCUS_KINDS = new Set(["pfz", "route_recommended", "route_direct", "safety_target", "hotspot", "avoid", "harbour"]);
 const MIN_HALF_SPAN = 0.6;
 
 function answerBounds(focus: { lat: number; lon: number } | null, features: any[]): [[number, number], [number, number]] | null {
@@ -58,6 +59,7 @@ export default function Ask() {
   const features = active?.map.features.filter((f) => f.properties.kind !== "location") ?? [];
   const fc = useMemo(() => ({ type: "FeatureCollection", features }), [features]);
   const safety = active?.cards.safety;
+  const compare = active?.cards.compare;
   const focus = active?.place ?? null;
   const bounds = useMemo(() => answerBounds(focus, features), [focus, fc]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -111,6 +113,27 @@ export default function Ask() {
                     </ul>
                   </div>
                   <HourStrip hours={safety.timeline} lang={active.language} />
+                </Panel>
+              )}
+              {compare && (
+                <Panel
+                  title="Harbours compared"
+                  aside={<span className="small muted">{compare.planner === "llm" ? "planned by the LLM, checked" : "planned by rules"} · verdicts from the risk rules</span>}
+                >
+                  <ol className="compare-list">
+                    {compare.rows
+                      .filter((r) => r.tool === "harbour_safety")
+                      .map((r) => (
+                        <li key={r.harbour_id + r.window.start} className={r.harbour_id === compare.best ? "best" : ""}>
+                          <span className="compare-name">{r.harbour}</span>
+                          <LevelChip level={r.level} lang={active.language} />
+                          <span className="small muted">
+                            {r.go_window ? `go ${fmtIST(r.go_window.start, false)}–${fmtIST(r.go_window.end, false)}` : "no low-risk window"}
+                          </span>
+                        </li>
+                      ))}
+                  </ol>
+                  {compare.notes.length > 0 && <p className="small muted">Plan checks: {compare.notes.join("; ")}</p>}
                 </Panel>
               )}
               {(features.length > 0 || focus) && (

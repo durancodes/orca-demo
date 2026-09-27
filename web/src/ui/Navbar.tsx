@@ -6,7 +6,7 @@ import { useApp } from "../store";
 const IST_FMT: Intl.DateTimeFormatOptions = { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Kolkata" };
 
 const PRIMARY: RouteId[] = ["fishermen", "ask", "safety", "zones", "route", "conditions", "alerts", "replay"];
-const MORE: RouteId[] = ["boundaries", "agents", "data"];
+const MORE: RouteId[] = ["board", "boundaries", "agents", "data"];
 
 /** The mark: an orca surfacing inside a sonar ring, a wave running beneath. The ring draws itself in, the wave
  *  keeps moving, and on hover the orca lifts out of the water. */

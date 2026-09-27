@@ -40,6 +40,15 @@ const SHAPES: Record<IconName, ReactElement> = {
       <path {...P} className="i-wave" d="M2.5 21.5c1.6-1.2 3.2-1.2 4.8 0s3.2 1.2 4.8 0 3.2-1.2 4.8 0 3.2 1.2 4.8 0" />
     </>
   ),
+  board: (
+    <>
+      <path {...P} d="M5 4.5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-14a1 1 0 0 1 1-1z" />
+      <path {...P} className="i-l1" d="M8 9h8" />
+      <path {...P} className="i-l2" d="M8 12.5h5" />
+      <path {...P} className="i-l3" d="M8 16h7" />
+      <circle cx="17.5" cy="12.5" r="1.2" className="i-dot" />
+    </>
+  ),
   ask: (
     <>
       <path {...P} d="M4 4.5h16a1.5 1.5 0 0 1 1.5 1.5v9.5A1.5 1.5 0 0 1 20 17H10.5L6 20.5V17H4a1.5 1.5 0 0 1-1.5-1.5V6A1.5 1.5 0 0 1 4 4.5z" />
